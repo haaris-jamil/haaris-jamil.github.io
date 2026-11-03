@@ -1,26 +1,5 @@
 {
-  "failures": [
-    {
-      "path": "04 Weekly Reflections/Week 5",
-      "reason": "Multiple Google Docs tabs found, but no unique 'Published version' tab. Refusing to publish other tabs."
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 05 - Voltage, current and resistance",
-      "reason": "Google API HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Expensive read requests' and limit 'Expensive read requests per minute per user' of service 'slides.googleapis.com' for consumer 'project_number:75669211091'.\",\n    \"sta"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Resistance and current",
-      "reason": "Google API HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Expensive read requests' and limit 'Expensive read requests per minute per user' of service 'slides.googleapis.com' for consumer 'project_number:75669211091'.\",\n    \"sta"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Science 2 - Demonstration and graphing - 5 November 2026",
-      "reason": "Google API HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Expensive read requests' and limit 'Expensive read requests per minute per user' of service 'slides.googleapis.com' for consumer 'project_number:75669211091'.\",\n    \"sta"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 07: Reliable connections and switched outlets",
-      "reason": "Google API HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Expensive read requests' and limit 'Expensive read requests per minute per user' of service 'slides.googleapis.com' for consumer 'project_number:75669211091'.\",\n    \"sta"
-    }
-  ],
+  "failures": [],
   "files": {
     "1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw": {
       "modifiedTime": "2026-10-24T18:25:06.813Z",
@@ -48,7 +27,12 @@
       "page": "file-11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I.html",
       "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Mentor teacher feedback - week 2"
     },
-    "11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY": {},
+    "11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY": {
+      "modifiedTime": "2026-11-01T22:13:37.115Z",
+      "page": "slides-11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Science 2 - Demonstration and graphing - 5 November 2026",
+      "slides": 10
+    },
     "12Gw8ujwQEaClqWs9yf5-ZuUSgs7vqwXnlWWDG6tGfyA": {
       "modifiedTime": "2026-11-03T21:00:27.828Z",
       "page": "doc-12Gw8ujwQEaClqWs9yf5-ZuUSgs7vqwXnlWWDG6tGfyA.html",
@@ -188,7 +172,12 @@
       "page": "doc-1MjKCuAMEZMyR3x-FFanlguVEQIhMlDaltSbboD4CycM.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 02: Foundations of charge and static electricity - Y10 Science 1 - Full Lesson Plan - Not delivered"
     },
-    "1OJ2d2lITwTzGm85KQRyHvT4YGswxth7-tTViUrSnujk": {},
+    "1OJ2d2lITwTzGm85KQRyHvT4YGswxth7-tTViUrSnujk": {
+      "modifiedTime": "2026-10-28T21:12:03.715Z",
+      "page": "slides-1OJ2d2lITwTzGm85KQRyHvT4YGswxth7-tTViUrSnujk.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Resistance and current",
+      "slides": 9
+    },
     "1OtP0ISN53cNvKlAFCp4TVdfg1ku0rDcnWO1Fjtt5lVo": {
       "modifiedTime": "2026-11-03T22:31:14.074Z",
       "page": "doc-1OtP0ISN53cNvKlAFCp4TVdfg1ku0rDcnWO1Fjtt5lVo.html",
@@ -251,7 +240,12 @@
       "page": "doc-1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 09: Comparing series and parallel circuits - Y10 Science 2 - Full Lesson Plan"
     },
-    "1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E": {},
+    "1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E": {
+      "modifiedTime": "2026-10-27T20:14:02.770Z",
+      "page": "slides-1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 05 - Voltage, current and resistance",
+      "slides": 14
+    },
     "1W5ptAjJtQbg-T_BxPKDLbULK3tfw-MQK": {
       "modifiedTime": "2026-10-28T21:44:28.960Z",
       "page": "file-1W5ptAjJtQbg-T_BxPKDLbULK3tfw-MQK.html",
@@ -275,13 +269,22 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 04 - Current and its measurement - Y10 Science 2",
       "slides": 12
     },
-    "1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs": {},
+    "1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs": {
+      "modifiedTime": "2026-11-03T19:59:36.493Z",
+      "page": "slides-1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 07: Reliable connections and switched outlets",
+      "slides": 10
+    },
     "1_R1BDz7y3zcVvc2lD_mKcI_8ks0T3UDSnoA7Y1FaJww": {
       "modifiedTime": "2026-11-03T22:32:43.835Z",
       "page": "doc-1_R1BDz7y3zcVvc2lD_mKcI_8ks0T3UDSnoA7Y1FaJww.html",
       "path": "06 Teaching & Planning/00 Start Here - Teaching and Planning Guide"
     },
-    "1bJSxhs6-f7VDcazZ_tTcDjcUaE8ONasGGKnmDI58G_Y": {},
+    "1bJSxhs6-f7VDcazZ_tTcDjcUaE8ONasGGKnmDI58G_Y": {
+      "modifiedTime": "2026-11-03T22:48:44.840Z",
+      "page": "reflection-week-5.html",
+      "path": "04 Weekly Reflections/Week 5"
+    },
     "1bTnvTJk5YMSyAKD2YtgBBV2_y_spAmjI44Q618KpxEc": {
       "modifiedTime": "2026-11-03T20:12:07.895Z",
       "page": "doc-1bTnvTJk5YMSyAKD2YtgBBV2_y_spAmjI44Q618KpxEc.html",
@@ -507,46 +510,30 @@
     "reflection-week-2.html",
     "reflection-week-3.html",
     "reflection-week-4.html",
+    "reflection-week-5.html",
     "reflections.html",
     "sheet-1PqfkvfQOqc9IiWmpgzALRntRcdgPUNzx4jmJsL0mgWE.html",
     "slides-1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw.html",
+    "slides-11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY.html",
     "slides-17CZjb2YHoL3yU5Hp1ijIYjsFmQy9gXG_epuHHj_5RQ4.html",
     "slides-1C3Ip1Mq-30MtH1R1mx0GfeGuH38xQ0yMBLfbhDIsV_E.html",
     "slides-1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA.html",
     "slides-1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps.html",
+    "slides-1OJ2d2lITwTzGm85KQRyHvT4YGswxth7-tTViUrSnujk.html",
     "slides-1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0.html",
     "slides-1U4yjqctdRGABqQ7y2tPu5yMvdgoyinHpGxokSKBU7WA.html",
+    "slides-1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E.html",
     "slides-1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o.html",
     "slides-1XjY2r3Jqh4HZW95WYZnBTu_sGXV75JYxUS6G-K8Izms.html",
     "slides-1Z2WWvxwvcxl5tT34Up_WGXHzG6-yEEwARtEoYfLL3jk.html",
+    "slides-1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs.html",
     "slides-1e2sG29x8fAS6p8ptw-mVSjMoRBmEeHX5_6zz95os5Es.html",
     "slides-1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc.html",
     "standards.html",
     "sync-audit.html",
     "teaching.html"
   ],
-  "notAutomaticallySynced": [
-    {
-      "path": "04 Weekly Reflections/Week 5",
-      "reason": "Automated publisher could not read or convert it successfully"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 05 - Voltage, current and resistance",
-      "reason": "Automated publisher could not read or convert it successfully"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Resistance and current",
-      "reason": "Automated publisher could not read or convert it successfully"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Science 2 - Demonstration and graphing - 5 November 2026",
-      "reason": "Automated publisher could not read or convert it successfully"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 07: Reliable connections and switched outlets",
-      "reason": "Automated publisher could not read or convert it successfully"
-    }
-  ],
+  "notAutomaticallySynced": [],
   "partialSupport": [],
   "root": "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
 }
