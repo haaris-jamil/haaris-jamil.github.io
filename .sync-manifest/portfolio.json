@@ -1,0 +1,552 @@
+{
+  "failures": [
+    {
+      "path": "04 Weekly Reflections/Week 5",
+      "reason": "Multiple Google Docs tabs found, but no unique 'Published version' tab. Refusing to publish other tabs."
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 05 - Voltage, current and resistance",
+      "reason": "Google API HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Expensive read requests' and limit 'Expensive read requests per minute per user' of service 'slides.googleapis.com' for consumer 'project_number:75669211091'.\",\n    \"sta"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Resistance and current",
+      "reason": "Google API HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Expensive read requests' and limit 'Expensive read requests per minute per user' of service 'slides.googleapis.com' for consumer 'project_number:75669211091'.\",\n    \"sta"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Science 2 - Demonstration and graphing - 5 November 2026",
+      "reason": "Google API HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Expensive read requests' and limit 'Expensive read requests per minute per user' of service 'slides.googleapis.com' for consumer 'project_number:75669211091'.\",\n    \"sta"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 07: Reliable connections and switched outlets",
+      "reason": "Google API HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Expensive read requests' and limit 'Expensive read requests per minute per user' of service 'slides.googleapis.com' for consumer 'project_number:75669211091'.\",\n    \"sta"
+    }
+  ],
+  "files": {
+    "1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw": {
+      "modifiedTime": "2026-10-24T18:25:06.813Z",
+      "page": "slides-1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw.html",
+      "path": "01 About Me/Haaris Jamil – Pepeha",
+      "slides": 13
+    },
+    "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w": {
+      "modifiedTime": "2026-11-03T21:01:50.445Z",
+      "page": "doc-10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/01 Unit Overview/Y10 Electricity Unit Overview"
+    },
+    "10egxwrs0rZA-jT-yaPCvXMKN7iYwUbP041BRnJSXtG0": {
+      "modifiedTime": "2026-11-03T22:27:49.134Z",
+      "page": "doc-10egxwrs0rZA-jT-yaPCvXMKN7iYwUbP041BRnJSXtG0.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 05: Voltage, current and resistance - Y10 Science 1 - Full Lesson Plan"
+    },
+    "10s--wmOdxp1fR734etG7b2JnUsNiZzKNY9IpXjgElrk": {
+      "modifiedTime": "2026-11-03T22:24:07.503Z",
+      "page": "doc-10s--wmOdxp1fR734etG7b2JnUsNiZzKNY9IpXjgElrk.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 08: Independently switched parallel lamps and electrical protection - Y10 Science 1 - Full Lesson Plan [Highlighted]"
+    },
+    "11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I": {
+      "modifiedTime": "2026-10-21T01:22:09.602Z",
+      "page": "file-11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I.html",
+      "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Mentor teacher feedback - week 2"
+    },
+    "11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY": {},
+    "12Gw8ujwQEaClqWs9yf5-ZuUSgs7vqwXnlWWDG6tGfyA": {
+      "modifiedTime": "2026-11-03T21:00:27.828Z",
+      "page": "doc-12Gw8ujwQEaClqWs9yf5-ZuUSgs7vqwXnlWWDG6tGfyA.html",
+      "path": "02 Observations/My Observations of Others/Observations of others"
+    },
+    "14DcRG7jHVi38lvp4MOoRC8jPmPYPuqyPzvTDOO33XIU": {
+      "modifiedTime": "2026-11-03T22:25:39.070Z",
+      "page": "doc-14DcRG7jHVi38lvp4MOoRC8jPmPYPuqyPzvTDOO33XIU.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 08: Independently switched parallel lamps and electrical protection - Y10 Science 2 - Full Lesson Plan"
+    },
+    "14QWdZ3gEtLUR1-cWvOwVFyN4Edytdf13zv63IP68rlc": {
+      "modifiedTime": "2026-11-03T22:23:52.018Z",
+      "page": "doc-14QWdZ3gEtLUR1-cWvOwVFyN4Edytdf13zv63IP68rlc.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 06: Resistance and current - Y10 Science 1 - Full Lesson Plan"
+    },
+    "152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB": {
+      "modifiedTime": "2026-10-22T21:50:04.132Z",
+      "page": "file-152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson 4: exercise book evidence.pdf"
+    },
+    "16Wky3Pb8fNWfaMRnJXW7gYQcxP4G1tI5eTJoc1fg9LY": {
+      "modifiedTime": "2026-11-03T22:30:52.593Z",
+      "page": "learning-events.html",
+      "path": "06 Teaching & Planning/00 Learning Events Register"
+    },
+    "17CZjb2YHoL3yU5Hp1ijIYjsFmQy9gXG_epuHHj_5RQ4": {
+      "modifiedTime": "2026-10-13T22:14:18.823Z",
+      "page": "slides-17CZjb2YHoL3yU5Hp1ijIYjsFmQy9gXG_epuHHj_5RQ4.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 02 - Foundations of charge and static electricity",
+      "slides": 27
+    },
+    "19QlznYT3rqKHTchwaY0LIGhFJ-uter_dzYVHwmkZBAU": {
+      "modifiedTime": "2026-11-03T22:26:10.604Z",
+      "page": "doc-19QlznYT3rqKHTchwaY0LIGhFJ-uter_dzYVHwmkZBAU.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 11: Local beach electricity-generation investigation - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1A09askObeboxbW_kWiCry0zHIOwB2ubi_MOUyTeYrsM": {
+      "modifiedTime": "2026-11-03T22:24:37.965Z",
+      "page": "doc-1A09askObeboxbW_kWiCry0zHIOwB2ubi_MOUyTeYrsM.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 01: Introduction to electricity and charge - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1BOrk1jdcggBmyBAK_JfVjtFsEQ-PJwPHUUE002lMWgk": {
+      "modifiedTime": "2026-11-03T20:12:21.007Z",
+      "page": "doc-1BOrk1jdcggBmyBAK_JfVjtFsEQ-PJwPHUUE002lMWgk.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/99 Superseded Plans and Resources/Household wiring: Earlier combined plan [Superseded by Lessons 07 and 08]"
+    },
+    "1C3Ip1Mq-30MtH1R1mx0GfeGuH38xQ0yMBLfbhDIsV_E": {
+      "modifiedTime": "2026-10-13T22:14:11.714Z",
+      "page": "slides-1C3Ip1Mq-30MtH1R1mx0GfeGuH38xQ0yMBLfbhDIsV_E.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 01 - Charge and static electricity",
+      "slides": 10
+    },
+    "1CNI_D-c-NAObRIZKBPCiIUjMnvyYXVRhQQJK9eQjJsU": {
+      "modifiedTime": "2026-11-03T21:16:06.281Z",
+      "page": "doc-1CNI_D-c-NAObRIZKBPCiIUjMnvyYXVRhQQJK9eQjJsU.html",
+      "path": "ProfEx Evidence Audit and Action Map | 28 October 2026"
+    },
+    "1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA": {
+      "modifiedTime": "2026-10-13T22:15:09.461Z",
+      "page": "slides-1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 08 - Parallel circuits",
+      "slides": 9
+    },
+    "1E559OVYAKxOsGQBKEzA4Rv6CTiZYQu-1rqHz-HPzMCc": {
+      "modifiedTime": "2026-11-03T22:24:19.229Z",
+      "page": "doc-1E559OVYAKxOsGQBKEzA4Rv6CTiZYQu-1rqHz-HPzMCc.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 09: Comparing series and parallel circuits - Y10 Science 1 - Full Lesson Plan"
+    },
+    "1EfAY8Ztng4-hGCqa7e1Qnf_dF_XBwyv-i-xfWkF67Kc": {
+      "modifiedTime": "2026-11-03T22:24:46.937Z",
+      "page": "doc-1EfAY8Ztng4-hGCqa7e1Qnf_dF_XBwyv-i-xfWkF67Kc.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 12: Circuit design challenge and assessment - Y10 Science 1 - Full Lesson Plan [Highlighted]"
+    },
+    "1Es1bZb9LRCxcKM10jqAupm2NIFU6uCEhntrQNQsCoyk": {
+      "modifiedTime": "2026-11-03T22:25:23.639Z",
+      "page": "doc-1Es1bZb9LRCxcKM10jqAupm2NIFU6uCEhntrQNQsCoyk.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 04: Current and its measurement - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1GO8Nzi8Z6xDUnJdoDo8Wuwe-kq1RqO5ZX-zevVaXfOU": {
+      "modifiedTime": "2026-11-03T22:23:59.870Z",
+      "page": "doc-1GO8Nzi8Z6xDUnJdoDo8Wuwe-kq1RqO5ZX-zevVaXfOU.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 07: Reliable connections and switched outlets - Y10 Science 1 - Full Lesson Plan"
+    },
+    "1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps": {
+      "modifiedTime": "2026-10-13T22:15:23.537Z",
+      "page": "slides-1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 09 - Comparing series and parallel circuits",
+      "slides": 9
+    },
+    "1G_tKmyiupFnNKqSg2CQNTevU-yseykPO": {
+      "modifiedTime": "2026-10-28T21:37:30.905Z",
+      "page": "file-1G_tKmyiupFnNKqSg2CQNTevU-yseykPO.html",
+      "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Observation form - week 3"
+    },
+    "1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp": {
+      "modifiedTime": "2026-10-28T01:32:52.132Z",
+      "page": "file-1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-05-Y10-Science-1-Investigation-Page-1-Anonymised.pdf"
+    },
+    "1HZugSfeanOI_V0GSbUouALCLt5nsNRiMJJsUt0ci90Q": {
+      "modifiedTime": "2026-11-03T21:00:12.922Z",
+      "page": "doc-1HZugSfeanOI_V0GSbUouALCLt5nsNRiMJJsUt0ci90Q.html",
+      "path": "02 Observations/My Observations of Others/General Observations – School, Learners and Professional Practice"
+    },
+    "1H_StZt2sbxdTy8QcC5HfkW2c069-7e1c5gtZtXSrT3Q": {
+      "modifiedTime": "2026-11-03T22:48:23.344Z",
+      "page": "reflection-week-2.html",
+      "path": "04 Weekly Reflections/Week 2"
+    },
+    "1HzSyW02_FMNCcJynbl7uPmc-4nuN-Jz5HUTMZdtvKDM": {
+      "modifiedTime": "2026-11-03T22:48:30.441Z",
+      "page": "reflection-week-3.html",
+      "path": "04 Weekly Reflections/Week 3"
+    },
+    "1KscIfsLAgqCg0k7EXS7349Dijb8GOt5kecL9gA_2NBg": {
+      "modifiedTime": "2026-11-03T22:28:26.858Z",
+      "page": "doc-1KscIfsLAgqCg0k7EXS7349Dijb8GOt5kecL9gA_2NBg.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 05: Voltage, current and resistance - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq": {
+      "modifiedTime": "2026-10-28T01:32:35.096Z",
+      "page": "file-1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-05-Y10-Science-1-Crossword-Anonymised.pdf"
+    },
+    "1LRJcZrLnGMH9hDYmw1PISopoeKKAyErfI3Z3btEaQ_o": {
+      "modifiedTime": "2026-10-13T20:01:37.685Z",
+      "page": "doc-1LRJcZrLnGMH9hDYmw1PISopoeKKAyErfI3Z3btEaQ_o.html",
+      "path": "01 About Me/Teacher Statement and Pepeha"
+    },
+    "1L_OnNeII_d05lZYZ7cUznfej5yfYaQ3yYGlmkl_mmbI": {
+      "modifiedTime": "2026-11-03T22:25:01.822Z",
+      "page": "doc-1L_OnNeII_d05lZYZ7cUznfej5yfYaQ3yYGlmkl_mmbI.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 03: Energy supply and two-switch circuit challenges - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1MjKCuAMEZMyR3x-FFanlguVEQIhMlDaltSbboD4CycM": {
+      "modifiedTime": "2026-11-03T22:31:07.098Z",
+      "page": "doc-1MjKCuAMEZMyR3x-FFanlguVEQIhMlDaltSbboD4CycM.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 02: Foundations of charge and static electricity - Y10 Science 1 - Full Lesson Plan - Not delivered"
+    },
+    "1OJ2d2lITwTzGm85KQRyHvT4YGswxth7-tTViUrSnujk": {},
+    "1OtP0ISN53cNvKlAFCp4TVdfg1ku0rDcnWO1Fjtt5lVo": {
+      "modifiedTime": "2026-11-03T22:31:14.074Z",
+      "page": "doc-1OtP0ISN53cNvKlAFCp4TVdfg1ku0rDcnWO1Fjtt5lVo.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 02: Foundations of charge and static electricity - Y10 Science 2 - Full Lesson Plan [Highlighted]"
+    },
+    "1PK2dkQxnGI2gPnI0k06wkhpu55MZpFKm5PUvYAIiANY": {
+      "modifiedTime": "2026-11-03T21:14:19.891Z",
+      "page": "doc-1PK2dkQxnGI2gPnI0k06wkhpu55MZpFKm5PUvYAIiANY.html",
+      "path": "05 Professional Standards/Professional Standards 1 to 6 Reflection and Evidence"
+    },
+    "1PqfkvfQOqc9IiWmpgzALRntRcdgPUNzx4jmJsL0mgWE": {
+      "modifiedTime": "2026-11-03T21:04:40.694Z",
+      "page": "sheet-1PqfkvfQOqc9IiWmpgzALRntRcdgPUNzx4jmJsL0mgWE.html",
+      "path": "ProfEx Weekly Documentation Checklist"
+    },
+    "1RLLgkeHZVxaDZ-BbiTNoGDPGy48tdgnKHBIHL0sElt4": {
+      "modifiedTime": "2026-10-16T01:21:17.664Z",
+      "page": "doc-1RLLgkeHZVxaDZ-BbiTNoGDPGy48tdgnKHBIHL0sElt4.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson 03 Quick check Worksheet"
+    },
+    "1RYHG_gTzEsVcjN4ABNM9gcH7FBpuvnIvS1R1y4MGh5E": {
+      "modifiedTime": "2026-11-03T22:26:04.527Z",
+      "page": "doc-1RYHG_gTzEsVcjN4ABNM9gcH7FBpuvnIvS1R1y4MGh5E.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 10: Electrical energy and efficiency - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1S4ltFg4bRMT24MQe8iW08Ho5wcVjZ1BxjDy94Yrjr3k": {
+      "modifiedTime": "2026-10-14T00:33:09.297Z",
+      "page": "doc-1S4ltFg4bRMT24MQe8iW08Ho5wcVjZ1BxjDy94Yrjr3k.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson 02 Charge and static electricity Worksheet "
+    },
+    "1SNAepMQjU1wReMKO3PCMCYu-U8hJv1RV": {
+      "modifiedTime": "2026-11-03T21:12:52.408Z",
+      "page": "file-1SNAepMQjU1wReMKO3PCMCYu-U8hJv1RV.html",
+      "path": "02 Observations/Observations of My Teaching/Evaluative Visit Report - 28 October 2026 - Redacted Copy.pdf"
+    },
+    "1TgFds-Pk1Srck6N_IiX-JzynoSNS5hM4g4ora4v8AiM": {
+      "modifiedTime": "2026-11-03T20:12:14.409Z",
+      "page": "doc-1TgFds-Pk1Srck6N_IiX-JzynoSNS5hM4g4ora4v8AiM.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/99 Superseded Plans and Resources/Lesson 08: Parallel circuits - Earlier Full Lesson Plan [Superseded]"
+    },
+    "1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0": {
+      "modifiedTime": "2026-10-24T18:25:00.687Z",
+      "page": "slides-1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 11 - Electricity generation in Aotearoa New Zealand",
+      "slides": 9
+    },
+    "1U4yjqctdRGABqQ7y2tPu5yMvdgoyinHpGxokSKBU7WA": {
+      "modifiedTime": "2026-10-24T18:24:41.045Z",
+      "page": "slides-1U4yjqctdRGABqQ7y2tPu5yMvdgoyinHpGxokSKBU7WA.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 04 - Current and its measurement",
+      "slides": 10
+    },
+    "1ULcE4YEdpnercpaxGNDQH6HXjjN9EF_K": {
+      "modifiedTime": "2026-10-27T02:03:11.267Z",
+      "page": "file-1ULcE4YEdpnercpaxGNDQH6HXjjN9EF_K.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson_05_Crossword.pdf"
+    },
+    "1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY": {
+      "modifiedTime": "2026-11-03T22:25:58.204Z",
+      "page": "doc-1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 09: Comparing series and parallel circuits - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E": {},
+    "1W5ptAjJtQbg-T_BxPKDLbULK3tfw-MQK": {
+      "modifiedTime": "2026-10-28T21:44:28.960Z",
+      "page": "file-1W5ptAjJtQbg-T_BxPKDLbULK3tfw-MQK.html",
+      "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Observation form - week  4.docx"
+    },
+    "1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o": {
+      "modifiedTime": "2026-10-13T22:15:45.189Z",
+      "page": "slides-1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 12 - Circuit design challenge",
+      "slides": 9
+    },
+    "1XjY2r3Jqh4HZW95WYZnBTu_sGXV75JYxUS6G-K8Izms": {
+      "modifiedTime": "2026-11-03T21:04:59.952Z",
+      "page": "slides-1XjY2r3Jqh4HZW95WYZnBTu_sGXV75JYxUS6G-K8Izms.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 03 - Building working circuits - Y10 Science 2",
+      "slides": 16
+    },
+    "1Z2WWvxwvcxl5tT34Up_WGXHzG6-yEEwARtEoYfLL3jk": {
+      "modifiedTime": "2026-10-28T22:16:41.322Z",
+      "page": "slides-1Z2WWvxwvcxl5tT34Up_WGXHzG6-yEEwARtEoYfLL3jk.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 04 - Current and its measurement - Y10 Science 2",
+      "slides": 12
+    },
+    "1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs": {},
+    "1_R1BDz7y3zcVvc2lD_mKcI_8ks0T3UDSnoA7Y1FaJww": {
+      "modifiedTime": "2026-11-03T22:32:43.835Z",
+      "page": "doc-1_R1BDz7y3zcVvc2lD_mKcI_8ks0T3UDSnoA7Y1FaJww.html",
+      "path": "06 Teaching & Planning/00 Start Here - Teaching and Planning Guide"
+    },
+    "1bJSxhs6-f7VDcazZ_tTcDjcUaE8ONasGGKnmDI58G_Y": {},
+    "1bTnvTJk5YMSyAKD2YtgBBV2_y_spAmjI44Q618KpxEc": {
+      "modifiedTime": "2026-11-03T20:12:07.895Z",
+      "page": "doc-1bTnvTJk5YMSyAKD2YtgBBV2_y_spAmjI44Q618KpxEc.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/99 Superseded Plans and Resources/Lesson 07: Series circuits - Earlier Planning Record [Superseded]"
+    },
+    "1cTz-ISTcKnTeBE3mwluRzpi7vLEO_LYUReNyUoWZLC0": {
+      "modifiedTime": "2026-11-03T22:26:35.602Z",
+      "page": "doc-1cTz-ISTcKnTeBE3mwluRzpi7vLEO_LYUReNyUoWZLC0.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 03: Energy supply and two-switch circuit challenges - Y10 Science 1 - Full Lesson Plan"
+    },
+    "1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo": {
+      "modifiedTime": "2026-10-27T23:33:58.147Z",
+      "page": "doc-1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo.html",
+      "path": "06 Teaching & Planning/02 Other Teaching and Learning Events/Year 13 Physics Demonstration Plan - Standing Waves on a String"
+    },
+    "1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s": {
+      "modifiedTime": "2026-11-03T22:24:21.167Z",
+      "page": "doc-1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 11: Local beach electricity-generation investigation - Y10 Science 1 - Full Lesson Plan"
+    },
+    "1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4": {
+      "modifiedTime": "2026-11-03T21:05:14.927Z",
+      "page": "file-1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4.html",
+      "path": "02 Observations/Observations of My Teaching/Evaluative Visit Report - 28 October 2026.pdf"
+    },
+    "1dH_JLVGFfworU1IlSx3Dul5TMSEOddheIZ_LLzUcf9s": {
+      "modifiedTime": "2026-11-03T22:26:43.847Z",
+      "page": "doc-1dH_JLVGFfworU1IlSx3Dul5TMSEOddheIZ_LLzUcf9s.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 04: Current and its measurement - Y10 Science 1 - Full Lesson Plan"
+    },
+    "1e2sG29x8fAS6p8ptw-mVSjMoRBmEeHX5_6zz95os5Es": {
+      "modifiedTime": "2026-11-03T21:05:08.648Z",
+      "page": "slides-1e2sG29x8fAS6p8ptw-mVSjMoRBmEeHX5_6zz95os5Es.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 03 - Building working circuits",
+      "slides": 27
+    },
+    "1e4eJRQcTOQnHcv54RqMHfLrIuZlFwH5SJ2e_59pIu68": {
+      "modifiedTime": "2026-10-28T09:40:32.518Z",
+      "page": "doc-1e4eJRQcTOQnHcv54RqMHfLrIuZlFwH5SJ2e_59pIu68.html",
+      "path": "03 Professional Goals/ProfEx 1 Goals Record"
+    },
+    "1gCiC40LUq4HybRawE7Qs-sgRQLPXe3NJ0wqyzgh5oIs": {
+      "modifiedTime": "2026-10-05T23:38:15.580Z",
+      "page": "doc-1gCiC40LUq4HybRawE7Qs-sgRQLPXe3NJ0wqyzgh5oIs.html",
+      "path": "07 References/Portfolio References"
+    },
+    "1hooa_XjoAVPRPebf6F3yb07RCiL0k4coKu7tQc9rjAs": {
+      "modifiedTime": "2026-11-03T22:48:16.303Z",
+      "page": "reflection-week-1.html",
+      "path": "04 Weekly Reflections/Week 1"
+    },
+    "1j2aFR0vJ4pi07YoeZMh4PbtUxBYFxaCoIAo29CaDZUo": {
+      "modifiedTime": "2026-11-03T20:12:27.512Z",
+      "page": "doc-1j2aFR0vJ4pi07YoeZMh4PbtUxBYFxaCoIAo29CaDZUo.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/99 Superseded Plans and Resources/Household wiring: Earlier combined worksheet [Superseded]"
+    },
+    "1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM": {
+      "modifiedTime": "2026-10-22T21:49:32.653Z",
+      "page": "file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lessons 3: anonymised worksheet evidence.pdf"
+    },
+    "1k2YpbtSlsUJIc8Mpn0jzoOqOQwHSCnGw": {
+      "modifiedTime": "2026-11-03T21:13:01.971Z",
+      "page": "file-1k2YpbtSlsUJIc8Mpn0jzoOqOQwHSCnGw.html",
+      "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Mentor teacher feedback - week 2 - Redacted Copy.pdf"
+    },
+    "1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM": {
+      "modifiedTime": "2026-11-03T22:24:27.410Z",
+      "page": "doc-1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 10: Electrical energy and efficiency - Y10 Science 1 - Full Lesson Plan"
+    },
+    "1lDfi3t9_bDF90rkYx_it6Sm6RK-UIvIbDMviGUZeKYA": {
+      "modifiedTime": "2026-11-03T21:00:35.078Z",
+      "page": "doc-1lDfi3t9_bDF90rkYx_it6Sm6RK-UIvIbDMviGUZeKYA.html",
+      "path": "06 Teaching & Planning/02 Other Teaching and Learning Events/Electrolytic Capacitors: Construction, Charging and Discharging | Year 13 | 3 November 2026"
+    },
+    "1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc": {
+      "modifiedTime": "2026-10-13T22:15:30.580Z",
+      "page": "slides-1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 10 - Electrical energy and efficiency",
+      "slides": 9
+    },
+    "1lVDC77kq_b6UImxiE1Fp8omGtnPHCVwokUzcaZ5EiOw": {
+      "modifiedTime": "2026-11-03T20:59:16.194Z",
+      "page": "doc-1lVDC77kq_b6UImxiE1Fp8omGtnPHCVwokUzcaZ5EiOw.html",
+      "path": "Mentor Meeting Checklist 13 October 2026"
+    },
+    "1lvmu4SaSEA9sMS_zEVw573dOURLfZio5": {
+      "modifiedTime": "2026-11-03T22:06:01.971Z",
+      "page": "file-1lvmu4SaSEA9sMS_zEVw573dOURLfZio5.html",
+      "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Observation form - week 2"
+    },
+    "1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA": {
+      "modifiedTime": "2026-10-27T23:33:51.522Z",
+      "page": "doc-1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA.html",
+      "path": "06 Teaching & Planning/02 Other Teaching and Learning Events/Science Club Activity Plan - Design and Build Model Boats"
+    },
+    "1mujcRDNR-aoIgl3hZfxebMTM8Z9W9dDfj3q4U0PnGeA": {
+      "modifiedTime": "2026-11-03T22:26:21.240Z",
+      "page": "doc-1mujcRDNR-aoIgl3hZfxebMTM8Z9W9dDfj3q4U0PnGeA.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 01: Introduction to electricity and charge - Y10 Science 1 - Full Lesson Plan"
+    },
+    "1nwwmrlurPnl2gzp4msoz0UgYHZYk8Yd2tPAxwBc3ruA": {
+      "modifiedTime": "2026-11-03T22:48:37.656Z",
+      "page": "reflection-week-4.html",
+      "path": "04 Weekly Reflections/Week 4"
+    },
+    "1ofp5jgQ1npOkrbHJrQXB_HmaY6jh0zVUiR3_ksWdn-4": {
+      "modifiedTime": "2026-11-03T21:00:20.122Z",
+      "page": "doc-1ofp5jgQ1npOkrbHJrQXB_HmaY6jh0zVUiR3_ksWdn-4.html",
+      "path": "06 Teaching & Planning/02 Other Teaching and Learning Events/Sound Interference and Wavelength | Year 13 | 2 November 2026"
+    },
+    "1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI": {
+      "modifiedTime": "2026-11-02T23:25:05.380Z",
+      "page": "doc-1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson 08: Independently switched parallel lamps - Worksheet"
+    },
+    "1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP": {
+      "modifiedTime": "2026-11-03T22:05:42.163Z",
+      "page": "file-1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP.html",
+      "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Mentor teacher feedback - week 1"
+    },
+    "1rPWbsWMoSNputqzI_j1eTANn81y9uyMHewR9wUqXBQg": {
+      "modifiedTime": "2026-11-03T23:08:27.679Z",
+      "page": "doc-1rPWbsWMoSNputqzI_j1eTANn81y9uyMHewR9wUqXBQg.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 07: Reliable connections and switched outlets - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg": {
+      "modifiedTime": "2026-11-03T22:25:32.525Z",
+      "page": "doc-1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 06: Demonstration, graphing and resistance - Y10 Science 2 - Full Lesson Plan"
+    },
+    "1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN": {
+      "modifiedTime": "2026-10-27T02:38:12.971Z",
+      "page": "file-1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson_05_Investigation_Worksheet.pdf"
+    },
+    "1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo": {
+      "modifiedTime": "2026-11-02T23:18:12.645Z",
+      "page": "doc-1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson 07: Reliable connections and switched outlets - Worksheet"
+    },
+    "1x2JosZVCfBu3-0WdLCnSGycz5jb7Svm1": {
+      "modifiedTime": "2026-11-03T22:05:53.038Z",
+      "page": "file-1x2JosZVCfBu3-0WdLCnSGycz5jb7Svm1.html",
+      "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Observation form - week 1"
+    },
+    "1xn7nfATcyRHcPi7OhzIEeHAyp0vZQ3VQHLTr7ZVi1_U": {
+      "modifiedTime": "2026-11-03T22:26:18.685Z",
+      "page": "doc-1xn7nfATcyRHcPi7OhzIEeHAyp0vZQ3VQHLTr7ZVi1_U.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 12: Circuit design challenge and assessment - Y10 Science 2 - Full Lesson Plan"
+    }
+  },
+  "generatedPages": [
+    "about.html",
+    "doc-10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w.html",
+    "doc-10egxwrs0rZA-jT-yaPCvXMKN7iYwUbP041BRnJSXtG0.html",
+    "doc-10s--wmOdxp1fR734etG7b2JnUsNiZzKNY9IpXjgElrk.html",
+    "doc-12Gw8ujwQEaClqWs9yf5-ZuUSgs7vqwXnlWWDG6tGfyA.html",
+    "doc-14DcRG7jHVi38lvp4MOoRC8jPmPYPuqyPzvTDOO33XIU.html",
+    "doc-14QWdZ3gEtLUR1-cWvOwVFyN4Edytdf13zv63IP68rlc.html",
+    "doc-19QlznYT3rqKHTchwaY0LIGhFJ-uter_dzYVHwmkZBAU.html",
+    "doc-1A09askObeboxbW_kWiCry0zHIOwB2ubi_MOUyTeYrsM.html",
+    "doc-1BOrk1jdcggBmyBAK_JfVjtFsEQ-PJwPHUUE002lMWgk.html",
+    "doc-1CNI_D-c-NAObRIZKBPCiIUjMnvyYXVRhQQJK9eQjJsU.html",
+    "doc-1E559OVYAKxOsGQBKEzA4Rv6CTiZYQu-1rqHz-HPzMCc.html",
+    "doc-1EfAY8Ztng4-hGCqa7e1Qnf_dF_XBwyv-i-xfWkF67Kc.html",
+    "doc-1Es1bZb9LRCxcKM10jqAupm2NIFU6uCEhntrQNQsCoyk.html",
+    "doc-1GO8Nzi8Z6xDUnJdoDo8Wuwe-kq1RqO5ZX-zevVaXfOU.html",
+    "doc-1HZugSfeanOI_V0GSbUouALCLt5nsNRiMJJsUt0ci90Q.html",
+    "doc-1KscIfsLAgqCg0k7EXS7349Dijb8GOt5kecL9gA_2NBg.html",
+    "doc-1LRJcZrLnGMH9hDYmw1PISopoeKKAyErfI3Z3btEaQ_o.html",
+    "doc-1L_OnNeII_d05lZYZ7cUznfej5yfYaQ3yYGlmkl_mmbI.html",
+    "doc-1MjKCuAMEZMyR3x-FFanlguVEQIhMlDaltSbboD4CycM.html",
+    "doc-1OtP0ISN53cNvKlAFCp4TVdfg1ku0rDcnWO1Fjtt5lVo.html",
+    "doc-1PK2dkQxnGI2gPnI0k06wkhpu55MZpFKm5PUvYAIiANY.html",
+    "doc-1RLLgkeHZVxaDZ-BbiTNoGDPGy48tdgnKHBIHL0sElt4.html",
+    "doc-1RYHG_gTzEsVcjN4ABNM9gcH7FBpuvnIvS1R1y4MGh5E.html",
+    "doc-1S4ltFg4bRMT24MQe8iW08Ho5wcVjZ1BxjDy94Yrjr3k.html",
+    "doc-1TgFds-Pk1Srck6N_IiX-JzynoSNS5hM4g4ora4v8AiM.html",
+    "doc-1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY.html",
+    "doc-1_R1BDz7y3zcVvc2lD_mKcI_8ks0T3UDSnoA7Y1FaJww.html",
+    "doc-1bTnvTJk5YMSyAKD2YtgBBV2_y_spAmjI44Q618KpxEc.html",
+    "doc-1cTz-ISTcKnTeBE3mwluRzpi7vLEO_LYUReNyUoWZLC0.html",
+    "doc-1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo.html",
+    "doc-1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s.html",
+    "doc-1dH_JLVGFfworU1IlSx3Dul5TMSEOddheIZ_LLzUcf9s.html",
+    "doc-1e4eJRQcTOQnHcv54RqMHfLrIuZlFwH5SJ2e_59pIu68.html",
+    "doc-1gCiC40LUq4HybRawE7Qs-sgRQLPXe3NJ0wqyzgh5oIs.html",
+    "doc-1j2aFR0vJ4pi07YoeZMh4PbtUxBYFxaCoIAo29CaDZUo.html",
+    "doc-1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM.html",
+    "doc-1lDfi3t9_bDF90rkYx_it6Sm6RK-UIvIbDMviGUZeKYA.html",
+    "doc-1lVDC77kq_b6UImxiE1Fp8omGtnPHCVwokUzcaZ5EiOw.html",
+    "doc-1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA.html",
+    "doc-1mujcRDNR-aoIgl3hZfxebMTM8Z9W9dDfj3q4U0PnGeA.html",
+    "doc-1ofp5jgQ1npOkrbHJrQXB_HmaY6jh0zVUiR3_ksWdn-4.html",
+    "doc-1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI.html",
+    "doc-1rPWbsWMoSNputqzI_j1eTANn81y9uyMHewR9wUqXBQg.html",
+    "doc-1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg.html",
+    "doc-1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo.html",
+    "doc-1xn7nfATcyRHcPi7OhzIEeHAyp0vZQ3VQHLTr7ZVi1_U.html",
+    "file-11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I.html",
+    "file-152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB.html",
+    "file-1G_tKmyiupFnNKqSg2CQNTevU-yseykPO.html",
+    "file-1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp.html",
+    "file-1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq.html",
+    "file-1SNAepMQjU1wReMKO3PCMCYu-U8hJv1RV.html",
+    "file-1ULcE4YEdpnercpaxGNDQH6HXjjN9EF_K.html",
+    "file-1W5ptAjJtQbg-T_BxPKDLbULK3tfw-MQK.html",
+    "file-1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4.html",
+    "file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html",
+    "file-1k2YpbtSlsUJIc8Mpn0jzoOqOQwHSCnGw.html",
+    "file-1lvmu4SaSEA9sMS_zEVw573dOURLfZio5.html",
+    "file-1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP.html",
+    "file-1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN.html",
+    "file-1x2JosZVCfBu3-0WdLCnSGycz5jb7Svm1.html",
+    "goals.html",
+    "learning-events.html",
+    "observations.html",
+    "portfolio-sources.html",
+    "references.html",
+    "reflection-week-1.html",
+    "reflection-week-2.html",
+    "reflection-week-3.html",
+    "reflection-week-4.html",
+    "reflections.html",
+    "sheet-1PqfkvfQOqc9IiWmpgzALRntRcdgPUNzx4jmJsL0mgWE.html",
+    "slides-1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw.html",
+    "slides-17CZjb2YHoL3yU5Hp1ijIYjsFmQy9gXG_epuHHj_5RQ4.html",
+    "slides-1C3Ip1Mq-30MtH1R1mx0GfeGuH38xQ0yMBLfbhDIsV_E.html",
+    "slides-1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA.html",
+    "slides-1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps.html",
+    "slides-1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0.html",
+    "slides-1U4yjqctdRGABqQ7y2tPu5yMvdgoyinHpGxokSKBU7WA.html",
+    "slides-1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o.html",
+    "slides-1XjY2r3Jqh4HZW95WYZnBTu_sGXV75JYxUS6G-K8Izms.html",
+    "slides-1Z2WWvxwvcxl5tT34Up_WGXHzG6-yEEwARtEoYfLL3jk.html",
+    "slides-1e2sG29x8fAS6p8ptw-mVSjMoRBmEeHX5_6zz95os5Es.html",
+    "slides-1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc.html",
+    "standards.html",
+    "sync-audit.html",
+    "teaching.html"
+  ],
+  "notAutomaticallySynced": [
+    {
+      "path": "04 Weekly Reflections/Week 5",
+      "reason": "Automated publisher could not read or convert it successfully"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 05 - Voltage, current and resistance",
+      "reason": "Automated publisher could not read or convert it successfully"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Resistance and current",
+      "reason": "Automated publisher could not read or convert it successfully"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Science 2 - Demonstration and graphing - 5 November 2026",
+      "reason": "Automated publisher could not read or convert it successfully"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 07: Reliable connections and switched outlets",
+      "reason": "Automated publisher could not read or convert it successfully"
+    }
+  ],
+  "partialSupport": [],
+  "root": "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
+}
