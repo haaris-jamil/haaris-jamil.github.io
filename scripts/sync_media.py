@@ -6,6 +6,8 @@ import html
 import json
 import mimetypes
 import re
+import time
+import random
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
@@ -21,10 +23,21 @@ def esc(value):
 
 
 def api_json(session, url, params=None, timeout=90):
-    r = session.get(url, params=params, timeout=timeout)
-    if not r.ok:
+    """Retry short-term Google rate limits without turning them into file failures."""
+    for attempt in range(8):
+        r = session.get(url, params=params, timeout=timeout)
+        if r.ok:
+            return r.json()
+        if r.status_code in (429, 500, 502, 503, 504) and attempt < 7:
+            value = r.headers.get("Retry-After")
+            try:
+                wait = min(90, max(1, float(value))) if value else min(90, 5 * 2 ** attempt)
+            except ValueError:
+                wait = min(90, 5 * 2 ** attempt)
+            print(f"Google API HTTP {r.status_code}: retrying in {wait:.0f}s", flush=True)
+            time.sleep(wait + random.uniform(0, 1.5))
+            continue
         raise RuntimeError(f"Google API HTTP {r.status_code}: {r.text[:250]}")
-    return r.json()
 
 
 def safe_filename(name, default):
@@ -182,6 +195,7 @@ def sync_slides(session, entry, old):
         if not total:
             raise RuntimeError("Presentation contains no slides")
         for i, slide_id in enumerate(slide_ids, 1):
+            time.sleep(1.5)  # Throttle Slides API expensive-read quota.
             thumb = api_json(
                 session,
                 f"https://slides.googleapis.com/v1/presentations/{fid}/pages/{quote(slide_id, safe='')}/thumbnail",
@@ -287,7 +301,7 @@ def _doc_blocks_for_images(doc, published_only):
         selected = [
             tab for tab in tabs
             if tab.get("tabProperties", {}).get("title", "").strip().casefold()
-            == "published version"
+            in ("published version", "formal reflection")
         ]
         if selected:
             return [
