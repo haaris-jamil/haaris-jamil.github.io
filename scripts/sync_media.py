@@ -251,3 +251,105 @@ def sync_binary(session, entry, old):
     else:
         body = f'<p><a href="{esc(asset)}" download>Download this file</a></p>'
     return body, None
+
+
+def _object_ids(blocks):
+    found = []
+    for block in blocks:
+        if "paragraph" in block:
+            for element in block["paragraph"].get("elements", []):
+                obj = element.get("inlineObjectElement", {}).get("inlineObjectId")
+                if obj:
+                    found.append(obj)
+        if "table" in block:
+            for row in block["table"].get("tableRows", []):
+                for cell in row.get("tableCells", []):
+                    found.extend(_object_ids(cell.get("content", [])))
+    return found
+
+
+def _doc_blocks_for_images(doc, published_only):
+    tabs = []
+    def visit(tab):
+        tabs.append(tab)
+        for child in tab.get("childTabs", []):
+            visit(child)
+    for tab in doc.get("tabs", []):
+        visit(tab)
+    if not tabs:
+        blocks = doc.get("body", {}).get("content", [])
+        if published_only:
+            from sync_reflections import _published_blocks
+            return [_published_blocks(blocks)]
+        return [blocks]
+    if published_only:
+        from sync_reflections import _published_blocks
+        selected = [
+            tab for tab in tabs
+            if tab.get("tabProperties", {}).get("title", "").strip().casefold()
+            == "published version"
+        ]
+        if selected:
+            return [
+                _published_blocks(selected[0].get("documentTab", {}).get("body", {}).get("content", []))
+            ]
+        if len(tabs) == 1:
+            return [_published_blocks(tabs[0].get("documentTab", {}).get("body", {}).get("content", []))]
+        return []
+    return [tab.get("documentTab", {}).get("body", {}).get("content", []) for tab in tabs]
+
+
+def sync_doc_images(doc, rendered, file_id, modified, previous, published_only=False):
+    """Substitute embedded-object placeholders with locally mirrored images."""
+    marker = "<em>[Embedded image or object in Google Doc]</em>"
+    if marker not in rendered:
+        return rendered, []
+    source_ids = []
+    for content in _doc_blocks_for_images(doc, published_only):
+        source_ids.extend(_object_ids(content))
+    objects = doc.get("inlineObjects", {})
+    asset_dir = Path("assets/doc-images") / file_id
+    warnings = []
+    image_cache_valid = previous.get("modifiedTime") == modified
+    used = set()
+    for object_id in source_ids:
+        if marker not in rendered:
+            break
+        image = (
+            objects.get(object_id, {})
+            .get("inlineObjectProperties", {})
+            .get("embeddedObject", {})
+            .get("imageProperties", {})
+            .get("contentUri")
+        )
+        if not image:
+            warnings.append(f"Image/drawing {object_id}: no accessible content URI")
+            rendered = rendered.replace(marker, '<em>[Image unavailable]</em>', 1)
+            continue
+        safe_id = safe_filename(object_id, "object")
+        output = asset_dir / f"{safe_id}.webp"
+        used.add(output.name)
+        if not image_cache_valid or not output.exists():
+            try:
+                from PIL import Image
+                from io import BytesIO
+                response = requests.get(image, timeout=75)
+                response.raise_for_status()
+                illustration = Image.open(BytesIO(response.content)).convert("RGB")
+                illustration.thumbnail((1600, 1600))
+                output.parent.mkdir(parents=True, exist_ok=True)
+                illustration.save(output, "WEBP", quality=85, method=4)
+            except Exception as err:
+                warnings.append(f"Image/drawing {object_id}: {type(err).__name__}")
+                rendered = rendered.replace(marker, '<em>[Image unavailable]</em>', 1)
+                continue
+        rendered = rendered.replace(
+            marker,
+            f'<img class="document-image" loading="lazy" '
+            f'src="assets/doc-images/{file_id}/{safe_id}.webp" '
+            f'alt="Illustration from the source document">',
+            1,
+        )
+    if marker in rendered:
+        warnings.append("Some embedded objects were not accessible for conversion")
+    return rendered, warnings
