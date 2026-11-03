@@ -1,0 +1,81 @@
+name: Sync Google Docs reflections
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+
+jobs:
+  sync-and-publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Check whether Google is configured
+        id: google
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -n "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Google credentials not configured yet; nothing to publish."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: steps.google.outputs.ready == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Google API authentication libraries
+        if: steps.google.outputs.ready == 'true'
+        run: pip install "google-auth>=2,<3" "requests>=2.31,<3"
+
+      - name: Fetch source Google Docs and regenerate reflection pages
+        if: steps.google.outputs.ready == 'true'
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/sync_reflections.py
+
+      - name: Save updated website copies in GitHub
+        if: steps.google.outputs.ready == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reflection-week-1.html reflection-week-2.html reflection-week-3.html reflection-week-4.html reflection-week-5.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Sync weekly reflections from Google Docs"
+            git push
+          else
+            echo "No document changes."
+          fi
+
+      - name: Configure GitHub Pages
+        if: steps.google.outputs.ready == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Package the static website
+        if: steps.google.outputs.ready == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Deploy latest content to GitHub Pages
+        if: steps.google.outputs.ready == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
