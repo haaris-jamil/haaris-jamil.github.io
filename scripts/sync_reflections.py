@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Read Google Docs and publish their complete text into the existing portfolio.
+"""Read the Published version of each reflection and publish it as HTML.
 
-This program never writes to Google Drive. It does not redact, omit rough notes,
-or otherwise filter document content. Only the five configured Docs are read.
+Read-only Google Docs access. The selection is based on source document structure,
+not on redaction rules. Rough notes are excluded. Google Drive is never modified.
 """
 import html
 import json
@@ -109,26 +109,57 @@ def render_blocks(blocks):
     return "\n".join(output)
 
 
+def _paragraph_text(block):
+    para = block.get("paragraph", {})
+    return "".join(
+        e.get("textRun", {}).get("content", "")
+        for e in para.get("elements", [])
+    ).strip()
+
+
+def _published_blocks(blocks):
+    """Stop at the Rough notes heading when both sections are in one tab."""
+    selected = []
+    for block in blocks:
+        title = _paragraph_text(block)
+        if re.match(r"^(?:week\s*\d+\s*[–—-]\s*)?rough\s+notes\b", title, re.I):
+            break
+        if title.strip().casefold() == "published version":
+            continue
+        selected.append(block)
+    return selected
+
+
 def render_document(document):
-    tabs = document.get("tabs", [])
-    if not tabs:
-        return render_blocks(document.get("body", {}).get("content", []))
+    """Use only the explicitly titled Published version tab when present."""
+    tabs = []
 
-    segments = []
-
-    def visit(tab):
-        content = tab.get("documentTab", {}).get("body", {}).get("content", [])
-        tab_title = tab.get("tabProperties", {}).get("title", "")
-        if len(tabs) > 1 and tab_title:
-            segments.append("<h3>" + html.escape(tab_title) + "</h3>")
-        segments.append(render_blocks(content))
+    def collect(tab):
+        tabs.append(tab)
         for child in tab.get("childTabs", []):
-            visit(child)
+            collect(child)
 
-    for tab in tabs:
-        visit(tab)
-    return "\n".join(segments)
+    for tab in document.get("tabs", []):
+        collect(tab)
 
+    if tabs:
+        published = [
+            t for t in tabs
+            if t.get("tabProperties", {}).get("title", "").strip().casefold()
+            == "published version"
+        ]
+        if len(published) == 1:
+            blocks = published[0].get("documentTab", {}).get("body", {}).get("content", [])
+        elif len(tabs) == 1:
+            blocks = tabs[0].get("documentTab", {}).get("body", {}).get("content", [])
+        else:
+            raise RuntimeError(
+                "Multiple Google Docs tabs found, but no unique 'Published version' tab. "
+                "Refusing to publish other tabs."
+            )
+    else:
+        blocks = document.get("body", {}).get("content", [])
+    return render_blocks(_published_blocks(blocks))
 
 def page(week, rendered):
     links = "".join(
