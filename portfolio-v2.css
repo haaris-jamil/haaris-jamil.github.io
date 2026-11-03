@@ -37,3 +37,5 @@ audio{width:100%;max-width:700px}
 .reflection-prose li{margin-bottom:8px}
 .reflection-prose a{color:var(--accent-dark)}
 @media(max-width:620px){.portfolio-source-group{padding:18px}.slide-gallery{grid-template-columns:1fr}.pdf-preview{height:65vh}}
+
+.document-image{display:block;max-width:100%;height:auto;margin:16px auto;border-radius:7px;border:1px solid var(--border)}
