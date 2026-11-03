@@ -1,7 +1,13 @@
-name: Sync Google Docs reflections
+name: Sync ProfEx portfolio from Google Drive
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/sync-reflections.yml"
+      - "portfolio-v2.css"
   schedule:
     - cron: "17 * * * *"
 
@@ -17,6 +23,7 @@ concurrency:
 jobs:
   sync-and-publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -24,7 +31,7 @@ jobs:
       - name: Check out site
         uses: actions/checkout@v4
 
-      - name: Check whether Google is configured
+      - name: Confirm Google is configured
         id: google
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
@@ -32,50 +39,43 @@ jobs:
           if [ -n "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Google credentials not configured yet; nothing to publish."
-            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Google credentials are missing; cannot synchronise."
+            exit 1
           fi
 
       - name: Set up Python
-        if: steps.google.outputs.ready == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install Google API authentication libraries
-        if: steps.google.outputs.ready == 'true'
-        run: pip install "google-auth>=2,<3" "requests>=2.31,<3"
+      - name: Install Google API and media dependencies
+        run: pip install "google-auth>=2,<3" "requests>=2.31,<3" "Pillow>=10,<12"
 
-      - name: Fetch source Google Docs and regenerate reflection pages
-        if: steps.google.outputs.ready == 'true'
+      - name: Sync Docs Sheets Slides and Drive files
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-        run: python scripts/sync_reflections.py
+        run: python scripts/sync_workspace.py
 
-      - name: Save updated website copies in GitHub
-        if: steps.google.outputs.ready == 'true'
+      - name: Commit updated website files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reflection-week-1.html reflection-week-2.html reflection-week-3.html reflection-week-4.html reflection-week-5.html
+          git add -A
           if ! git diff --cached --quiet; then
-            git commit -m "Sync weekly reflections from Google Docs"
+            git commit -m "Sync ProfEx portfolio from Google Drive"
             git push
           else
-            echo "No document changes."
+            echo "No changes to source files."
           fi
 
       - name: Configure GitHub Pages
-        if: steps.google.outputs.ready == 'true'
         uses: actions/configure-pages@v5
 
-      - name: Package the static website
-        if: steps.google.outputs.ready == 'true'
+      - name: Package the website
         uses: actions/upload-pages-artifact@v3
         with:
           path: "."
 
-      - name: Deploy latest content to GitHub Pages
-        if: steps.google.outputs.ready == 'true'
+      - name: Deploy current website
         id: deployment
         uses: actions/deploy-pages@v4
