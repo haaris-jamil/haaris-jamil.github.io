@@ -81,7 +81,7 @@ def sync_sheet(session, entry, old):
         max_rows = min(rowcount, 2000)
         max_cols = min(colcount, 52)
         # Google Sheets API supports a bound without an end column.
-        request_range = f"'{label.replace(chr(39), chr(39)*2)}'!A1:{max_rows}"
+        request_range = f"'{label.replace(chr(39), chr(39)*2)}'!A1:AZ{max_rows}"
         if rowcount > max_rows or colcount > max_cols:
             truncated.append(f"{label}: grid exceeds {max_rows} rows or {max_cols} columns")
         data = api_json(session, base, params=[
