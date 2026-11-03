@@ -307,7 +307,13 @@ def sync_doc_images(doc, rendered, file_id, modified, previous, published_only=F
     source_ids = []
     for content in _doc_blocks_for_images(doc, published_only):
         source_ids.extend(_object_ids(content))
-    objects = doc.get("inlineObjects", {})
+    objects = dict(doc.get("inlineObjects", {}))
+    def collect_objects(tab):
+        objects.update(tab.get("documentTab", {}).get("inlineObjects", {}))
+        for child in tab.get("childTabs", []):
+            collect_objects(child)
+    for tab in doc.get("tabs", []):
+        collect_objects(tab)
     asset_dir = Path("assets/doc-images") / file_id
     warnings = []
     image_cache_valid = previous.get("modifiedTime") == modified
