@@ -21,7 +21,7 @@ from sync_reflections import (
     render_blocks, render_document as render_published,
     page as reflection_page
 )
-from sync_media import api_json, sync_sheet, sync_slides, sync_binary, esc
+from sync_media import api_json, sync_sheet, sync_slides, sync_binary, sync_doc_images, esc
 
 ROOT_ID = "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
 DRIVE_API = "https://www.googleapis.com/drive/v3/files"
@@ -296,6 +296,12 @@ def main():
                 ):
                     week = int(re.match(r"^Week\s+(\d+)\b", entry["name"], re.I).group(1))
                     markup = render_published(response)
+                    markup, image_warnings = sync_doc_images(
+                        response, markup, fid, entry.get("modifiedTime", ""), previous,
+                        published_only=True,
+                    )
+                    for reason in image_warnings:
+                        incomplete.append({"path": path, "reason": reason})
                     if not markup.strip():
                         raise RuntimeError("Published version is empty")
                     page = f"reflection-week-{week}.html"
@@ -304,6 +310,12 @@ def main():
                 else:
                     page = f"doc-{fid}.html"
                     markup = all_doc_html(response)
+                    markup, image_warnings = sync_doc_images(
+                        response, markup, fid, entry.get("modifiedTime", ""), previous,
+                        published_only=False,
+                    )
+                    for reason in image_warnings:
+                        incomplete.append({"path": path, "reason": reason})
                     if not markup.strip():
                         markup = "<p>Document is empty.</p>"
                     write(page, document_html(
