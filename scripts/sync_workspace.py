@@ -233,9 +233,9 @@ def audit_page(scanned, linked, failures, not_auto, incomplete):
                       if x["mimeType"] != FOLDER_MIME)
     summary = (
         f"<p>Source files found: {sum(counted.values())}. "
-        f"Automatically linked or published: {len(linked)}. "
-        f"Unable to update: {len(failures)}. "
-        f"Not set to sync automatically: {len(not_auto)}.</p>"
+        f"Discovered and linked: {len(linked)}. "
+        f"Unable to update in this run: {len(failures)}. "
+        f"Not configured to mirror: {len(not_auto)}.</p>"
     )
     def listing(items, none):
         if not items:
@@ -376,11 +376,15 @@ def main():
         except Exception as err:
             print(f"Unable to sync {path}: {err}", flush=True)
             failures.append({"path": path, "reason": str(err)[:350]})
-            not_auto.append({
-                "path": path,
-                "reason": "Automated publisher could not read or convert it successfully"
-            })
+            # Failed conversions remain scheduled for retry, so they are not
+            # classified as intentionally excluded from automatic sync.
             last_page = previous.get("page")
+            if not last_page and category == "04 Weekly Reflections":
+                matched = re.match(r"^Week\s+(\d+)\b", entry["name"], re.I)
+                if matched:
+                    candidate = f"reflection-week-{matched.group(1)}.html"
+                    if Path(candidate).is_file():
+                        last_page = candidate
             if last_page and Path(last_page).is_file():
                 linked[fid] = {"page": last_page, "note": "Earlier website copy; source update failed"}
                 pages.add(last_page)
