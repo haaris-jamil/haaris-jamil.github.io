@@ -358,6 +358,7 @@ def main():
             current_files[fid] = {
                 "modifiedTime": entry.get("modifiedTime", ""),
                 "path": path,
+                "page": linked[fid].get("page"),
                 **{k: previous[k] for k in ("slides",) if k in previous},
             }
         except Exception as err:
@@ -367,7 +368,16 @@ def main():
                 "path": path,
                 "reason": "Automated publisher could not read or convert it successfully"
             })
-            linked[fid] = {"page": None, "note": "Open the Google Drive source"}
+            last_page = previous.get("page")
+            if last_page and Path(last_page).is_file():
+                linked[fid] = {"page": last_page, "note": "Earlier website copy; source update failed"}
+                pages.add(last_page)
+                if category == "04 Weekly Reflections":
+                    matched = re.match(r"^Week\s+(\d+)\b", entry["name"], re.I)
+                    if matched:
+                        weeks[int(matched.group(1))] = entry["name"]
+            else:
+                linked[fid] = {"page": None, "note": "Open the Google Drive source"}
             current_files[fid] = previous
     for name, slug, title, desc in CATEGORIES:
         if name == "04 Weekly Reflections":
