@@ -146,7 +146,7 @@ def render_document(document):
         published = [
             t for t in tabs
             if t.get("tabProperties", {}).get("title", "").strip().casefold()
-            == "published version"
+            in ("published version", "formal reflection")
         ]
         if len(published) == 1:
             blocks = published[0].get("documentTab", {}).get("body", {}).get("content", [])
@@ -154,7 +154,7 @@ def render_document(document):
             blocks = tabs[0].get("documentTab", {}).get("body", {}).get("content", [])
         else:
             raise RuntimeError(
-                "Multiple Google Docs tabs found, but no unique 'Published version' tab. "
+                "Multiple Google Docs tabs found, but no unique published reflection tab. "
                 "Refusing to publish other tabs."
             )
     else:
