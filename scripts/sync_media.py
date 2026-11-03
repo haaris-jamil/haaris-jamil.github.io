@@ -62,6 +62,14 @@ def tab_matrix(tab):
     return rows
 
 
+def column_label(number):
+    result = ""
+    while number:
+        number, offset = divmod(number - 1, 26)
+        result = chr(65 + offset) + result
+    return result
+
+
 def sync_sheet(session, entry, old):
     fid = entry["id"]
     base = f"https://sheets.googleapis.com/v4/spreadsheets/{fid}"
@@ -81,7 +89,8 @@ def sync_sheet(session, entry, old):
         max_rows = min(rowcount, 2000)
         max_cols = min(colcount, 52)
         # Google Sheets API supports a bound without an end column.
-        request_range = f"'{label.replace(chr(39), chr(39)*2)}'!A1:AZ{max_rows}"
+        col_end = column_label(max_cols)
+        request_range = f"'{label.replace(chr(39), chr(39)*2)}'!A1:{col_end}{max_rows}"
         if rowcount > max_rows or colcount > max_cols:
             truncated.append(f"{label}: grid exceeds {max_rows} rows or {max_cols} columns")
         data = api_json(session, base, params=[
