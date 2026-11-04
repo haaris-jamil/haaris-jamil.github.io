@@ -26,6 +26,7 @@ from sync_media import api_json, sync_sheet, sync_slides, sync_binary, sync_doc_
 from lesson_layout import (
     exclude_from_website, current_events, teaching_body,
     lesson_plan_entry, lesson_number, plan_page_info, strip_duplicate_title,
+    slide_page_info,
 )
 
 ROOT_ID = "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
@@ -366,8 +367,9 @@ def main():
                 pages.add(page)
             elif kind == SLIDE_MIME:
                 page, title, markup, cache = sync_slides(session, entry, previous)
+                title, caption = slide_page_info(entry, events)
                 write(page, document_html(
-                    title, "Teaching presentation.",
+                    title, caption,
                     f'<p><a href="{esc(src)}" target="_blank" rel="noopener noreferrer">'
                     'View source presentation ↗</a></p>' + markup, back=backlink,
                 ))
