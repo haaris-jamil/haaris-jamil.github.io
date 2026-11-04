@@ -328,12 +328,6 @@ def lesson_table(group, plans, events, by_id, linked):
                         f'{get_link(entry, linked, label)}'
                         f'<p>{esc(description)}</p></div>'
                     )
-        if not evhtml:
-            evidence_message = (
-                "No class-specific file linked" if status == "Completed"
-                else "Not yet delivered"
-            )
-            evhtml = [f'<span class="no-resource">{evidence_message}</span>']
         rows.append(
             f'<tr id="science-{group}-lesson-{num}"><th scope="row">'
             f'<span class="lesson-number">Lesson {num:02}</span><strong>{esc(title)}</strong>{highlight}</th>'
