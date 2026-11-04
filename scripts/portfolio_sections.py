@@ -175,6 +175,73 @@ def _standing_wave_player():
     )
 
 
+def _standard_evidence_rows(markup):
+    """Set each evidence reference on its own line without changing the source Doc.
+
+    Single-link paragraphs keep their full descriptions. Known compound source
+    paragraphs are divided at their natural sentence / link boundaries.
+    Unrecognised multi-link paragraphs still expose every link separately.
+    """
+    title = re.search(r"<h3>\s*Evidence links\s*</h3>", markup, re.I)
+    if not title:
+        return markup
+    following = markup[title.end():]
+    stop = re.search(r"<h3\b", following, re.I)
+    end = title.end() + stop.start() if stop else len(markup)
+    original = markup[title.end():end]
+    paragraphs = list(re.finditer(r"<p(?:\s[^>]*)?>(.*?)</p>", original, re.I | re.S))
+    if not paragraphs:
+        return markup
+
+    link_re = re.compile(r"<a\b[^>]*>.*?</a>", re.I | re.S)
+    def strip_tags(value):
+        return re.sub(r"<[^>]+>", "", value).strip()
+
+    rows = []
+    for paragraph in paragraphs:
+        inner = paragraph.group(1).strip()
+        links = link_re.findall(inner)
+        if not links:
+            rows.append(f'<li>{inner}</li>')
+            continue
+        if len(links) == 1:
+            rows.append(f'<li>{inner}</li>')
+            continue
+
+        chunks = link_re.split(inner)
+        # This preserves all the evidence references while attaching descriptions
+        # to the correct record in the three compound source paragraphs.
+        if len(links) == 2 and "learning register" in strip_tags(links[1]).lower():
+            separator = " The "
+            before, found, after = chunks[1].rpartition(separator)
+            rows.append(f'<li>{links[0]}{before if found else chunks[1]}</li>')
+            rows.append(f'<li>{separator.strip()} {links[1]}{chunks[2]}' if found
+                        else f'<li>{links[1]}{chunks[2]}</li>')
+            if found:
+                rows[-1] += '</li>' if not rows[-1].endswith('</li>') else ''
+        elif len(links) == 2 and "Read alongside the" in chunks[1]:
+            before, _, _ = chunks[1].partition(" Read alongside the ")
+            rows.append(f'<li>{links[0]}{before}</li>')
+            rows.append(f'<li>{links[1]}{chunks[2]}</li>')
+        elif len(links) == 2 and "Learner-work samples" in chunks[0]:
+            rows.append(f'<li>{links[0]}</li>')
+            rows.append(f'<li>{links[1]}</li>')
+            note = chunks[2].strip()
+            # Preserve the substantive limits of these pooled samples without
+            # leaving the dangling 'are linked' fragment.
+            note = re.sub(r"^are linked from the register\.\s*", "", note, flags=re.I)
+            if note:
+                rows.append(f'<li class="standard-evidence-note">{note}</li>')
+        else:
+            for anchor in links:
+                rows.append(f'<li>{anchor}</li>')
+            context = re.sub(r"\s+", " ", "".join(chunks)).strip(" ,.;")
+            if context:
+                rows.append(f'<li class="standard-evidence-note">{context}</li>')
+    contents = '<ul class="standard-evidence-list">' + "".join(rows) + '</ul>'
+    return markup[:title.end()] + contents + markup[end:]
+
+
 def adapt_source(fid, markup):
     kind, number, title = NEW_DOCUMENTS[fid]
     # The page wrapper supplies the title. Avoid displaying the same heading twice.
@@ -232,6 +299,14 @@ def adapt_source(fid, markup):
         marker = '<h3>Evidence links</h3>'
         if marker in markup:
             markup = markup.replace(marker, insertion + marker, 1)
+    if kind == "standard":
+        # Some older mentor-observation references point to redacted duplicates.
+        # The corresponding completed PDF is already mirrored on the site.
+        markup = markup.replace(
+            'href="https://drive.google.com/file/d/1k2YpbtSlsUJIc8Mpn0jzoOqOQwHSCnGw/view"',
+            'href="file-11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I.html"',
+        )
+        markup = _standard_evidence_rows(markup)
     before, after = navigation(fid)
     return (
         before + '<article class="native-reflection"><div class="reflection-prose">'
