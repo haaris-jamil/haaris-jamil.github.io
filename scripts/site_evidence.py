@@ -76,7 +76,7 @@ def _register_row(content, event_id):
         prior = matches[11].group(1)
         prior = prior.replace(
             "No Science 2 student work is linked here yet.",
-            "Pooled Lesson 3 samples are available, but individual pages are not independently attributed to Science 2."
+            "Lesson 3 worksheet samples are linked below."
         )
         content = content[:matches[11].start(1)] + prior + content[matches[11].end(1):]
         matches = list(TD.finditer(content))
@@ -89,7 +89,7 @@ def _register_row(content, event_id):
         more = (
             '<p><strong>Confirmed Science 1 evidence (4 November 2026):</strong> '
             + _local_link("11bBS4D14yRgJM3WHFjdrosXkQupp2GuO", "Anonymised Lesson 7 student work")
-            + '. This sample does not establish learning outcomes for every student.</p>'
+            + '</p>'
         )
         content = content[:matches[11].start(1)] + prior + more + content[matches[11].end(1):]
         matches = list(TD.finditer(content))
@@ -110,14 +110,9 @@ def _register_row(content, event_id):
         ids = ["1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq",
                "1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp"]
     links = " · ".join(_local_link(i, ALL_FILES[i][0]) for i in ids)
-    more = (
-        '<p><strong>Mixed-group evidence:</strong> ' + links + '. Earlier anonymised '
-        f'work collected across both Year 10 groups for Lesson {lesson}; individual pages '
-        'are not independently attributed to either class. They are not proof of a '
-        'learning outcome for every learner or each class independently.</p>'
-    )
-    # Prevent duplicate insertions when post-processing an unchanged old page.
-    if 'Earlier anonymised work collected across both Year 10 groups' not in prior:
+    # Include the source evidence links without internal attribution commentary.
+    more = '<p>' + links + '</p>'
+    if not any(f'href="file-{fid}.html"' in prior for fid in ids):
         prior += more
     return content[:matches[11].start(1)] + prior + content[matches[11].end(1):]
 
@@ -127,18 +122,10 @@ def reconcile_register(markup):
         row, rid = match.group(1), int(match.group(2))
         return _register_row(row, rid)
     revised = REGISTER_ROW.sub(render, markup)
-    note = (
-        '<p class="register-provenance"><strong>Reading the chronology:</strong> '
-        '"Not delivered by me" marks a missed timetable slot and does not count as '
-        'completed teaching. The 19 October outdoor assessment and estuary walk is a '
-        'separate recorded activity; it is not delivery of the postponed circuit lesson. '
-        'Science 2 Lesson 3 was delivered on 22 October. Pooled evidence links are '
-        'cross-references, not claims of class-wide achievement.</p>'
+    # Remove any legacy site-only internal planning note as well.
+    return re.sub(
+        r'<p class="register-provenance">.*?</p>', '', revised, flags=re.I | re.S
     )
-    if "register-provenance" not in revised:
-        revised = revised.replace('<div class="sheet-scroll"', note + '<div class="sheet-scroll"', 1)
-    return revised
-
 
 def correct_standard_six(markup):
     markup = markup.replace(
