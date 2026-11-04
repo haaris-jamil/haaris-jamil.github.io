@@ -33,6 +33,7 @@ from site_evidence import evidence_page_info, reconcile_page
 from site_finishing import (
     ABOUT_ID, REFERENCES_ID, PEPEHA_SLIDES_ID, DIRECT_PAGES,
     direct_document_markup, observations_body, improve_image_alts,
+    is_editable_observation_form, completed_feedback_map,
 )
 from portfolio_sections import (
     NEW_DOCUMENTS, ARCHIVE_PAGES, GROUPS,
@@ -285,8 +286,18 @@ def main():
     old = json.loads(MANIFEST.read_text()) if MANIFEST.is_file() else {}
     old_files = old.get("files", {})
     scanned = scan_drive(session)
-    excluded = [e for e in scanned if exclude_from_website(e) or e["id"] == PEPEHA_SLIDES_ID]
-    records = [e for e in scanned if not exclude_from_website(e) and e["id"] != PEPEHA_SLIDES_ID]
+    excluded = [
+        e for e in scanned
+        if exclude_from_website(e)
+        or e["id"] == PEPEHA_SLIDES_ID
+        or is_editable_observation_form(e)
+    ]
+    records = [
+        e for e in scanned
+        if not exclude_from_website(e)
+        and e["id"] != PEPEHA_SLIDES_ID
+        and not is_editable_observation_form(e)
+    ]
     for e in excluded:
         # Deliberately remove website copies of redacted observation duplicates;
         # nothing is deleted or changed in Google Drive.
@@ -523,6 +534,7 @@ def main():
     local_pages, local_folders = make_local_map(
         records, linked, excluded, [(name, slug) for name, slug, _, _ in CATEGORIES]
     )
+    local_pages.update(completed_feedback_map(excluded, linked))
     link_counts = {"anchors": 0, "plain_urls": 0, "source_footers": 0, "unresolved": 0}
     for html_page in sorted(pages | {"index.html"}):
         target = Path(html_page)

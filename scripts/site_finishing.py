@@ -11,6 +11,39 @@ REFERENCES_ID = "1gCiC40LUq4HybRawE7Qs-sgRQLPXe3NJ0wqyzgh5oIs"
 PEPEHA_SLIDES_ID = "1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw"
 DIRECT_PAGES = {"about.html": ABOUT_ID, "references.html": REFERENCES_ID}
 
+OBSERVATION_FOLDER = "02 Observations"
+PDF_MIME = "application/pdf"
+# Final PDFs appear on the website. Editable observation forms remain in Drive.
+FINISHED_FEEDBACK_PDFS = {
+    1: "1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP",
+    2: "11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I",
+}
+
+
+def is_editable_observation_form(entry):
+    """Exclude editable forms, but never exclude final PDFs."""
+    folder_path = entry.get("folderPath", [])
+    if not folder_path or folder_path[0] != OBSERVATION_FOLDER:
+        return False
+    return (
+        re.match(r"^\s*observation\s+form\b", entry.get("name", ""), re.I)
+        is not None and entry.get("mimeType") != PDF_MIME
+    )
+
+
+def completed_feedback_map(excluded, linked):
+    """Redirect old editable-form links to completed PDFs if one exists."""
+    redirects = {}
+    for entry in excluded:
+        if not is_editable_observation_form(entry):
+            continue
+        fid = FINISHED_FEEDBACK_PDFS.get(_week(entry))
+        page = linked.get(fid, {}).get("page") if fid else None
+        if page:
+            redirects[entry["id"]] = page
+    return redirects
+
+
 TAG_RE = re.compile(r"<[^>]+>")
 IMAGE_RE = re.compile(
     r'(<img\b[^>]*\balt=")Illustration from the source document(")', re.I | re.S
@@ -83,7 +116,11 @@ def _group(title, anchor, entries, linked, subsections=None):
 
 def observations_body(entries, linked):
     """Three grounded sections, with weekly forms in numeric week order."""
-    items = [e for e in entries if e["mimeType"] != "application/vnd.google-apps.folder"]
+    items = [
+        e for e in entries
+        if e["mimeType"] != "application/vnd.google-apps.folder"
+        and not is_editable_observation_form(e)
+    ]
     general, others, feedback, forms, visits, remaining = [], [], [], [], [], []
     for entry in items:
         name = entry["name"].casefold().strip()
@@ -95,9 +132,11 @@ def observations_body(entries, linked):
         ):
             others.append(entry)
         elif "observation form" in name:
-            forms.append(entry)
+            if entry.get("mimeType") == PDF_MIME:
+                feedback.append(entry)
         elif "mentor teacher feedback" in name:
-            feedback.append(entry)
+            if entry.get("mimeType") == PDF_MIME:
+                feedback.append(entry)
         elif "evaluative visit" in name or "report" in name:
             visits.append(entry)
         else:
@@ -119,8 +158,7 @@ def observations_body(entries, linked):
         + _group("Observations of Others", "observations-of-others", others, linked)
         + _group(
             "Feedback on My Teaching", "feedback-on-my-teaching", [], linked,
-            [("Weekly observation forms", forms),
-             ("Mentor teacher feedback", feedback),
+            [("Completed mentor feedback (PDF)", feedback),
              ("Evaluative visit report", visits),
              ("Additional feedback", remaining)]
         )
