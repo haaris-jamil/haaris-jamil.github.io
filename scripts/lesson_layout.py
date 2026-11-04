@@ -89,20 +89,20 @@ MIXED_GROUP_EVIDENCE = {
     3: [
         ("1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM",
          "Lesson 3 worksheet sample",
-         "Pooled student work associated with Lesson 3."),
+         "Year 10 Lesson 3 worksheet samples."),
     ],
     4: [
         ("152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB",
          "Lesson 4 exercise-book sample",
-         "Pooled student work associated with Lesson 4."),
+         "Year 10 Lesson 4 exercise-book samples."),
     ],
     5: [
         ("1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq",
          "Lesson 5 crossword samples",
-         "Pooled retrieval-work samples. They do not establish class-specific understanding."),
+         "Year 10 Lesson 5 crossword samples."),
         ("1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp",
          "Lesson 5 investigation samples",
-         "Pooled measurement-recording work. This collection does not establish independent graph interpretation."),
+         "Year 10 Lesson 5 investigation samples."),
     ],
 }
 # Only independently confirmed class-specific student evidence is assigned to
