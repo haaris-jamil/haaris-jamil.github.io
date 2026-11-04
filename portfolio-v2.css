@@ -116,3 +116,13 @@ audio{width:100%;max-width:700px}
 .topic-pager a{font-size:14px;color:var(--accent-dark);font-weight:700}
 @media(max-width:900px){.topic-card-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:580px){.topic-card-grid{grid-template-columns:1fr}}
+
+/* Additional learning events, kept apart from Year 10 sequences */
+.other-learning-events{scroll-margin-top:100px}
+.other-event-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.other-event-list li{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px}
+.other-event-entry{display:flex;flex-direction:column;gap:8px}
+.other-event-link{font-weight:700;color:var(--accent-dark);text-decoration:none;line-height:1.45}
+.other-event-link:hover{text-decoration:underline}
+.other-event-date{font-size:13px;color:#526359}
+@media(max-width:720px){.other-event-list{grid-template-columns:1fr}}

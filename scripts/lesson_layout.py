@@ -19,31 +19,31 @@ REDACTED_RE = re.compile(r"(?:\bredacted\b|\bredaction\b)", re.IGNORECASE)
 # Slide-deck alignments verified against the source presentations and plans.
 # An omitted deck is NOT assumed to match merely because its number is the same.
 SLIDE_MAP = {
+    # Keep each class linked to its own source presentation.
     (1, 1): ["1C3Ip1Mq-30MtH1R1mx0GfeGuH38xQ0yMBLfbhDIsV_E"],
-    (2, 1): ["1C3Ip1Mq-30MtH1R1mx0GfeGuH38xQ0yMBLfbhDIsV_E"],
-    (1, 2): ["17CZjb2YHoL3yU5Hp1ijIYjsFmQy9gXG_epuHHj_5RQ4"],
+    (2, 1): ["1NQKWj_qPn0mPEHvREX0jZXe-TkfAbrE3CcFxTVVAw7A"],
+    (1, 2): ["1qJvgmaWPT999umENv4sFWJ687zA2kY7RsDJ4BeLY94w"],
     (2, 2): ["17CZjb2YHoL3yU5Hp1ijIYjsFmQy9gXG_epuHHj_5RQ4"],
     (1, 3): ["1e2sG29x8fAS6p8ptw-mVSjMoRBmEeHX5_6zz95os5Es"],
     (2, 3): ["1XjY2r3Jqh4HZW95WYZnBTu_sGXV75JYxUS6G-K8Izms"],
     (1, 4): ["1U4yjqctdRGABqQ7y2tPu5yMvdgoyinHpGxokSKBU7WA"],
     (2, 4): ["1Z2WWvxwvcxl5tT34Up_WGXHzG6-yEEwARtEoYfLL3jk"],
     (1, 5): ["1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E"],
-    (2, 5): ["1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E"],
+    (2, 5): ["1yjMx57cY-kSoNlZtv4ub8jck8W3JD3vmF-ndFFRVjQQ"],
     (1, 6): ["1OJ2d2lITwTzGm85KQRyHvT4YGswxth7-tTViUrSnujk"],
     (2, 6): ["11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY"],
     (1, 7): ["1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs"],
-    # A separate Science 2 version of Lesson 7 may be added later.
-    (1, 9): ["1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps"],
-    (2, 9): ["1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps"],
-    (1, 10): ["1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc"],
-    (2, 10): ["1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc"],
+    (2, 7): ["1OrKPfqtgA6aHBeDM9KMm4vTvH1xgpK2kM6lcZOLBYFw"],
     (1, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
-    (2, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
+    (2, 8): ["1vBdX4qXE4fsIRZxPG_dUAj6EmdNst3CYpt-65ekUSkY"],
+    (1, 9): ["1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps"],
+    (2, 9): ["1oIHfVsDB8W_f8uGj24_UpK7VhZSY_EamiGoZHkrzaLA"],
+    (1, 10): ["1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc"],
+    (2, 10): ["1MJouYp3n6oSdZ9F7uswt2dmECSmSXvHP4b0O5VwiQ-s"],
     (1, 11): ["1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0"],
-    (2, 11): ["1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0"],
-    # Lesson 11 uses an earlier deck, while the plans continue to be revised.
+    (2, 11): ["11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg"],
     (1, 12): ["1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o"],
-    (2, 12): ["1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o"],
+    (2, 12): ["1WC98gjxSzZKtxDgR0FnWa0DxyUtrD2AOlob_JBjdckk"],
 }
 
 WORKSHEETS = {
@@ -58,6 +58,33 @@ WORKSHEETS = {
 
 # These early uploads were collected across both Year 10 groups. Their
 # original filenames are not evidence of class-level attribution.
+WORKSHEET_OVERRIDES = {
+    # Science 2 Lesson 6 was revised to a brief graphing demonstration
+    # followed by the switched-outlet practical, not a continued worksheet.
+    (2, 6): [
+        ("1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo", "Connection worksheet")
+    ],
+}
+LESSON_TITLE_OVERRIDES = {
+    (2, 6): "Graphing demonstration and switched-outlet practical",
+}
+EVIDENCE_LABELS = {
+    "1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM": "Worksheet samples",
+    "152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB": "Exercise-book samples",
+    "1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq": "Crossword samples",
+    "1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp": "Investigation samples",
+}
+OTHER_LEARNING_EVENTS = [
+    ("1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo",
+     "Year 13 Physics: Standing waves on a string", "23 Sep 2026"),
+    ("1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA",
+     "Primary Science Club: Design and build model boats", "24 Sep 2026"),
+    ("1ofp5jgQ1npOkrbHJrQXB_HmaY6jh0zVUiR3_ksWdn-4",
+     "Year 13 Physics: Sound interference and wavelength", "2 Nov 2026"),
+    ("1lDfi3t9_bDF90rkYx_it6Sm6RK-UIvIbDMviGUZeKYA",
+     "Year 13 Physics: Electrolytic capacitors", "3 Nov 2026"),
+]
+
 MIXED_GROUP_EVIDENCE = {
     3: [
         ("1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM",
@@ -210,6 +237,8 @@ def make_resources(resources, by_id, linked):
 
 
 def lesson_title(group, number, entry, events):
+    if (group, number) in LESSON_TITLE_OVERRIDES:
+        return LESSON_TITLE_OVERRIDES[(group, number)]
     event = events.get((group, number), {})
     if event.get("title"):
         return re.sub(r"\s+[–—-]\s+Y10.*$", "", event["title"]).strip()
@@ -309,22 +338,15 @@ def lesson_table(group, plans, events, by_id, linked):
             [(fid, "Earlier slides" if fid in EARLIER_SLIDES else "Slides")
              for fid in SLIDE_MAP.get(key, [])], by_id, linked
         )
-        worksheets = make_resources(WORKSHEETS.get(num, []), by_id, linked)
+        worksheets = make_resources(WORKSHEET_OVERRIDES.get(key, WORKSHEETS.get(num, [])), by_id, linked)
         evhtml = []
         if status == "Completed":
             for fid, label, description in MIXED_GROUP_EVIDENCE.get(num, []):
                 entry = by_id.get(fid)
                 if entry:
-                    if num in (3, 4):
-                        evhtml.append(
-                            get_link(entry, linked, "Mixed-group evidence", "mixed-evidence-link")
-                        )
-                    else:
-                        evhtml.append(
-                            f'<div class="lesson-evidence-link">'
-                            f'{get_link(entry, linked, "Mixed-group evidence", "mixed-evidence-link")}'
-                            f'<p><strong>{esc(label)}:</strong> {esc(description)}</p></div>'
-                        )
+                    evhtml.append(
+                        get_link(entry, linked, EVIDENCE_LABELS.get(fid, label), "mixed-evidence-link")
+                    )
             for fid, label, description in CLASS_EVIDENCE.get(key, []):
                 entry = by_id.get(fid)
                 if entry:
@@ -353,6 +375,27 @@ def lesson_table(group, plans, events, by_id, linked):
     )
 
 
+def other_learning_events(by_id, linked):
+    items = []
+    for fid, label, date in OTHER_LEARNING_EVENTS:
+        entry = by_id.get(fid)
+        if not entry:
+            continue
+        items.append(
+            '<li><div class="other-event-entry">'
+            f'{get_link(entry, linked, label, "other-event-link")}'
+            f'<span class="other-event-date">{esc(date)}</span>'
+            '</div></li>'
+        )
+    return (
+        '<section class="other-learning-events" id="other-learning-events">'
+        '<div class="teaching-section-heading"><h3>Other learning events</h3>'
+        '<p>Year 13 Physics demonstrations and Science Club activities, '
+        'with their plans and records.</p></div>'
+        '<ul class="other-event-list">' + "".join(items) + '</ul></section>'
+    ) if items else ""
+
+
 def other_materials(entries, by_id, linked, events, plans):
     def group(title, items, intro=""):
         if not items:
@@ -375,6 +418,7 @@ def other_materials(entries, by_id, linked, events, plans):
     lesson_attached.update(MIXED_EVIDENCE_ID_SET)
     lesson_attached.update(fid for vals in CLASS_EVIDENCE.values() for fid, _, _ in vals)
     ignore = matched | lesson_attached
+    ignore.update(fid for fid, _, _ in OTHER_LEARNING_EVENTS)
     ignore.update(x["id"] for x in plans_history)
     ignore.update(x["id"] for x in unmatched_slides)
     other_files = [x for x in entries if x.get("id") not in ignore
@@ -438,6 +482,7 @@ def teaching_body(entries, linked, events):
         'presentations are working documents that evolve with teaching experience.</p>'
         '<nav class="lesson-jump" aria-label="Lesson sequence navigation">'
         '<a href="#science-1">Year 10 Science 1</a><a href="#science-2">Year 10 Science 2</a>'
+        '<a href="#other-learning-events">Other learning events</a>'
         '<a href="learning-events.html">Learning events register</a></nav>'
         + highlighted_panel(plans, events, linked)
         + ('<section class="unit-overview-note"><h3>Original unit overview</h3>'
@@ -447,6 +492,7 @@ def teaching_body(entries, linked, events):
            + '</section>')
         + lesson_table(1, plans, events, by_id, linked)
         + lesson_table(2, plans, events, by_id, linked)
+        + other_learning_events(by_id, linked)
         + other_materials(entries, by_id, linked, events, plans)
         + "</div>"
     )
