@@ -29,6 +29,9 @@ from lesson_layout import (
     slide_page_info,
 )
 from site_links import make_local_map, rewrite_html
+from section_pages import (
+    DOCUMENTS, GOALS_ID, STANDARDS_ID, sections_from_html, subpage_bodies, hub_body
+)
 
 ROOT_ID = "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
 DRIVE_API = "https://www.googleapis.com/drive/v3/files"
@@ -291,6 +294,7 @@ def main():
     failures, not_auto, incomplete = [], [], []
     pages = set()
     weeks = {}
+    section_hubs = {}
     for entry in records:
         if entry["mimeType"] == FOLDER_MIME:
             continue
@@ -324,7 +328,6 @@ def main():
                     write(page, reflection_page(week, markup))
                     weeks[week] = entry["name"]
                 else:
-                    page = f"doc-{fid}.html"
                     markup = all_doc_html(response)
                     markup, image_warnings = sync_doc_images(
                         response, markup, fid, entry.get("modifiedTime", ""), previous,
@@ -334,20 +337,43 @@ def main():
                         incomplete.append({"path": path, "reason": reason})
                     if not markup.strip():
                         markup = "<p>Document is empty.</p>"
-                    detail = plan_page_info(entry, events)
-                    if detail:
-                        title, caption = detail
-                        markup = strip_duplicate_title(markup, lesson_number(entry))
+                    if fid in DOCUMENTS:
+                        cfg = DOCUMENTS[fid]
+                        selected = sections_from_html(markup, fid)
+                        for child_page, info in subpage_bodies(fid, selected).items():
+                            write(child_page, document_html(
+                                info["title"], info["caption"], info["body"], back=info["back"]
+                            ))
+                            pages.add(child_page)
+                        hub_markup = hub_body(fid, selected)
+                        section_hubs[cfg["hub"]] = document_html(
+                            cfg["label"], cfg["intro"], hub_markup, back="index.html"
+                        )
+                        # Keep the former all-in-one URL valid, but never expose
+                        # Standards 1, 4 or 5 in that obsolete website location.
+                        legacy = f"doc-{fid}.html"
+                        write(legacy, document_html(
+                            cfg["label"], "This content is organised into separate sections.",
+                            hub_markup, back=cfg["hub"]
+                        ))
+                        pages.add(legacy)
+                        page = cfg["hub"]
                     else:
-                        title, caption = entry["name"], "Portfolio source document"
-                    write(page, document_html(
-                        title, caption,
-                        f'<article class="native-reflection"><div class="reflection-prose">'
-                        + markup + "</div></article>"
-                        + f'<p><a href="{esc(src)}" target="_blank" rel="noopener noreferrer">'
-                        'View source in Google Docs ↗</a></p>',
-                        back=backlink,
-                    ))
+                        page = f"doc-{fid}.html"
+                        detail = plan_page_info(entry, events)
+                        if detail:
+                            title, caption = detail
+                            markup = strip_duplicate_title(markup, lesson_number(entry))
+                        else:
+                            title, caption = entry["name"], "Portfolio source document"
+                        write(page, document_html(
+                            title, caption,
+                            f'<article class="native-reflection"><div class="reflection-prose">'
+                            + markup + "</div></article>"
+                            + f'<p><a href="{esc(src)}" target="_blank" rel="noopener noreferrer">'
+                            'View source in Google Docs ↗</a></p>',
+                            back=backlink,
+                        ))
                 if "[Embedded image or object in Google Doc]" in markup:
                     incomplete.append({
                         "path": path, "reason": "Inline images or drawings show as placeholders"
@@ -421,6 +447,16 @@ def main():
     for name, slug, title, desc in CATEGORIES:
         if name == "04 Weekly Reflections":
             write(slug, reflection_index(weeks))
+        elif slug in section_hubs:
+            write(slug, section_hubs[slug])
+        elif slug in ("goals.html", "standards.html") and Path(slug).is_file():
+            # On a temporary source-read failure, preserve the previously
+            # published navigation and its sections rather than reverting.
+            source_id = GOALS_ID if slug == "goals.html" else STANDARDS_ID
+            for number in DOCUMENTS[source_id]["allowed"]:
+                cached = f'{DOCUMENTS[source_id]["prefix"]}-{number}.html'
+                if Path(cached).is_file():
+                    pages.add(cached)
         else:
             subset = [f for f in records if f["mimeType"] != FOLDER_MIME and folder_area(f) == name]
             if name == "06 Teaching & Planning":
