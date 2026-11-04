@@ -126,3 +126,18 @@ audio{width:100%;max-width:700px}
 .other-event-link:hover{text-decoration:underline}
 .other-event-date{font-size:13px;color:#526359}
 @media(max-width:720px){.other-event-list{grid-template-columns:1fr}}
+
+/* Goal evidence links and locally hosted standing-wave media */
+.goal-evidence-list{padding-left:1.3rem;display:grid;gap:10px;margin:14px 0 24px}
+.goal-evidence-list li{font-size:15px;line-height:1.5}
+.goal-evidence-list a{font-weight:650;color:var(--accent-dark);text-underline-offset:3px}
+.goal-apparatus{margin-top:30px;scroll-margin-top:90px;border-top:1px solid var(--border);padding-top:20px}
+.goal-apparatus h3{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.25;margin:0 0 12px}
+.goal-apparatus>p{font-size:14px;color:#43564d;line-height:1.55;max-width:810px}
+.goal-media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:16px 0 20px}
+.goal-media-grid figure,.goal-video{margin:0}
+.goal-media-grid a{display:block;background:#f0f3f0;border-radius:10px;overflow:hidden}
+.goal-media-grid img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
+.goal-media-grid figcaption,.goal-video figcaption{color:#45584e;font-size:13px;line-height:1.5;margin-top:8px}
+.goal-video video{display:block;width:100%;max-width:900px;max-height:520px;aspect-ratio:16/9;object-fit:contain;background:#17231d;border-radius:12px}
+@media(max-width:690px){.goal-media-grid{grid-template-columns:1fr}.goal-apparatus h3{font-size:23px}}
