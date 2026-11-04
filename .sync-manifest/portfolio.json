@@ -6,12 +6,6 @@
     }
   ],
   "files": {
-    "1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw": {
-      "modifiedTime": "2026-11-04T00:24:30.275Z",
-      "page": "slides-1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw.html",
-      "path": "01 About Me/Haaris Jamil – Pepeha",
-      "slides": 9
-    },
     "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w": {
       "modifiedTime": "2026-11-03T21:01:50.445Z",
       "page": "doc-10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w.html",
@@ -38,10 +32,10 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-07-Y10-Science-1-Student-Evidence-Anonymised.pdf"
     },
     "11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY": {
-      "modifiedTime": "2026-11-04T00:38:20.583Z",
+      "modifiedTime": "2026-11-04T20:47:37.375Z",
       "page": "slides-11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 06: Reliable connections and switched outlets - Y10 Science 2",
-      "slides": 13
+      "slides": 14
     },
     "11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg": {
       "modifiedTime": "2026-11-04T00:37:05.299Z",
@@ -476,7 +470,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 07: Reliable connections and switched outlets - Y10 Science 2 - Full Lesson Plan"
     },
     "1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg": {
-      "modifiedTime": "2026-11-04T00:19:35.690Z",
+      "modifiedTime": "2026-11-04T20:47:14.131Z",
       "page": "doc-1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 06: Reliable connections and switched outlets - Y10 Science 2 - Full Lesson Plan"
     },
@@ -594,7 +588,6 @@
     "reflection-week-5.html",
     "reflections.html",
     "sheet-1PqfkvfQOqc9IiWmpgzALRntRcdgPUNzx4jmJsL0mgWE.html",
-    "slides-1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw.html",
     "slides-11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY.html",
     "slides-11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg.html",
     "slides-17CZjb2YHoL3yU5Hp1ijIYjsFmQy9gXG_epuHHj_5RQ4.html",
@@ -627,10 +620,10 @@
     "teaching.html"
   ],
   "linkRewriting": {
-    "anchors": 93,
-    "plain_urls": 9,
-    "source_footers": 88,
-    "unresolved": 1
+    "anchors": 88,
+    "plain_urls": 8,
+    "source_footers": 83,
+    "unresolved": 6
   },
   "notAutomaticallySynced": [],
   "partialSupport": [],
