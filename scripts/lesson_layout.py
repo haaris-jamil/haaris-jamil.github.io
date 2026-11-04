@@ -56,20 +56,42 @@ WORKSHEETS = {
     8: [("1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI", "Switching worksheet")],
 }
 
-EVIDENCE = {
-    (1, 5): [
+# These early uploads were collected across both Year 10 groups. Their
+# original filenames are not evidence of class-level attribution.
+MIXED_GROUP_EVIDENCE = {
+    3: [
+        ("1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM",
+         "Lesson 3 worksheet sample",
+         "Pooled student work associated with Lesson 3."),
+    ],
+    4: [
+        ("152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB",
+         "Lesson 4 exercise-book sample",
+         "Pooled student work associated with Lesson 4."),
+    ],
+    5: [
         ("1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq",
-         "Crossword sample", "Anonymised retrieval work on earlier electricity ideas. It is not evidence of graph interpretation."),
+         "Lesson 5 crossword samples",
+         "Pooled retrieval-work samples. They do not establish class-specific understanding."),
         ("1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp",
-         "Investigation page 1", "Anonymised investigation page used to review measurement recording. No graph or analysis page is provided here."),
+         "Lesson 5 investigation samples",
+         "Pooled measurement-recording work. This collection does not establish independent graph interpretation."),
     ],
 }
-UNALLOCATED_EVIDENCE = [
-    ("1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM",
-     "Lesson 3 worksheet sample", "The filename does not establish whether the work is from Science 1 or Science 2."),
-    ("152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB",
-     "Lesson 4 exercise-book sample", "The filename does not identify which of the two Year 10 groups produced it."),
-]
+# Only independently confirmed class-specific student evidence is assigned to
+# a single class. This PDF covers Science 1 Lesson 7, 4 November 2026.
+CLASS_EVIDENCE = {
+    (1, 7): [
+        ("11bBS4D14yRgJM3WHFjdrosXkQupp2GuO",
+         "Science 1 Lesson 7 student evidence",
+         "Anonymised student work from Year 10 Science 1 on 4 November 2026. "
+         "The samples do not establish that every learner achieved the outcome."),
+    ],
+}
+MIXED_EVIDENCE_ID_SET = {
+    fid for collections in MIXED_GROUP_EVIDENCE.values()
+    for fid, _, _ in collections
+}
 
 HIGHLIGHTS = {
     (2, 2): "Conceptual progression from pepeha and particle models to explaining static electricity, with reflection on unfinished written work.",
@@ -275,6 +297,10 @@ def lesson_table(group, plans, events, by_id, linked):
         plan = plans.get(key)
         event = events.get(key, {})
         status = event.get("status", "Unconfirmed")
+        if status == "Not delivered":
+            # A missed timetable slot stays in the register and planning
+            # history, never in the delivered/planned class lesson table.
+            continue
         date = event.get("date", "Date to confirm")
         title = lesson_title(group, num, plan or {"name": f"Lesson {num}"}, events)
         highlight = ' <span class="featured-mark" title="Selected lesson plan">Selected</span>' if key in HIGHLIGHTS else ""
@@ -284,25 +310,30 @@ def lesson_table(group, plans, events, by_id, linked):
              for fid in SLIDE_MAP.get(key, [])], by_id, linked
         )
         worksheets = make_resources(WORKSHEETS.get(num, []), by_id, linked)
-        evidence = EVIDENCE.get(key, [])
         evhtml = []
-        for fid, label, description in evidence:
-            entry = by_id.get(fid)
-            if entry and status == "Completed":
-                evhtml.append(
-                    f'<div class="lesson-evidence-link">{get_link(entry, linked, label)}'
-                    f'<p>{esc(description)}</p></div>'
-                )
+        if status == "Completed":
+            for fid, label, description in MIXED_GROUP_EVIDENCE.get(num, []):
+                entry = by_id.get(fid)
+                if entry:
+                    evhtml.append(
+                        f'<div class="lesson-evidence-link">'
+                        f'{get_link(entry, linked, "Mixed-group evidence", "mixed-evidence-link")}'
+                        f'<p><strong>{esc(label)}:</strong> {esc(description)}</p></div>'
+                    )
+            for fid, label, description in CLASS_EVIDENCE.get(key, []):
+                entry = by_id.get(fid)
+                if entry:
+                    evhtml.append(
+                        f'<div class="lesson-evidence-link">'
+                        f'{get_link(entry, linked, label)}'
+                        f'<p>{esc(description)}</p></div>'
+                    )
         if not evhtml:
-            if key == (1, 2) and status == "Not delivered":
-                evidence_message = "Not delivered by me"
-            elif status == "Completed":
-                evidence_message = "No class-specific file linked"
-            else:
-                evidence_message = "Not yet delivered"
+            evidence_message = (
+                "No class-specific file linked" if status == "Completed"
+                else "Not yet delivered"
+            )
             evhtml = [f'<span class="no-resource">{evidence_message}</span>']
-        if num in (3, 4) and status == "Completed":
-            evhtml.append('<small class="alignment-note">Lesson evidence requiring class identification is listed below.</small>')
         rows.append(
             f'<tr id="science-{group}-lesson-{num}"><th scope="row">'
             f'<span class="lesson-number">Lesson {num:02}</span><strong>{esc(title)}</strong>{highlight}</th>'
@@ -323,7 +354,7 @@ def lesson_table(group, plans, events, by_id, linked):
     )
 
 
-def other_materials(entries, by_id, linked):
+def other_materials(entries, by_id, linked, events, plans):
     def group(title, items, intro=""):
         if not items:
             return ""
@@ -342,8 +373,8 @@ def other_materials(entries, by_id, linked):
     unassigned_slides = unmatched_slides
     lesson_attached = set()
     lesson_attached.update(fid for pair in WORKSHEETS.values() for fid, _ in pair)
-    lesson_attached.update(fid for vals in EVIDENCE.values() for fid, _, _ in vals)
-    lesson_attached.update(fid for fid, _, _ in UNALLOCATED_EVIDENCE)
+    lesson_attached.update(MIXED_EVIDENCE_ID_SET)
+    lesson_attached.update(fid for vals in CLASS_EVIDENCE.values() for fid, _, _ in vals)
     ignore = matched | lesson_attached
     ignore.update(x["id"] for x in plans_history)
     ignore.update(x["id"] for x in unmatched_slides)
@@ -354,14 +385,39 @@ def other_materials(entries, by_id, linked):
               "Additional decks are retained here until their class or lesson is confirmed."),
         group("Other teaching and planning resources", other_files),
     ]
+    missed = []
+    for (class_group, lesson), event in sorted(events.items()):
+        if event["status"] != "Not delivered":
+            continue
+        plan = plans.get((class_group, lesson))
+        plan_item = get_link(plan, linked, "Prepared lesson plan") if plan else "Plan not available"
+        slides = make_resources(
+            [(fid, "Prepared slides") for fid in SLIDE_MAP.get((class_group, lesson), [])],
+            by_id, linked
+        )
+        missed.append(
+            f'<li><strong>Year 10 Science {class_group}, Lesson {lesson:02}</strong> '
+            f'({esc(event["date"])}): <strong>Not delivered by me.</strong> '
+            'Preparation evidence only, not completed teaching or evidence of student learning. '
+            + plan_item + ' · ' + slides + '</li>'
+        )
+    missed_block = (
+        '<details class="planning-history"><summary>Prepared but not delivered</summary>'
+        '<p>These resources were prepared for missed timetable slots. They do not count as '
+        'completed teaching or evidence of learning, and their original dates remain recorded '
+        'in the Learning Events Register.</p><ul class="resource-list">'
+        + "".join(missed) + "</ul></details>"
+    ) if missed else ""
     return (
         '<details class="planning-history"><summary>Other teaching resources</summary>'
         + "".join(sections) + "</details>"
-        '<details class="planning-history"><summary>Planning history: superseded versions</summary>'
-        '<p>These earlier documents show how the electricity unit evolved. The live, class-specific '
-        'lesson plans and Learning Events Register above show the ongoing teaching sequence. '
-        'Household-wiring content was refined into two separate lessons.</p>'
-        + group("Earlier plans and worksheets", plans_history) + "</details>"
+        '<details class="planning-history"><summary>Planning history</summary>'
+        + missed_block
+        + '<details class="planning-history"><summary>Superseded versions</summary>'
+        '<p>The original unit overview and earlier planning records show the development of '
+        'the unit. Current class-specific plans and the delivery register take precedence.</p>'
+        + group("Earlier plans and worksheets", plans_history)
+        + '</details></details>'
     )
 
 
@@ -373,22 +429,26 @@ def short_name(entry):
     return text
 
 
-def unidentified_evidence(by_id, linked):
+def shared_evidence(by_id, linked):
     items = []
-    for fid, title, note in UNALLOCATED_EVIDENCE:
-        entry = by_id.get(fid)
-        if entry:
-            items.append(
-                f'<li>{get_link(entry, linked, title)}'
-                f'<p>{esc(note)}</p></li>'
-            )
-    if not items:
-        return ""
+    for lesson in (3, 4):
+        for fid, title, description in MIXED_GROUP_EVIDENCE[lesson]:
+            entry = by_id.get(fid)
+            if entry:
+                items.append(
+                    f'<li><strong>{get_link(entry, linked, title)}</strong>: '
+                    f'{esc(description)}</li>'
+                )
     return (
-        '<section class="evidence-attribution"><h3>Evidence awaiting class identification</h3>'
-        '<p>The following samples are associated with Lesson 3 or 4, but their filenames do not '
-        'identify the Year 10 group. They are not assigned to either group as class-specific evidence.</p>'
-        '<ul>' + "".join(items) + "</ul></section>"
+        '<section class="evidence-attribution" id="shared-year10-evidence">'
+        '<h3>Shared evidence from both Year 10 groups</h3>'
+        '<p>These samples were collected together from Year 10 Science 1 and Science 2. '
+        'They provide evidence associated with the relevant lessons across the two groups. '
+        'Individual pages are not attributed to a particular class unless independently confirmed.</p>'
+        '<ul>' + "".join(items) + '</ul>'
+        '<p class="evidence-limits">Mixed-group samples illustrate work produced by individual '
+        'learners. They do not prove that every student, or either class independently, '
+        'achieved a learning outcome.</p></section>'
     )
 
 
@@ -411,8 +471,8 @@ def teaching_body(entries, linked, events):
            + '</section>')
         + lesson_table(1, plans, events, by_id, linked)
         + lesson_table(2, plans, events, by_id, linked)
-        + unidentified_evidence(by_id, linked)
-        + other_materials(entries, by_id, linked)
+        + shared_evidence(by_id, linked)
+        + other_materials(entries, by_id, linked, events, plans)
         + "</div>"
     )
     return content
