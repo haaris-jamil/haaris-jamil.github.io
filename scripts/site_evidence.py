@@ -109,11 +109,15 @@ def _register_row(content, event_id):
     else:
         ids = ["1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq",
                "1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp"]
-    links = " · ".join(_local_link(i, ALL_FILES[i][0]) for i in ids)
-    # Include the source evidence links without internal attribution commentary.
-    more = '<p>' + links + '</p>'
-    if not any(f'href="file-{fid}.html"' in prior for fid in ids):
-        prior += more
+    titles = {
+        "1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM": "Worksheet samples",
+        "152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB": "Exercise-book samples",
+        "1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq": "Crossword samples",
+        "1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp": "Investigation samples",
+    }
+    links = " · ".join(_local_link(i, titles[i]) for i in ids)
+    if not all(f'file-{i}.html' in prior for i in ids):
+        prior += '<p>' + links + '</p>'
     return content[:matches[11].start(1)] + prior + content[matches[11].end(1):]
 
 
@@ -122,10 +126,8 @@ def reconcile_register(markup):
         row, rid = match.group(1), int(match.group(2))
         return _register_row(row, rid)
     revised = REGISTER_ROW.sub(render, markup)
-    # Remove any legacy site-only internal planning note as well.
-    return re.sub(
-        r'<p class="register-provenance">.*?</p>', '', revised, flags=re.I | re.S
-    )
+    # Preserve register facts and evidence URLs without internal commentary.
+    return re.sub(r'<p class="register-provenance">.*?</p>', '', revised, flags=re.S)
 
 def correct_standard_six(markup):
     markup = markup.replace(
