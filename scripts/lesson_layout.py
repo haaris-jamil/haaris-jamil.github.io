@@ -355,14 +355,18 @@ def lesson_table(group, plans, events, by_id, linked):
                         f'{get_link(entry, linked, label)}'
                         f'<p>{esc(description)}</p></div>'
                     )
+        evidence_html = (
+            '<div class="lesson-evidence-items">'
+            + "".join(f'<div>{item}</div>' for item in evhtml)
+            + '</div>'
+        ) if evhtml else ""
         rows.append(
             f'<tr id="science-{group}-lesson-{num}"><th scope="row">'
             f'<span class="lesson-number">Lesson {num:02}</span><strong>{esc(title)}</strong>{highlight}</th>'
             f'<td><span class="delivery-status {status.lower().replace(" ", "-")}">{esc(status)}</span>'
             f'<span class="lesson-date">{esc(date)}</span></td>'
             f'<td>{plan_html}</td><td>{slides}</td><td>{worksheets}</td>'
-            f'<td><div class="lesson-evidence-items">{"".join(f"<div>{item}</div>" for item in evhtml)}</div></td></tr>' if evhtml
-            else '<td></td></tr>'
+            f'<td>{evidence_html}</td></tr>'
         )
     return (
         f'<section class="lesson-section" id="science-{group}">'
