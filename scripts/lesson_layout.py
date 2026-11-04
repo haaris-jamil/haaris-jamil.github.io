@@ -334,8 +334,7 @@ def other_materials(entries, by_id, linked):
         x for x in entries if x.get("id") not in matched and SLIDES_FOLDER in x.get("path", [])
     ]
     plans_history = [x for x in entries if "99 Superseded Plans and Resources" in x.get("path", [])]
-    older = [x for x in entries if x in unmatched_slides and x["id"] in MISMATCH_NOTES]
-    unassigned_slides = [x for x in unmatched_slides if x not in older]
+    unassigned_slides = unmatched_slides
     lesson_attached = set()
     lesson_attached.update(fid for pair in WORKSHEETS.values() for fid, _ in pair)
     lesson_attached.update(fid for vals in EVIDENCE.values() for fid, _, _ in vals)
@@ -351,7 +350,7 @@ def other_materials(entries, by_id, linked):
         group("Other teaching and planning resources", other_files),
     ]
     return (
-        '<details class="planning-history"><summary>Other teaching resources and slide alignment</summary>'
+        '<details class="planning-history"><summary>Other teaching resources</summary>'
         + "".join(sections) + "</details>"
         '<details class="planning-history"><summary>Planning history: superseded versions</summary>'
         '<p>These earlier documents show how the electricity unit evolved. The live, class-specific '
