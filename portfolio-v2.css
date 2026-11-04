@@ -77,15 +77,15 @@ audio{width:100%;max-width:700px}
 .featured-mark{display:inline-flex;border:1px solid #a9c7b2;color:#20543a;border-radius:20px;padding:3px 7px;font-size:10px;font-weight:700;margin-top:8px}
 .lesson-links{display:block;line-height:1.7}
 .lesson-table a,.evidence-attribution a,.planning-history a{font-weight:650;color:var(--accent-dark)}
-.no-resource{font-size:12px;color:#8b9692}
-.alignment-note{display:block;font-size:11px;color:#83705a;line-height:1.5;margin-top:7px;max-width:260px}
+.no-resource{font-size:13px;color:#475950;line-height:1.5}
+.alignment-note{display:block;font-size:13px;color:#695943;line-height:1.55;margin-top:7px;max-width:260px}
 .lesson-evidence-link{margin-bottom:10px}
-.lesson-evidence-link p{font-size:11px;line-height:1.45;color:var(--muted);margin:3px 0 0}
+.lesson-evidence-link p{font-size:13px;line-height:1.55;color:#3d5047;margin:5px 0 0}
 .evidence-attribution{border-top:1px solid var(--border);padding-top:22px}
 .evidence-attribution h3{font:normal 27px/1.25 var(--serif);margin:0 0 6px}
 .evidence-attribution p{font-size:14px;color:var(--muted)}
 .evidence-attribution ul{padding-left:20px;display:grid;gap:13px}
-.evidence-attribution li p{font-size:12px;margin:4px 0}
+.evidence-attribution li p{font-size:13px;line-height:1.55;color:#3d5047;margin:5px 0}
 .planning-history{border:1px solid var(--border);border-radius:12px;background:white;padding:16px 23px}
 .planning-history summary{cursor:pointer;font-weight:700;font-size:15px;color:var(--accent-dark)}
 .planning-history[open] summary{padding-bottom:12px;border-bottom:1px solid var(--border)}
