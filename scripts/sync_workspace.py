@@ -28,6 +28,7 @@ from lesson_layout import (
     lesson_plan_entry, lesson_number, plan_page_info, strip_duplicate_title,
     slide_page_info,
 )
+from site_links import make_local_map, rewrite_html
 
 ROOT_ID = "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
 DRIVE_API = "https://www.googleapis.com/drive/v3/files"
@@ -442,6 +443,23 @@ def main():
     pages.add("portfolio-sources.html")
     write("sync-audit.html", audit_page(records, linked, failures, not_auto, incomplete))
     pages.add("sync-audit.html")
+    # Rebuild internal cross-references only after all source files have been
+    # scanned and their matching local pages are known.
+    local_pages, local_folders = make_local_map(
+        records, linked, excluded, [(name, slug) for name, slug, _, _ in CATEGORIES]
+    )
+    link_counts = {"anchors": 0, "plain_urls": 0, "source_footers": 0, "unresolved": 0}
+    for html_page in sorted(pages | {"index.html"}):
+        target = Path(html_page)
+        if not target.is_file():
+            continue
+        original = target.read_text(encoding="utf-8")
+        updated, changes = rewrite_html(original, local_pages, local_folders)
+        if updated != original:
+            write(html_page, updated)
+        for name, amount in changes.items():
+            link_counts[name] += amount
+    print("Internal source links: " + json.dumps(link_counts))
     for stale in set(old.get("generatedPages", [])) - pages:
         target = Path(stale)
         if target.name.startswith(("doc-", "sheet-", "slides-", "file-", "reflection-week-")):
@@ -452,6 +470,7 @@ def main():
         "generatedPages": sorted(pages),
         "failures": failures, "notAutomaticallySynced": not_auto,
         "partialSupport": incomplete,
+        "linkRewriting": link_counts,
     }
     write(MANIFEST, json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
     print(f"Published {len(linked)} source entries; {len(failures)} failures; "
