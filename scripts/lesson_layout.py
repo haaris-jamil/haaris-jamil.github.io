@@ -361,7 +361,8 @@ def lesson_table(group, plans, events, by_id, linked):
             f'<td><span class="delivery-status {status.lower().replace(" ", "-")}">{esc(status)}</span>'
             f'<span class="lesson-date">{esc(date)}</span></td>'
             f'<td>{plan_html}</td><td>{slides}</td><td>{worksheets}</td>'
-            f'<td>{"".join(evhtml)}</td></tr>'
+            f'<td><div class="lesson-evidence-items">{"".join(f"<div>{item}</div>" for item in evhtml)}</div></td></tr>' if evhtml
+            else '<td></td></tr>'
         )
     return (
         f'<section class="lesson-section" id="science-{group}">'
