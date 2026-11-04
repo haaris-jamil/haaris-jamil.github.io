@@ -226,12 +226,7 @@ def _standard_evidence_rows(markup):
         elif len(links) == 2 and "Learner-work samples" in chunks[0]:
             rows.append(f'<li>{links[0]}</li>')
             rows.append(f'<li>{links[1]}</li>')
-            note = chunks[2].strip()
-            # Preserve the substantive limits of these pooled samples without
-            # leaving the dangling 'are linked' fragment.
-            note = re.sub(r"^are linked from the register\.\s*", "", note, flags=re.I)
-            if note:
-                rows.append(f'<li class="standard-evidence-note">{note}</li>')
+            # Keep only the Year 10 evidence links, not an attribution note.
         else:
             for anchor in links:
                 rows.append(f'<li>{anchor}</li>')
