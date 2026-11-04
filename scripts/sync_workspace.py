@@ -29,6 +29,7 @@ from lesson_layout import (
     slide_page_info,
 )
 from site_links import make_local_map, rewrite_html
+from site_evidence import evidence_page_info, reconcile_page
 from section_pages import (
     DOCUMENTS, GOALS_ID, STANDARDS_ID, sections_from_html, subpage_bodies, hub_body
 )
@@ -409,8 +410,12 @@ def main():
                     linked[fid] = {"page": None, "note": why}
                 else:
                     page = f"file-{fid}.html"
+                    display = evidence_page_info(entry)
+                    file_title, file_caption = (
+                        display if display else (entry["name"], "Original file from Google Drive.")
+                    )
                     write(page, document_html(
-                        entry["name"], "Original file from Google Drive.",
+                        file_title, file_caption,
                         preview + f'<p><a href="{esc(src)}" target="_blank" rel="noopener noreferrer">'
                         'Open source file ↗</a></p>', back=backlink
                     ))
@@ -491,6 +496,7 @@ def main():
             continue
         original = target.read_text(encoding="utf-8")
         updated, changes = rewrite_html(original, local_pages, local_folders)
+        updated = reconcile_page(html_page, updated)
         if updated != original:
             write(html_page, updated)
         for name, amount in changes.items():
