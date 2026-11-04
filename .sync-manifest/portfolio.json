@@ -1,5 +1,10 @@
 {
-  "failures": [],
+  "failures": [
+    {
+      "path": "04 Weekly Reflections/Week 6",
+      "reason": "Published version is empty"
+    }
+  ],
   "files": {
     "1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw": {
       "modifiedTime": "2026-11-04T00:24:30.275Z",
@@ -132,6 +137,7 @@
       "page": "file-1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD.html",
       "path": "03 Professional Goals/Goal 2 - Standing waves demonstration.mp4"
     },
+    "1GITYKbWZ5q2AAQO2b-H8Uks1dEocHMcBD_rEuJEK4VI": {},
     "1GO8Nzi8Z6xDUnJdoDo8Wuwe-kq1RqO5ZX-zevVaXfOU": {
       "modifiedTime": "2026-11-03T22:23:59.870Z",
       "page": "doc-1GO8Nzi8Z6xDUnJdoDo8Wuwe-kq1RqO5ZX-zevVaXfOU.html",
