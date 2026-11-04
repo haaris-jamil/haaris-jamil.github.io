@@ -224,6 +224,12 @@ def adapt_source(fid, markup):
             "students asked me to deliver part of the lesson in Hindi, which I did."
         )
     elif number == 6:
+        markup = markup.replace(
+            "The learning register records Science 1 Lesson 4 delivery on 23 October 2026. "
+            "Science 2's 22 October lesson is now identified as Lesson 3, not Lesson 4.",
+            "The learning register records Science 1 Lesson 4 on 23 October "
+            "and Science 2 Lesson 4 on 29 October 2026."
+        )
         insertion = (
             '<p>Year 10 Science 2 completed Lesson 4, the current-measurement '
             'practical, on 29 October 2026. Most students worked productively; '
