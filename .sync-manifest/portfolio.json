@@ -1,5 +1,10 @@
 {
-  "failures": [],
+  "failures": [
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 01: Charge and static electricity - Y10 Science 2",
+      "reason": "Slide thumbnail download failed: HTTP 502"
+    }
+  ],
   "files": {
     "1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw": {
       "modifiedTime": "2026-11-04T00:24:30.275Z",
@@ -647,7 +652,7 @@
   "linkRewriting": {
     "anchors": 93,
     "plain_urls": 9,
-    "source_footers": 88,
+    "source_footers": 87,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
