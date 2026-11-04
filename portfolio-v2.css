@@ -141,3 +141,53 @@ audio{width:100%;max-width:700px}
 .goal-media-grid figcaption,.goal-video figcaption{color:#45584e;font-size:13px;line-height:1.5;margin-top:8px}
 .goal-video video{display:block;width:100%;max-width:900px;max-height:520px;aspect-ratio:16/9;object-fit:contain;background:#17231d;border-radius:12px}
 @media(max-width:690px){.goal-media-grid{grid-template-columns:1fr}.goal-apparatus h3{font-size:23px}}
+
+/* Portfolio navigation, shorter homepage, and well-spaced evidence collections */
+.sitehead nav a[aria-current="page"]{background:#deeee5;color:#174e4a;box-shadow:inset 0 -2px 0 #347965}
+.hero{padding:84px 0 56px}
+.hero .heroactions{margin:26px 0 30px}
+.hero .notice{padding:12px 17px}
+.observation-jump{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 24px}
+.observation-jump a{border:1px solid #c2d6ca;background:#f5faf6;border-radius:25px;padding:8px 13px;font-size:13px;color:#235747;font-weight:700;text-decoration:none}
+.observation-jump a:hover{background:#e5f1e9}
+.observation-group{scroll-margin-top:115px}
+.observation-group h3{margin-bottom:14px}
+.observation-group h4{font:normal 21px/1.4 var(--serif);margin:20px 0 7px}
+.observation-links{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:7px}
+.observation-links li{background:#fff;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px}
+.observation-links li a{color:var(--accent-dark);text-decoration:none;font-weight:650}
+.observation-links li a:hover{text-decoration:underline}
+.page-contents{border:1px solid var(--border);border-radius:10px;padding:10px 16px;margin:6px 0 24px;background:#f7faf7}
+.page-contents summary{cursor:pointer;font-size:14px;font-weight:750;color:var(--accent-dark)}
+.page-contents nav{display:flex;flex-wrap:wrap;gap:5px 14px;margin-top:10px}
+.page-contents nav a{font-size:13px;text-decoration:underline;color:var(--accent-dark);padding:2px 0}
+.native-reflection h3[id]{scroll-margin-top:100px}
+@media(max-width:620px){
+ .hero{padding:63px 0 48px}
+ .hero .heroactions{margin:22px 0 24px}
+ .observation-jump{gap:6px}
+ .observation-jump a{font-size:12px}
+}
+/* Phone layout: read each lesson as a card; desktop keeps the full tables. */
+@media(max-width:690px){
+ .lesson-table-scroll{overflow:visible;border:0;background:transparent;border-radius:0}
+ .lesson-table{display:block;min-width:0;width:100%;font-size:14px}
+ .lesson-table thead{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+ .lesson-table tbody{display:grid;gap:13px}
+ .lesson-table tbody tr,.lesson-table tbody tr:nth-child(even){display:block;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 3px 10px #142d2308}
+ .lesson-table tbody tr:hover{background:#fff}
+ .lesson-table tbody th,.lesson-table tbody td{box-sizing:border-box;min-width:0!important;width:auto!important;border-bottom:1px solid #e9eee9}
+ .lesson-table tbody th{display:block;padding:14px 16px 11px;background:#edf4ef}
+ .lesson-table tbody th strong{font-size:16px;line-height:1.4}
+ .lesson-table tbody td{display:grid;grid-template-columns:106px minmax(0,1fr);align-items:start;gap:10px;padding:10px 16px}
+ .lesson-table tbody td:last-child{border-bottom:0}
+ .lesson-table tbody td:empty{display:none}
+ .lesson-table tbody td::before{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.025em;color:#51665b;padding-top:3px}
+ .lesson-table tbody td:nth-of-type(1)::before{content:"Date / status"}
+ .lesson-table tbody td:nth-of-type(2)::before{content:"Plan"}
+ .lesson-table tbody td:nth-of-type(3)::before{content:"Slides"}
+ .lesson-table tbody td:nth-of-type(4)::before{content:"Worksheet"}
+ .lesson-table tbody td:nth-of-type(5)::before{content:"Evidence"}
+ .lesson-table tbody td a{overflow-wrap:anywhere}
+ .lesson-table tbody td .lesson-links{min-width:0}
+}
