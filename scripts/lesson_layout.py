@@ -315,11 +315,16 @@ def lesson_table(group, plans, events, by_id, linked):
             for fid, label, description in MIXED_GROUP_EVIDENCE.get(num, []):
                 entry = by_id.get(fid)
                 if entry:
-                    evhtml.append(
-                        f'<div class="lesson-evidence-link">'
-                        f'{get_link(entry, linked, "Mixed-group evidence", "mixed-evidence-link")}'
-                        f'<p><strong>{esc(label)}:</strong> {esc(description)}</p></div>'
-                    )
+                    if num in (3, 4):
+                        evhtml.append(
+                            get_link(entry, linked, "Mixed-group evidence", "mixed-evidence-link")
+                        )
+                    else:
+                        evhtml.append(
+                            f'<div class="lesson-evidence-link">'
+                            f'{get_link(entry, linked, "Mixed-group evidence", "mixed-evidence-link")}'
+                            f'<p><strong>{esc(label)}:</strong> {esc(description)}</p></div>'
+                        )
             for fid, label, description in CLASS_EVIDENCE.get(key, []):
                 entry = by_id.get(fid)
                 if entry:
@@ -423,29 +428,6 @@ def short_name(entry):
     return text
 
 
-def shared_evidence(by_id, linked):
-    items = []
-    for lesson in (3, 4):
-        for fid, title, description in MIXED_GROUP_EVIDENCE[lesson]:
-            entry = by_id.get(fid)
-            if entry:
-                items.append(
-                    f'<li><strong>{get_link(entry, linked, title)}</strong>: '
-                    f'{esc(description)}</li>'
-                )
-    return (
-        '<section class="evidence-attribution" id="shared-year10-evidence">'
-        '<h3>Shared evidence from both Year 10 groups</h3>'
-        '<p>These samples were collected together from Year 10 Science 1 and Science 2. '
-        'They provide evidence associated with the relevant lessons across the two groups. '
-        'Individual pages are not attributed to a particular class unless independently confirmed.</p>'
-        '<ul>' + "".join(items) + '</ul>'
-        '<p class="evidence-limits">Mixed-group samples illustrate work produced by individual '
-        'learners. They do not prove that every student, or either class independently, '
-        'achieved a learning outcome.</p></section>'
-    )
-
-
 def teaching_body(entries, linked, events):
     by_id = {x["id"]: x for x in entries}
     plans = {(lesson_group(x), lesson_number(x)): x for x in entries if lesson_plan_entry(x)}
@@ -465,7 +447,6 @@ def teaching_body(entries, linked, events):
            + '</section>')
         + lesson_table(1, plans, events, by_id, linked)
         + lesson_table(2, plans, events, by_id, linked)
-        + shared_evidence(by_id, linked)
         + other_materials(entries, by_id, linked, events, plans)
         + "</div>"
     )
