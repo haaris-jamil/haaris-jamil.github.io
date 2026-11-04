@@ -195,7 +195,7 @@ def section_index(title, desc, entries, linked, errors, category):
     grouped = defaultdict(list)
     for e in entries:
         key = e["folderPath"][-1] if len(e["folderPath"]) > 1 else "Main documents"
-        key = re.sub(r"^\\d+\\s+", "", key)
+        key = re.sub(r"^\d+\s+", "", key)
         note = linked.get(e["id"], {}).get("note", "")
         grouped[key].append(file_description(e, linked.get(e["id"], {}).get("page"), note))
     panels = []
