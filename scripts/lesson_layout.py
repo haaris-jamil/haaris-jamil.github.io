@@ -32,13 +32,16 @@ SLIDE_MAP = {
     (1, 6): ["1OJ2d2lITwTzGm85KQRyHvT4YGswxth7-tTViUrSnujk"],
     (2, 6): ["11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY"],
     (1, 7): ["1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs"],
-    # No verified aligned deck for Science 2 Lesson 7.
-    # The earlier "Parallel circuits" deck differs substantially from Lesson 8.
+    # A separate Science 2 version of Lesson 7 may be added later.
     (1, 9): ["1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps"],
     (2, 9): ["1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps"],
     (1, 10): ["1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc"],
     (2, 10): ["1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc"],
-    # Old Lesson 11 deck describes a Te Uku visit, not the current beach investigation.
+    (1, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
+    (2, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
+    (1, 11): ["1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0"],
+    (2, 11): ["1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0"],
+    # Lesson 11 uses an earlier deck, while the plans continue to be revised.
     (1, 12): ["1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o"],
     (2, 12): ["1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o"],
 }
@@ -74,12 +77,14 @@ HIGHLIGHTS = {
     (1, 12): "An open-ended design assessment requiring circuit planning, testing, troubleshooting and evidence-based explanation.",
 }
 
-MISMATCH_NOTES = {
-    "1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA":
-        "Earlier Lesson 8 deck about general parallel circuits. It is not the current independently switched lamps and electrical protection lesson.",
-    "1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0":
-        "Earlier Lesson 11 deck about Te Uku wind-farm investigations. The current class plans are for a beach-based generator investigation.",
+# Some decks are earlier resources for lessons still being revised. They remain
+# accessible within their lesson, with no assumption that planning is final.
+EARLIER_SLIDES = {
+    "1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA",
+    "1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0",
 }
+UNIT_OVERVIEW_ID = "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w"
+
 PLAN_RE = re.compile(r"^Lesson\s*0?(\d{1,2})\s*[:.\-–]?\s*(.*)", re.I)
 
 
@@ -274,7 +279,10 @@ def lesson_table(group, plans, events, by_id, linked):
         title = lesson_title(group, num, plan or {"name": f"Lesson {num}"}, events)
         highlight = ' <span class="featured-mark" title="Selected lesson plan">Selected</span>' if key in HIGHLIGHTS else ""
         plan_html = get_link(plan, linked, "Plan") if plan else '<span class="no-resource">—</span>'
-        slides = make_resources([(fid, "Slides") for fid in SLIDE_MAP.get(key, [])], by_id, linked)
+        slides = make_resources(
+            [(fid, "Earlier slides" if fid in EARLIER_SLIDES else "Slides")
+             for fid in SLIDE_MAP.get(key, [])], by_id, linked
+        )
         worksheets = make_resources(WORKSHEETS.get(num, []), by_id, linked)
         evidence = EVIDENCE.get(key, [])
         evhtml = []
@@ -288,12 +296,6 @@ def lesson_table(group, plans, events, by_id, linked):
         if not evhtml:
             evhtml = ['<span class="no-resource">No class-specific file linked</span>'
                       if status == "Completed" else '<span class="no-resource">Not yet delivered</span>']
-        if num == 8:
-            slides += '<small class="alignment-note">Earlier parallel-circuit slides do not match this revised plan.</small>'
-        if num == 11:
-            slides += '<small class="alignment-note">Earlier Te Uku slides do not match the current beach investigation.</small>'
-        if group == 2 and num == 7:
-            slides += '<small class="alignment-note">Science 1 deck is not labelled for this class.</small>'
         if num in (3, 4) and status == "Completed":
             evhtml.append('<small class="alignment-note">Lesson evidence requiring class identification is listed below.</small>')
         rows.append(
@@ -323,7 +325,6 @@ def other_materials(entries, by_id, linked):
         content = f"<p>{esc(intro)}</p>" if intro else ""
         content += '<ul class="resource-list">' + "".join(
             f'<li>{get_link(e, linked, short_name(e))}'
-            + (f'<small>{esc(MISMATCH_NOTES[e["id"]])}</small>' if e["id"] in MISMATCH_NOTES else "")
             + "</li>" for e in sorted(items, key=lambda x: x["name"].casefold())
         ) + "</ul>"
         return f'<div class="supporting-group"><h4>{esc(title)}</h4>{content}</div>'
@@ -343,22 +344,19 @@ def other_materials(entries, by_id, linked):
     ignore.update(x["id"] for x in plans_history)
     ignore.update(x["id"] for x in unmatched_slides)
     other_files = [x for x in entries if x.get("id") not in ignore
-                   and not lesson_plan_entry(x)]
+                   and not lesson_plan_entry(x) and x.get("id") != UNIT_OVERVIEW_ID]
     sections = [
-        group("Older slide decks, not aligned with the current plans", older,
-              "These decks are retained for context, not assigned to a current class lesson."),
-        group("Slides awaiting alignment", unassigned_slides,
-              "New or other presentations remain accessible but are not linked to a lesson without checking their contents."),
+        group("Other presentations", unassigned_slides,
+              "Additional decks are retained here until their class or lesson is confirmed."),
         group("Other teaching and planning resources", other_files),
     ]
     return (
         '<details class="planning-history"><summary>Other teaching resources and slide alignment</summary>'
         + "".join(sections) + "</details>"
         '<details class="planning-history"><summary>Planning history: superseded versions</summary>'
-        '<p>These earlier documents show how the electricity unit evolved. Current lesson plans and '
-        'class-specific sequences above take precedence. In particular, household-wiring content was '
-        'separated into Lessons 7 and 8, and the previous general parallel-circuit material is not '
-        'treated as the revised Lesson 8.</p>'
+        '<p>These earlier documents show how the electricity unit evolved. The live, class-specific '
+        'lesson plans and Learning Events Register above show the ongoing teaching sequence. '
+        'Household-wiring content was refined into two separate lessons.</p>'
         + group("Earlier plans and worksheets", plans_history) + "</details>"
     )
 
@@ -396,12 +394,17 @@ def teaching_body(entries, linked, events):
     content = (
         '<div class="teaching-dashboard">'
         '<p class="teaching-intro">Follow each class from planning through delivery and evidence. '
-        'Dates and delivery statuses come from the Learning Events Register, not from the existence '
-        'of a lesson plan. Future plans are not presented as completed teaching.</p>'
+        'Dates and delivery statuses come from the Learning Events Register. Lesson plans and '
+        'presentations are working documents that evolve with teaching experience.</p>'
         '<nav class="lesson-jump" aria-label="Lesson sequence navigation">'
         '<a href="#science-1">Year 10 Science 1</a><a href="#science-2">Year 10 Science 2</a>'
         '<a href="learning-events.html">Learning events register</a></nav>'
         + highlighted_panel(plans, events, linked)
+        + ('<section class="unit-overview-note"><h3>Original unit overview</h3>'
+           '<p>The initial unit overview records the starting plan. The lesson tables and '
+           'class-specific plans below reflect subsequent revisions as teaching progresses.</p>'
+           + get_link(by_id.get(UNIT_OVERVIEW_ID), linked, "Read original unit overview")
+           + '</section>')
         + lesson_table(1, plans, events, by_id, linked)
         + lesson_table(2, plans, events, by_id, linked)
         + unidentified_evidence(by_id, linked)
