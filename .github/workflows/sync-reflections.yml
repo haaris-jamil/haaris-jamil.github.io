@@ -65,17 +65,29 @@ jobs:
           git add -A
           if ! git diff --cached --quiet; then
             git commit -m "Sync ProfEx portfolio from Google Drive"
-            if ! git push; then
-              echo "The repository changed during synchronisation; rebuilding on the latest revision."
-              git fetch origin main
-              git reset --hard origin/main
-              python scripts/sync_workspace.py
-              git add -A
-              if ! git diff --cached --quiet; then
-                git commit -m "Sync ProfEx portfolio from Google Drive"
-                git push
+            # A full Drive scan takes many minutes. Meanwhile, newer website
+            # edits can reach main. Rebase the generated-file commit rather than
+            # repeating the entire scan and racing another push.
+            # During rebase, "ours" is the newer upstream branch. Prefer those
+            # website edits when the same generated line changed on both sides.
+            max_attempts=8
+            for (( attempt=1; attempt<=max_attempts; attempt++ )); do
+              if git push origin HEAD:main; then
+                echo "Published generated files to main on attempt ${attempt}."
+                break
               fi
-            fi
+              if (( attempt == max_attempts )); then
+                echo "Could not push after ${max_attempts} attempts." >&2
+                exit 1
+              fi
+              echo "Main changed during synchronisation; integrating newer edits (attempt ${attempt})."
+              git fetch origin main
+              if ! git rebase -X ours origin/main; then
+                git rebase --abort || true
+                echo "Automatic rebase failed; preserving newer website edits rather than forcing a push." >&2
+                exit 1
+              fi
+            done
           else
             echo "No changes to source files."
           fi
