@@ -2,10 +2,10 @@
   "failures": [],
   "files": {
     "1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw": {
-      "modifiedTime": "2026-10-24T18:25:06.813Z",
+      "modifiedTime": "2026-11-04T00:24:30.275Z",
       "page": "slides-1--Jd9sCrxHqVdq6nyEM2wYsCxzOizEQZ1xov7zrHRdw.html",
       "path": "01 About Me/Haaris Jamil – Pepeha",
-      "slides": 13
+      "slides": 9
     },
     "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w": {
       "modifiedTime": "2026-11-03T21:01:50.445Z",
@@ -28,10 +28,10 @@
       "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Mentor teacher feedback - week 2"
     },
     "11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY": {
-      "modifiedTime": "2026-11-01T22:13:37.115Z",
+      "modifiedTime": "2026-11-04T00:29:47.288Z",
       "page": "slides-11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY.html",
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06 - Science 2 - Demonstration and graphing - 5 November 2026",
-      "slides": 10
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 06: Reliable connections and switched outlets - Y10 Science 2 - 5 November 2026",
+      "slides": 13
     },
     "12Gw8ujwQEaClqWs9yf5-ZuUSgs7vqwXnlWWDG6tGfyA": {
       "modifiedTime": "2026-11-03T21:00:27.828Z",
@@ -158,7 +158,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-05-Y10-Science-1-Crossword-Anonymised.pdf"
     },
     "1LRJcZrLnGMH9hDYmw1PISopoeKKAyErfI3Z3btEaQ_o": {
-      "modifiedTime": "2026-10-13T20:01:37.685Z",
+      "modifiedTime": "2026-11-04T00:22:31.992Z",
       "page": "doc-1LRJcZrLnGMH9hDYmw1PISopoeKKAyErfI3Z3btEaQ_o.html",
       "path": "01 About Me/Teacher Statement and Pepeha"
     },
@@ -207,11 +207,6 @@
       "modifiedTime": "2026-10-14T00:33:09.297Z",
       "page": "doc-1S4ltFg4bRMT24MQe8iW08Ho5wcVjZ1BxjDy94Yrjr3k.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson 02 Charge and static electricity Worksheet "
-    },
-    "1SNAepMQjU1wReMKO3PCMCYu-U8hJv1RV": {
-      "modifiedTime": "2026-11-03T21:12:52.408Z",
-      "page": "file-1SNAepMQjU1wReMKO3PCMCYu-U8hJv1RV.html",
-      "path": "02 Observations/Observations of My Teaching/Evaluative Visit Report - 28 October 2026 - Redacted Copy.pdf"
     },
     "1TgFds-Pk1Srck6N_IiX-JzynoSNS5hM4g4ora4v8AiM": {
       "modifiedTime": "2026-11-03T20:12:14.409Z",
@@ -346,11 +341,6 @@
       "page": "file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lessons 3: anonymised worksheet evidence.pdf"
     },
-    "1k2YpbtSlsUJIc8Mpn0jzoOqOQwHSCnGw": {
-      "modifiedTime": "2026-11-03T21:13:01.971Z",
-      "page": "file-1k2YpbtSlsUJIc8Mpn0jzoOqOQwHSCnGw.html",
-      "path": "02 Observations/Observations of My Teaching/Mentor teacher feedback/Mentor teacher feedback - week 2 - Redacted Copy.pdf"
-    },
     "1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM": {
       "modifiedTime": "2026-11-03T22:24:27.410Z",
       "page": "doc-1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM.html",
@@ -413,9 +403,9 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 07: Reliable connections and switched outlets - Y10 Science 2 - Full Lesson Plan"
     },
     "1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg": {
-      "modifiedTime": "2026-11-03T22:25:32.525Z",
+      "modifiedTime": "2026-11-04T00:19:35.690Z",
       "page": "doc-1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg.html",
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 06: Demonstration, graphing and resistance - Y10 Science 2 - Full Lesson Plan"
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 06: Reliable connections and switched outlets - Y10 Science 2 - Full Lesson Plan"
     },
     "1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN": {
       "modifiedTime": "2026-10-27T02:38:12.971Z",
@@ -491,12 +481,10 @@
     "file-1G_tKmyiupFnNKqSg2CQNTevU-yseykPO.html",
     "file-1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp.html",
     "file-1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq.html",
-    "file-1SNAepMQjU1wReMKO3PCMCYu-U8hJv1RV.html",
     "file-1ULcE4YEdpnercpaxGNDQH6HXjjN9EF_K.html",
     "file-1W5ptAjJtQbg-T_BxPKDLbULK3tfw-MQK.html",
     "file-1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4.html",
     "file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html",
-    "file-1k2YpbtSlsUJIc8Mpn0jzoOqOQwHSCnGw.html",
     "file-1lvmu4SaSEA9sMS_zEVw573dOURLfZio5.html",
     "file-1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP.html",
     "file-1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN.html",
@@ -533,6 +521,12 @@
     "sync-audit.html",
     "teaching.html"
   ],
+  "linkRewriting": {
+    "anchors": 106,
+    "plain_urls": 12,
+    "source_footers": 77,
+    "unresolved": 1
+  },
   "notAutomaticallySynced": [],
   "partialSupport": [],
   "root": "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
