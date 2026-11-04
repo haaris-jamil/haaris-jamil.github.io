@@ -106,10 +106,7 @@ def hub_markup(kind):
             f'<h3>{_esc(title)}</h3><p>{_esc(description)}</p>'
             '<span class="topic-card-link">Read reflection and evidence ↗</span></a>'
         )
-    return (
-        f'<p class="topic-hub-intro">{_esc(data["intro"])}</p>'
-        + '<div class="topic-card-grid">' + "".join(cards) + '</div>'
-    )
+    return '<div class="topic-card-grid">' + "".join(cards) + '</div>'
 
 
 def navigation(fid):
@@ -166,30 +163,15 @@ def _replace_goal_evidence(markup, number):
     return markup[:match.end()] + _goal_evidence_markup(number) + markup[end:]
 
 
-def _standing_wave_gallery():
+def _standing_wave_player():
+    """Inline video thumbnail beside the source document's existing images."""
     return (
-        '<section id="standing-wave-apparatus" class="goal-apparatus" '
-        'aria-label="Wooden standing-wave frame and video">'
-        '<h3>Standing-wave apparatus: construction and demonstration</h3>'
-        '<p>Photographs of the wooden frame I built to hold the vibration '
-        'generator and the driven-string setup beside the piano.</p>'
-        '<div class="goal-media-grid">'
-        '<figure><a href="file-1xbXqSmR_t2K7-Jg25Yk7XjqrEI9GBWf9.html">'
-        f'<img loading="lazy" src="{_esc(STANDING_IMAGE_CLOSE)}" '
-        'alt="Close view of the wooden vibration-generator support frame"></a>'
-        '<figcaption>Wooden support frame, close view</figcaption></figure>'
-        '<figure><a href="file-1U8DLa3GjbBcpiTLSEY6MZWDG5EEThvZU.html">'
-        f'<img loading="lazy" src="{_esc(STANDING_IMAGE_WIDE)}" '
-        'alt="Standing-wave string apparatus beside piano strings"></a>'
-        '<figcaption>Wider standing-wave demonstration setup</figcaption></figure>'
-        '</div>'
-        '<figure class="goal-video"><video controls playsinline preload="metadata" '
-        f'poster="{_esc(STANDING_IMAGE_WIDE)}">'
+        '<figure id="standing-wave-video" class="goal-video">'
+        f'<video controls playsinline preload="metadata" poster="{_esc(STANDING_IMAGE_WIDE)}">'
         f'<source src="{_esc(STANDING_VIDEO)}" type="video/mp4">'
         'Your browser does not support the embedded video.</video>'
         '<figcaption>Standing-wave demonstration using the vibration generator '
-        'and signal generator. Select play to watch on this page.</figcaption>'
-        '</figure></section>'
+        'and signal generator.</figcaption></figure>'
     )
 
 
@@ -205,15 +187,26 @@ def adapt_source(fid, markup):
         markup = _replace_goal_evidence(markup, number)
         if number == 2:
             markup = re.sub(
-                r'<p>\s*<a\b[^>]*>\s*Video:\s*Standing.wave demonstration\s*</a>\s*</p>',
-                "", markup, flags=re.I | re.S,
-            )
-            markup = re.sub(
                 r'<h3>\s*Photographic evidence\s*</h3>',
                 '<h3 id="photographic-evidence">Photographic evidence</h3>',
                 markup, count=1, flags=re.I,
             )
-            markup += _standing_wave_gallery()
+            markup = re.sub(
+                r'<h3>\s*Standing.wave apparatus:\s*wooden support frame\s*</h3>',
+                '<h3 id="standing-wave-apparatus">Standing-wave apparatus: wooden support frame</h3>',
+                markup, count=1, flags=re.I,
+            )
+            # Two frame photographs are already present in the source Google Doc.
+            video_link = (
+                r'<p>\s*<a\b[^>]*>\s*(?:<u>\s*)?'
+                r'Video:\s*Standing.wave demonstration\s*(?:</u>\s*)?</a>\s*</p>'
+            )
+            markup, replaced = re.subn(
+                video_link, lambda _: _standing_wave_player(),
+                markup, count=1, flags=re.I | re.S,
+            )
+            if not replaced:
+                markup += _standing_wave_player()
     elif number == 3:
         markup = markup.replace(
             "Sharing my pepeha gave students an opportunity to learn about me "

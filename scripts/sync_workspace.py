@@ -30,6 +30,10 @@ from lesson_layout import (
 )
 from site_links import make_local_map, rewrite_html
 from site_evidence import evidence_page_info, reconcile_page
+from site_finishing import (
+    ABOUT_ID, REFERENCES_ID, PEPEHA_SLIDES_ID, DIRECT_PAGES,
+    direct_document_markup, observations_body, improve_image_alts,
+)
 from portfolio_sections import (
     NEW_DOCUMENTS, ARCHIVE_PAGES, GROUPS,
     group_for_page, section_page, section_heading, hub_markup, adapt_source,
@@ -79,7 +83,7 @@ def write(path, contents):
         dest.write_text(contents, encoding="utf-8")
 
 
-def document_html(title, caption, inner, back="teaching.html"):
+def document_html(title, caption, inner, back="index.html"):
     links = "".join(
         f'<a href="{esc(target)}">{esc(label)}</a>' for label, target in NAV
     )
@@ -281,12 +285,16 @@ def main():
     old = json.loads(MANIFEST.read_text()) if MANIFEST.is_file() else {}
     old_files = old.get("files", {})
     scanned = scan_drive(session)
-    excluded = [e for e in scanned if exclude_from_website(e)]
-    records = [e for e in scanned if not exclude_from_website(e)]
+    excluded = [e for e in scanned if exclude_from_website(e) or e["id"] == PEPEHA_SLIDES_ID]
+    records = [e for e in scanned if not exclude_from_website(e) and e["id"] != PEPEHA_SLIDES_ID]
     for e in excluded:
         # Deliberately remove website copies of redacted observation duplicates;
         # nothing is deleted or changed in Google Drive.
         stale_id = e["id"]
+        if stale_id == PEPEHA_SLIDES_ID:
+            Path(f"slides-{stale_id}.html").unlink(missing_ok=True)
+            shutil.rmtree(Path("assets/slides") / stale_id, ignore_errors=True)
+            continue
         Path(f"file-{stale_id}.html").unlink(missing_ok=True)
         shutil.rmtree(Path("assets/drive") / stale_id, ignore_errors=True)
     events = current_events(session)
@@ -296,6 +304,7 @@ def main():
     failures, not_auto, incomplete = [], [], []
     pages = set()
     weeks = {}
+    rendered_docs = {}
     for entry in records:
         if entry["mimeType"] == FOLDER_MIME:
             continue
@@ -355,6 +364,8 @@ def main():
                         incomplete.append({"path": path, "reason": reason})
                     if not markup.strip():
                         markup = "<p>Document is empty.</p>"
+                    if fid in (ABOUT_ID, REFERENCES_ID):
+                        rendered_docs[fid] = markup
                     if fid in NEW_DOCUMENTS:
                         page = section_page(fid)
                         heading = section_heading(fid)
@@ -468,6 +479,18 @@ def main():
                 GROUPS[group_kind]["title"], GROUPS[group_kind]["intro"],
                 hub_markup(group_kind), back="index.html",
             ))
+        elif slug in DIRECT_PAGES:
+            source_id = DIRECT_PAGES[slug]
+            if source_id in rendered_docs:
+                write(slug, document_html(
+                    title, desc, direct_document_markup(rendered_docs[source_id], slug),
+                    back="index.html",
+                ))
+            elif not Path(slug).is_file():
+                write(slug, document_html(
+                    title, desc, "<p>Source content is temporarily unavailable.</p>",
+                    back="index.html",
+                ))
         else:
             subset = [f for f in records if f["mimeType"] != FOLDER_MIME and folder_area(f) == name]
             if name == "06 Teaching & Planning":
@@ -475,6 +498,11 @@ def main():
                 write(slug, document_html(
                     "Teaching & planning", "Lesson sequences, delivery and evidence.",
                     markup, back="index.html",
+                ))
+            elif name == "02 Observations":
+                write(slug, document_html(
+                    title, desc, observations_body(subset, linked),
+                    back="index.html",
                 ))
             else:
                 write(slug, section_index(title, desc, subset, linked, failures, name))
@@ -503,6 +531,7 @@ def main():
         original = target.read_text(encoding="utf-8")
         updated, changes = rewrite_html(original, local_pages, local_folders)
         updated = reconcile_page(html_page, updated)
+        updated = improve_image_alts(updated)
         if updated != original:
             write(html_page, updated)
         for name, amount in changes.items():
