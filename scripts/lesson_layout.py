@@ -212,6 +212,27 @@ def strip_duplicate_title(markup, number):
     )
 
 
+def slide_page_info(entry, events):
+    """Short slide headings without asserting an unverified plan match."""
+    matched = [key for key, ids in SLIDE_MAP.items() if entry["id"] in ids]
+    number = lesson_number(entry)
+    if len(matched) == 1:
+        group, number = matched[0]
+        lesson = f"Lesson {number:02}: {lesson_title(group, number, entry, events)}"
+        event = events.get((group, number), {})
+        info = (f"Year 10 Science {group} · {event.get('date', 'Date to confirm')}"
+                f" · {event.get('status', 'Unconfirmed')} · Teaching slides")
+        return lesson, info
+    if len(matched) > 1:
+        group, number = matched[0]
+        lesson = f"Lesson {number:02}: {lesson_title(group, number, entry, events)}"
+        return lesson, "Shared teaching slides · Check each class's separate lesson status"
+    if number:
+        label = re.sub(r"^Lesson\s*0?\d+\s*[-:]\s*", "", entry["name"])
+        return f"Lesson {number:02}: {label}", "Other slide deck · Not matched to a current class lesson"
+    return entry["name"], "Teaching presentation · Plan alignment not confirmed"
+
+
 def resource_detail(entry, linked, by_id):
     return get_link(entry, linked, "Open")
 
@@ -314,10 +335,7 @@ def other_materials(entries, by_id, linked):
     plans_history = [x for x in entries if "99 Superseded Plans and Resources" in x.get("path", [])]
     older = [x for x in entries if x in unmatched_slides and x["id"] in MISMATCH_NOTES]
     unassigned_slides = [x for x in unmatched_slides if x not in older]
-    lesson_attached = {
-        x["id"] for group in (1, 2) for number in range(1, 13)
-        for x in []  # all attached IDs are recorded below
-    }
+    lesson_attached = set()
     lesson_attached.update(fid for pair in WORKSHEETS.values() for fid, _ in pair)
     lesson_attached.update(fid for vals in EVIDENCE.values() for fid, _, _ in vals)
     lesson_attached.update(fid for fid, _, _ in UNALLOCATED_EVIDENCE)
