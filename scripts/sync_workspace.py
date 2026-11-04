@@ -30,8 +30,9 @@ from lesson_layout import (
 )
 from site_links import make_local_map, rewrite_html
 from site_evidence import evidence_page_info, reconcile_page
-from section_pages import (
-    DOCUMENTS, GOALS_ID, STANDARDS_ID, sections_from_html, subpage_bodies, hub_body
+from portfolio_sections import (
+    NEW_DOCUMENTS, ARCHIVE_PAGES, GROUPS,
+    group_for_page, section_page, section_heading, hub_markup, adapt_source,
 )
 
 ROOT_ID = "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
@@ -295,7 +296,6 @@ def main():
     failures, not_auto, incomplete = [], [], []
     pages = set()
     weeks = {}
-    section_hubs = {}
     for entry in records:
         if entry["mimeType"] == FOLDER_MIME:
             continue
@@ -306,6 +306,23 @@ def main():
         category = folder_area(entry)
         backlink = next((slug for name, slug, _, _ in CATEGORIES if name == category), "index.html")
         previous = old_files.get(fid, {})
+        if kind == DOC_MIME and fid in ARCHIVE_PAGES:
+            # The old combined documents remain in Drive as archives only.
+            # Use the six separate documents for all public Goal/Standard pages.
+            hub = ARCHIVE_PAGES[fid]
+            legacy = f"doc-{fid}.html"
+            write(legacy, document_html(
+                "Archived portfolio source",
+                "The current Goals and Standards are organised into individual pages.",
+                f'<p><a href="{esc(hub)}">View the current section</a></p>',
+                back=hub,
+            ))
+            pages.add(legacy)
+            linked[fid] = {"page": hub}
+            current_files[fid] = {
+                "modifiedTime": entry.get("modifiedTime", ""), "path": path, "page": hub
+            }
+            continue
         try:
             if kind == DOC_MIME:
                 response = api_json(
@@ -338,27 +355,15 @@ def main():
                         incomplete.append({"path": path, "reason": reason})
                     if not markup.strip():
                         markup = "<p>Document is empty.</p>"
-                    if fid in DOCUMENTS:
-                        cfg = DOCUMENTS[fid]
-                        selected = sections_from_html(markup, fid)
-                        for child_page, info in subpage_bodies(fid, selected).items():
-                            write(child_page, document_html(
-                                info["title"], info["caption"], info["body"], back=info["back"]
-                            ))
-                            pages.add(child_page)
-                        hub_markup = hub_body(fid, selected)
-                        section_hubs[cfg["hub"]] = document_html(
-                            cfg["label"], cfg["intro"], hub_markup, back="index.html"
-                        )
-                        # Keep the former all-in-one URL valid, but never expose
-                        # Standards 1, 4 or 5 in that obsolete website location.
-                        legacy = f"doc-{fid}.html"
-                        write(legacy, document_html(
-                            cfg["label"], "This content is organised into separate sections.",
-                            hub_markup, back=cfg["hub"]
+                    if fid in NEW_DOCUMENTS:
+                        page = section_page(fid)
+                        heading = section_heading(fid)
+                        kind_name = NEW_DOCUMENTS[fid][0]
+                        write(page, document_html(
+                            heading, GROUPS[kind_name]["intro"],
+                            adapt_source(fid, markup),
+                            back=GROUPS[kind_name]["hub"],
                         ))
-                        pages.add(legacy)
-                        page = cfg["hub"]
                     else:
                         page = f"doc-{fid}.html"
                         detail = plan_page_info(entry, events)
@@ -433,6 +438,11 @@ def main():
             # Failed conversions remain scheduled for retry, so they are not
             # classified as intentionally excluded from automatic sync.
             last_page = previous.get("page")
+            if fid in NEW_DOCUMENTS:
+                # Retain the last good current subpage if its source is temporarily unavailable.
+                candidate = section_page(fid)
+                if Path(candidate).is_file():
+                    last_page = candidate
             if not last_page and category == "04 Weekly Reflections":
                 matched = re.match(r"^Week\s+(\d+)\b", entry["name"], re.I)
                 if matched:
@@ -452,16 +462,12 @@ def main():
     for name, slug, title, desc in CATEGORIES:
         if name == "04 Weekly Reflections":
             write(slug, reflection_index(weeks))
-        elif slug in section_hubs:
-            write(slug, section_hubs[slug])
-        elif slug in ("goals.html", "standards.html") and Path(slug).is_file():
-            # On a temporary source-read failure, preserve the previously
-            # published navigation and its sections rather than reverting.
-            source_id = GOALS_ID if slug == "goals.html" else STANDARDS_ID
-            for number in DOCUMENTS[source_id]["allowed"]:
-                cached = f'{DOCUMENTS[source_id]["prefix"]}-{number}.html'
-                if Path(cached).is_file():
-                    pages.add(cached)
+        elif group_for_page(slug):
+            group_kind = group_for_page(slug)
+            write(slug, document_html(
+                GROUPS[group_kind]["title"], GROUPS[group_kind]["intro"],
+                hub_markup(group_kind), back="index.html",
+            ))
         else:
             subset = [f for f in records if f["mimeType"] != FOLDER_MIME and folder_area(f) == name]
             if name == "06 Teaching & Planning":
