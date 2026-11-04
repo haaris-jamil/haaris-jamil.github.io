@@ -98,3 +98,21 @@ audio{width:100%;max-width:700px}
 .resource-list li small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
 @media(max-width:970px){.highlight-grid{grid-template-columns:1fr 1fr}.resource-list{columns:1}}
 @media(max-width:660px){.highlight-grid{grid-template-columns:1fr}.lesson-table td,.lesson-table th{padding:11px 8px}.teaching-dashboard{gap:30px}.planning-history{padding:16px}}
+
+
+/* Single-document goals and professional-standards subpages */
+.topic-hub-intro{font-size:15px;color:var(--muted);max-width:800px;margin:0 0 24px}
+.topic-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.topic-card{background:white;border:1px solid var(--border);border-radius:13px;padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;transition:box-shadow .15s,border-color .15s}
+.topic-card:hover{border-color:#8aad9b;box-shadow:0 6px 18px #19332910}
+.topic-card-number{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:750;color:var(--accent-dark)}
+.topic-card h3{font:normal 24px/1.23 var(--serif);margin:0}
+.topic-card p{margin:0 0 8px;font-size:14px;line-height:1.55;color:var(--muted);flex:1}
+.topic-card-link{font-size:13px;font-weight:700;color:var(--accent-dark)}
+.topic-subnav{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 23px}
+.topic-subnav a{border:1px solid var(--border);border-radius:30px;background:white;color:var(--accent-dark);font-size:13px;font-weight:700;padding:8px 13px;text-decoration:none}
+.topic-subnav a[aria-current="page"]{background:#e1eee6;border-color:#aac9b4}
+.topic-pager{display:flex;justify-content:space-between;gap:16px;margin-top:25px}
+.topic-pager a{font-size:14px;color:var(--accent-dark);font-weight:700}
+@media(max-width:900px){.topic-card-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.topic-card-grid{grid-template-columns:1fr}}
