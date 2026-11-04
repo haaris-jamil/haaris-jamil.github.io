@@ -177,7 +177,6 @@ def file_source_link(entry):
 
 
 def file_description(entry, page, note=""):
-    folder = "/".join(entry["folderPath"][1:]) if entry["folderPath"] else "Portfolio root"
     out = '<div class="source-item">'
     if page:
         out += f'<a class="source-title" href="{esc(page)}">{esc(entry["name"])}</a>'
@@ -187,7 +186,6 @@ def file_description(entry, page, note=""):
             'target="_blank" rel="noopener noreferrer">'
             f'{esc(entry["name"])}</a>'
         )
-    out += f'<span class="source-location">{esc(folder)}</span>'
     if note:
         out += f'<p>{esc(note)}</p>'
     return out + "</div>"
@@ -196,7 +194,8 @@ def file_description(entry, page, note=""):
 def section_index(title, desc, entries, linked, errors, category):
     grouped = defaultdict(list)
     for e in entries:
-        key = "/".join(e["folderPath"][1:]) or "Main documents"
+        key = e["folderPath"][-1] if len(e["folderPath"]) > 1 else "Main documents"
+        key = re.sub(r"^\\d+\\s+", "", key)
         note = linked.get(e["id"], {}).get("note", "")
         grouped[key].append(file_description(e, linked.get(e["id"], {}).get("page"), note))
     panels = []
