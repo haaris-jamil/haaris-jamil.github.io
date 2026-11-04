@@ -10,6 +10,7 @@ import json
 import os
 import re
 from collections import Counter, defaultdict
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -22,6 +23,10 @@ from sync_reflections import (
     page as reflection_page
 )
 from sync_media import api_json, sync_sheet, sync_slides, sync_binary, sync_doc_images, esc
+from lesson_layout import (
+    exclude_from_website, current_events, teaching_body,
+    lesson_plan_entry, lesson_number, plan_page_info, strip_duplicate_title,
+)
 
 ROOT_ID = "13L9IMcA3-j3OjUWTHgB8YKwYKXbvHKX4"
 DRIVE_API = "https://www.googleapis.com/drive/v3/files"
@@ -269,8 +274,18 @@ def main():
     session = AuthorizedSession(creds)
     old = json.loads(MANIFEST.read_text()) if MANIFEST.is_file() else {}
     old_files = old.get("files", {})
-    records = scan_drive(session)
-    print(f"Discovered {len(records)} files and folders")
+    scanned = scan_drive(session)
+    excluded = [e for e in scanned if exclude_from_website(e)]
+    records = [e for e in scanned if not exclude_from_website(e)]
+    for e in excluded:
+        # Deliberately remove website copies of redacted observation duplicates;
+        # nothing is deleted or changed in Google Drive.
+        stale_id = e["id"]
+        Path(f"file-{stale_id}.html").unlink(missing_ok=True)
+        shutil.rmtree(Path("assets/drive") / stale_id, ignore_errors=True)
+    events = current_events(session)
+    print(f"Discovered {len(scanned)} Drive entries; excluded {len(excluded)} "
+          "redacted observation duplicates from the website")
     linked, current_files = {}, {}
     failures, not_auto, incomplete = [], [], []
     pages = set()
@@ -318,8 +333,14 @@ def main():
                         incomplete.append({"path": path, "reason": reason})
                     if not markup.strip():
                         markup = "<p>Document is empty.</p>"
+                    detail = plan_page_info(entry, events)
+                    if detail:
+                        title, caption = detail
+                        markup = strip_duplicate_title(markup, lesson_number(entry))
+                    else:
+                        title, caption = entry["name"], "Portfolio source document"
                     write(page, document_html(
-                        entry["name"], "Original source: Google Docs",
+                        title, caption,
                         f'<article class="native-reflection"><div class="reflection-prose">'
                         + markup + "</div></article>"
                         + f'<p><a href="{esc(src)}" target="_blank" rel="noopener noreferrer">'
@@ -400,7 +421,14 @@ def main():
             write(slug, reflection_index(weeks))
         else:
             subset = [f for f in records if f["mimeType"] != FOLDER_MIME and folder_area(f) == name]
-            write(slug, section_index(title, desc, subset, linked, failures, name))
+            if name == "06 Teaching & Planning":
+                markup = teaching_body(subset, linked, events)
+                write(slug, document_html(
+                    "Teaching & planning", "Lesson sequences, delivery and evidence.",
+                    markup, back="index.html",
+                ))
+            else:
+                write(slug, section_index(title, desc, subset, linked, failures, name))
         pages.add(slug)
     miscellaneous = [
         f for f in records if f["mimeType"] != FOLDER_MIME
