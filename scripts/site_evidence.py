@@ -74,6 +74,18 @@ def _register_row(content, event_id):
     # Column L (index 11) is the register's evidence/observable outcomes.
     if event_id == 10:
         prior = matches[11].group(1)
+        # Hide historical editing notes in the public table without changing
+        # the Learning Events Register in Google Drive.
+        prior = re.sub(
+            r"Corrected to Lesson 3 following Haaris(?:&#x27;|')s confirmation "
+            r"of the reconstructed Science 2 sequence\. The circuit-building "
+            r"lesson postponed on 19 October was delivered in this slot\.\s*",
+            "", prior
+        )
+        prior = prior.replace(
+            "Delivered 22 October 2026. my mentor teacher",
+            "Delivered 22 October 2026. My mentor teacher"
+        )
         prior = prior.replace(
             "No Science 2 student work is linked here yet.",
             "Lesson 3 worksheet samples are linked below."
