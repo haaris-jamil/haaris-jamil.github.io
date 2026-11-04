@@ -294,8 +294,13 @@ def lesson_table(group, plans, events, by_id, linked):
                     f'<p>{esc(description)}</p></div>'
                 )
         if not evhtml:
-            evhtml = ['<span class="no-resource">No class-specific file linked</span>'
-                      if status == "Completed" else '<span class="no-resource">Not yet delivered</span>']
+            if key == (1, 2) and status == "Not delivered":
+                evidence_message = "Not delivered by me"
+            elif status == "Completed":
+                evidence_message = "No class-specific file linked"
+            else:
+                evidence_message = "Not yet delivered"
+            evhtml = [f'<span class="no-resource">{evidence_message}</span>']
         if num in (3, 4) and status == "Completed":
             evhtml.append('<small class="alignment-note">Lesson evidence requiring class identification is listed below.</small>')
         rows.append(
