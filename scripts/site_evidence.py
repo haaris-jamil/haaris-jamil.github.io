@@ -8,28 +8,20 @@ import re
 
 POOLED_FILES = {
     "1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM": (
-        "Lesson 3: Mixed-group worksheet evidence",
-        "Pooled student work associated with Lesson 3. These samples were collected "
-        "together from Year 10 Science 1 and 2. Individual pages are not class-attributed "
-        "and do not establish class-wide learning."
+        "Year 10 Lesson 3 worksheet samples",
+        "Anonymised Year 10 worksheet samples from Lesson 3."
     ),
     "152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB": (
-        "Lesson 4: Mixed-group exercise-book evidence",
-        "Pooled student work associated with Lesson 4 across both Year 10 groups. "
-        "Individual pages are not attributed to a class without separate confirmation. "
-        "The samples do not prove that either class independently achieved an outcome."
+        "Year 10 Lesson 4 exercise-book samples",
+        "Anonymised Year 10 exercise-book samples from Lesson 4."
     ),
     "1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq": (
-        "Lesson 5: Mixed-group crossword evidence",
-        "Earlier anonymised crossword work collected together across the two Year 10 "
-        "groups. 'Science 1' in the original stored filename is not proof of class "
-        "attribution. No whole-class learning outcome is inferred."
+        "Year 10 Lesson 5 crossword samples",
+        "Anonymised Year 10 crossword samples from Lesson 5."
     ),
     "1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp": (
-        "Lesson 5: Mixed-group investigation evidence",
-        "Earlier pooled investigation pages documenting measurement work. The original "
-        "filename's 'Science 1' label is not independent evidence of class attribution. "
-        "These samples do not establish individual graph interpretation or class mastery."
+        "Year 10 Lesson 5 investigation samples",
+        "Anonymised Year 10 investigation samples from Lesson 5."
     ),
 }
 CONFIRMED_FILES = {
@@ -51,7 +43,7 @@ def evidence_page_info(entry):
     return ALL_FILES.get(entry["id"])
 
 
-def _local_link(file_id, title="Mixed-group evidence"):
+def _local_link(file_id, title="Year 10 evidence"):
     label = html.escape(title)
     return f'<a href="file-{file_id}.html">{label}</a>'
 
@@ -110,10 +102,10 @@ def _register_row(content, event_id):
     prior = matches[11].group(1)
     if event_id == 7:
         prior = prior.replace("Lessons 2–3: anonymised worksheet evidence",
-                              "Mixed-group evidence: pooled Lesson 3 worksheet sample")
+                              "Year 10 Lesson 3 worksheet samples")
     if event_id == 9:
         prior = prior.replace("Lesson 4: anonymised exercise-book evidence",
-                              "Mixed-group evidence: pooled Lesson 4 exercise-book sample")
+                              "Year 10 Lesson 4 exercise-book samples")
     if lesson == 3:
         ids = ["1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM"]
     elif lesson == 4:
@@ -142,39 +134,35 @@ def reconcile_register(markup):
     return re.sub(r'<p class="register-provenance">.*?</p>', '', revised, flags=re.S)
 
 def correct_standard_six(markup):
+    """Keep Year 10 evidence labels without internal attribution commentary."""
     markup = markup.replace(
         "Anonymised worksheet and exercise-book samples are linked below, but I have not "
         "added a sample-by-sample analysis here or inferred whole-class mastery from their presence.",
+        "Year 10 worksheet and exercise-book samples are linked below."
+    )
+    markup = markup.replace(
         "Pooled, anonymised worksheet and exercise-book samples are linked below. Their individual "
         "pages have not been attributed to either Year 10 group. There is no sample-by-sample "
-        "class comparison and no inference of whole-class mastery."
+        "class comparison and no inference of whole-class mastery.",
+        "Year 10 worksheet and exercise-book samples are linked below."
     )
-    markup = markup.replace(
-        "<u>Lessons 2–3 worksheets</u>",
-        "<u>Lesson 3 mixed-group worksheet samples</u>"
-    ).replace(
-        "<u>Lesson 4 exercise-book evidence</u>",
-        "<u>Lesson 4 mixed-group exercise-book samples</u>"
-    )
-    markup = markup.replace(
+    for old, new in [
+        ("<u>Lessons 2–3 worksheets</u>", "<u>Year 10 Lesson 3 worksheet samples</u>"),
+        ("<u>Lesson 3 mixed-group worksheet samples</u>", "<u>Year 10 Lesson 3 worksheet samples</u>"),
+        ("<u>Lesson 4 exercise-book evidence</u>", "<u>Year 10 Lesson 4 exercise-book samples</u>"),
+        ("<u>Lesson 4 mixed-group exercise-book samples</u>", "<u>Year 10 Lesson 4 exercise-book samples</u>")
+    ]:
+        markup = markup.replace(old, new)
+    for note in (
         "These are existing uploaded samples, not a claim that every response is correct; "
         "specific analysis remains a next step.",
         "These were pooled across both Year 10 groups. Their existence does not prove "
         "every response is correct or that either class independently met the objective."
-    )
-    markup = markup.replace(
-        "The 23 October Science 1 Lesson 4 samples show changes in some predictions and "
-        "comparable current readings, but also insecure vocabulary and instrument-unit issues. "
-        "They support specific learner-level claims, not whole-class mastery.",
-        "The pooled Lesson 4 exercise-book collection includes changes in some predictions "
-        "and comparable current readings, alongside insecure vocabulary and instrument-unit "
-        "issues. Individual pages are not attributed to Science 1 or Science 2 without "
-        "independent confirmation; these observations support sample-level, not class-wide, claims."
-    )
-    markup = markup.replace(
-        "The 28 October Lesson 5 samples show data collection and supported vocabulary work.",
-        "The earlier pooled Lesson 5 samples illustrate data recording and vocabulary work, "
-        "without independently establishing which class produced individual pages."
+    ):
+        markup = markup.replace(note, "")
+    markup = re.sub(
+        r'<li class="standard-evidence-note">\s*These were pooled across both Year 10 groups\..*?</li>',
+        "", markup, flags=re.I | re.S
     )
     return markup
 
@@ -223,4 +211,5 @@ def reconcile_page(page_name, markup):
         return correct_audit(markup)
     if page_name == "goal-1.html":
         return correct_goal_one(markup)
+    markup = re.sub(r"mixed[- ]group", "Year 10", markup, flags=re.I)
     return markup
