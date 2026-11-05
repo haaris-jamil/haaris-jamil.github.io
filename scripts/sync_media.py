@@ -5,6 +5,7 @@ Results are HTML, local asset paths and status metadata. No Google writes.
 import html
 import json
 import mimetypes
+import shutil
 import re
 import time
 import random
@@ -224,6 +225,36 @@ def sync_slides(session, entry, old):
     return page_name, name, page_body, {"modifiedTime": modified, "slides": total}
 
 
+def render_pdf_pages(pdf_path, modified, previous, max_pages=4):
+    """Generate cached, browser-readable JPG previews without changing PDF bytes."""
+    import pymupdf
+    from PIL import Image
+
+    directory = pdf_path.parent / "pdf-pages"
+    found = sorted(directory.glob("page-*.jpg")) if directory.exists() else []
+    if previous.get("modifiedTime") == modified and found:
+        with pymupdf.open(pdf_path) as pdf:
+            return found[:min(len(pdf), max_pages)], len(pdf)
+    if directory.exists():
+        shutil.rmtree(directory)
+    directory.mkdir(parents=True, exist_ok=True)
+    with pymupdf.open(pdf_path) as pdf:
+        count = min(len(pdf), max_pages)
+        for number in range(count):
+            page = pdf[number]
+            longest = max(page.rect.width, page.rect.height)
+            scale = min(1.9, 1600.0 / max(longest, 1))
+            bitmap = page.get_pixmap(
+                matrix=pymupdf.Matrix(scale, scale),
+                colorspace=pymupdf.csRGB, alpha=False,
+            )
+            target = directory / f"page-{number + 1:03}.jpg"
+            Image.frombytes(
+                "RGB", (bitmap.width, bitmap.height), bitmap.samples
+            ).save(target, "JPEG", quality=84, optimize=True)
+        return sorted(directory.glob("page-*.jpg")), len(pdf)
+
+
 def sync_binary(session, entry, old):
     fid = entry["id"]
     modified = entry.get("modifiedTime", "")
@@ -257,7 +288,42 @@ def sync_binary(session, entry, old):
     if mimetype.startswith("image/"):
         body = f'<figure class="drive-figure"><img src="{esc(asset)}" alt="{esc(name)}"></figure>'
     elif mimetype == "application/pdf":
-        body = f'<p><a href="{esc(asset)}">Open or download the PDF</a></p><iframe title="{esc(name)}" class="pdf-preview" src="{esc(asset)}"></iframe>'
+        # A browser's PDF plug-in can be unavailable (notably in embedded views).
+        # Publish image previews alongside the full unchanged PDF for reliable reading.
+        preview_limit = 10 if "05 Student Evidence - Anonymised" in entry.get("path", []) else 4
+        try:
+            page_images, total_pages = render_pdf_pages(
+                output, modified, old.get(fid, {}), preview_limit
+            )
+        except Exception as exc:
+            print(f"Could not render PDF page images for {name}: {exc}", flush=True)
+            page_images, total_pages = [], 0
+        download = (
+            f'<p class="pdf-file-actions">'
+            f'<a href="{esc(asset)}" target="_blank" rel="noopener">Open full PDF</a>'
+            f' · <a href="{esc(asset)}" download>Download PDF</a></p>'
+        )
+        if page_images:
+            cards = "".join(
+                f'<figure class="pdf-page-card"><img loading="lazy" decoding="async" '
+                f'src="{esc(str(p))}" alt="{esc(name)} - page {n}" />'
+                f'<figcaption>Page {n}</figcaption></figure>'
+                for n, p in enumerate(page_images, start=1)
+            )
+            remainder = (
+                f'<p class="pdf-pages-more">Showing {len(page_images)} of {total_pages} '
+                'pages. Use the full PDF link to see the remaining pages.</p>'
+                if total_pages > len(page_images) else ""
+            )
+            body = download + (
+                '<div class="pdf-page-previews" aria-label="PDF page previews">'
+                + cards + '</div>' + remainder
+            )
+        else:
+            body = download + (
+                f'<iframe title="{esc(name)}" class="pdf-preview" '
+                f'src="{esc(asset)}"></iframe>'
+            )
     elif mimetype.startswith("video/"):
         body = f'<video controls preload="metadata" src="{esc(asset)}"></video>'
     elif mimetype.startswith("audio/"):

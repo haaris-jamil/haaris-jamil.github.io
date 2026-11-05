@@ -132,7 +132,6 @@ HIGHLIGHTS = {
 # Some decks are earlier resources for lessons still being revised. They remain
 # accessible within their lesson, with no assumption that planning is final.
 EARLIER_SLIDES = {
-    "1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA",
     "1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0",
 }
 UNIT_OVERVIEW_ID = "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w"
@@ -344,12 +343,6 @@ def lesson_table(group, plans, events, by_id, linked):
         worksheets = make_resources(WORKSHEET_OVERRIDES.get(key, WORKSHEETS.get(num, [])), by_id, linked)
         evhtml = []
         if status == "Completed":
-            for fid, label, description in MIXED_GROUP_EVIDENCE.get(num, []):
-                entry = by_id.get(fid)
-                if entry:
-                    evhtml.append(
-                        get_link(entry, linked, EVIDENCE_LABELS.get(fid, label), "mixed-evidence-link")
-                    )
             for fid, label, description in CLASS_EVIDENCE.get(key, []):
                 entry = by_id.get(fid)
                 if entry:
@@ -367,15 +360,48 @@ def lesson_table(group, plans, events, by_id, linked):
             f'<td>{plan_html}</td><td>{slides}</td><td>{worksheets}</td>'
             f'<td>{evidence_html}</td></tr>'
         )
+    sequence_note = (
+        '<p class="lesson-sequence-note">Lesson 2 was not delivered by me. '
+        'Its prepared resources are retained in Planning history.</p>'
+    ) if group == 1 else ""
     return (
         f'<section class="lesson-section" id="science-{group}">'
         f'<div class="teaching-section-heading"><h3>Year 10 Science {group}</h3>'
         '<p>Lesson sequence with planned or recorded delivery, supporting resources and evidence.</p></div>'
-        '<div class="lesson-table-scroll" role="region" tabindex="0" '
+        + sequence_note
+        + '<div class="lesson-table-scroll" role="region" tabindex="0" '
         f'aria-label="Year 10 Science {group} lesson sequence">'
         '<table class="lesson-table"><thead><tr><th>Lesson</th>'
         '<th>Date / status</th><th>Plan</th><th>Slides</th><th>Worksheet</th>'
         '<th>Evidence</th></tr></thead><tbody>' + "".join(rows) + "</tbody></table></div></section>"
+    )
+
+
+def year10_evidence(by_id, linked):
+    """Show pooled student-work collections once, outside class-specific rows."""
+    groups = []
+    for lesson in (3, 4, 5):
+        links = []
+        for fid, label, _description in MIXED_GROUP_EVIDENCE.get(lesson, []):
+            entry = by_id.get(fid)
+            if entry:
+                links.append(
+                    '<li>' + get_link(entry, linked, EVIDENCE_LABELS.get(fid, label))
+                    + '</li>'
+                )
+        if links:
+            groups.append(
+                f'<div class="year10-evidence-group"><h4>Lesson {lesson}</h4>'
+                '<ul class="year10-evidence-links">' + "".join(links)
+                + '</ul></div>'
+            )
+    if not groups:
+        return ""
+    return (
+        '<section id="year10-evidence" class="year10-evidence-section">'
+        '<div class="teaching-section-heading"><h3>Year 10 evidence</h3></div>'
+        '<div class="year10-evidence-grid">' + "".join(groups) + '</div>'
+        '</section>'
     )
 
 
@@ -486,6 +512,7 @@ def teaching_body(entries, linked, events):
         'presentations are working documents that evolve with teaching experience.</p>'
         '<nav class="lesson-jump" aria-label="Lesson sequence navigation">'
         '<a href="#science-1">Year 10 Science 1</a><a href="#science-2">Year 10 Science 2</a>'
+        '<a href="#year10-evidence">Year 10 evidence</a>'
         '<a href="#other-learning-events">Other learning events</a>'
         '<a href="learning-events.html">Learning events register</a></nav>'
         + highlighted_panel(plans, events, linked)
@@ -496,6 +523,7 @@ def teaching_body(entries, linked, events):
            + '</section>')
         + lesson_table(1, plans, events, by_id, linked)
         + lesson_table(2, plans, events, by_id, linked)
+        + year10_evidence(by_id, linked)
         + other_learning_events(by_id, linked)
         + other_materials(entries, by_id, linked, events, plans)
         + "</div>"

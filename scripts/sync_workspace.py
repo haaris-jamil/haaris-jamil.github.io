@@ -166,6 +166,28 @@ def all_doc_html(doc):
     return "\n".join(segments)
 
 
+def strip_repeated_document_heading(markup, page_title):
+    """Avoid a duplicated opening heading when the document matches the page title."""
+    match = re.match(r'\s*<h([234])(?:\s[^>]*)?>([\s\S]*?)</h\1>\s*', markup, re.I)
+    if not match:
+        return markup
+
+    def plain(text):
+        return re.sub(
+            r"[^\w]+", " ", html.unescape(re.sub(r"<[^>]+>", "", text))
+        ).casefold().strip()
+
+    heading = plain(match.group(2))
+    title = plain(page_title)
+    # Google Docs include group/plan suffixes not repeated in the content heading.
+    trimmed_title = re.sub(
+        r"\s+(?:y10 science [12]|full lesson plan|highlighted).*$", "", title
+    ).strip()
+    if heading and (heading == title or heading == trimmed_title):
+        return markup[match.end():]
+    return markup
+
+
 def folder_area(entry):
     if entry["folderPath"]:
         return entry["folderPath"][0]
@@ -412,6 +434,7 @@ def main():
                             markup = strip_duplicate_title(markup, lesson_number(entry))
                         else:
                             title, caption = entry["name"], "Portfolio source document"
+                        markup = strip_repeated_document_heading(markup, title)
                         write(page, document_html(
                             title, caption,
                             f'<article class="native-reflection"><div class="reflection-prose">'

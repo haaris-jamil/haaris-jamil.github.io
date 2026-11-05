@@ -49,7 +49,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install Google API and media dependencies
-        run: pip install "google-auth>=2,<3" "requests>=2.31,<3" "Pillow>=10,<12"
+        run: pip install "google-auth>=2,<3" "requests>=2.31,<3" "Pillow>=10,<12" "PyMuPDF>=1.24,<2"
 
       - name: Sync Docs Sheets Slides and Drive files
         env:
