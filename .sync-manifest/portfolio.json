@@ -3,6 +3,10 @@
     {
       "path": "04 Weekly Reflections/Week 6",
       "reason": "Published version is empty"
+    },
+    {
+      "path": "06 Teaching & Planning/02 Other Teaching and Learning Events/Electrolytic Capacitors: Construction, Charging and Discharging | Year 13 | 3 November 2026",
+      "reason": "Google API HTTP 404: {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Requested entity was not found.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n"
     }
   ],
   "files": {
@@ -603,7 +607,7 @@
   "linkRewriting": {
     "anchors": 88,
     "plain_urls": 8,
-    "source_footers": 85,
+    "source_footers": 84,
     "unresolved": 3
   },
   "notAutomaticallySynced": [],
