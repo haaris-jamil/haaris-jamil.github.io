@@ -3,10 +3,6 @@
     {
       "path": "04 Weekly Reflections/Week 6",
       "reason": "Published version is empty"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 10: Electrical energy and efficiency - Y10 Science 2",
-      "reason": "HTTPSConnectionPool(host='slides.googleapis.com', port=443): Read timed out. (read timeout=90)"
     }
   ],
   "files": {
@@ -68,7 +64,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson 4: exercise book evidence.pdf"
     },
     "16Wky3Pb8fNWfaMRnJXW7gYQcxP4G1tI5eTJoc1fg9LY": {
-      "modifiedTime": "2026-11-05T21:11:40.077Z",
+      "modifiedTime": "2026-11-05T21:37:19.199Z",
       "page": "learning-events.html",
       "path": "06 Teaching & Planning/00 Learning Events Register"
     },
@@ -99,11 +95,17 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 01: Charge and static electricity - Y10 Science 1",
       "slides": 10
     },
+    "1ClFbbVl3BBvtTHtoeUEnl4V8gOlucSP7KUUPvWYZyX4": {
+      "modifiedTime": "2026-11-05T21:39:49.435Z",
+      "page": "slides-1ClFbbVl3BBvtTHtoeUEnl4V8gOlucSP7KUUPvWYZyX4.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 07: Independently switched parallel lamps and electrical protection - Y10 Science 2",
+      "slides": 14
+    },
     "1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA": {
-      "modifiedTime": "2026-11-05T19:30:10.079Z",
+      "modifiedTime": "2026-11-05T21:39:40.163Z",
       "page": "slides-1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 08: Independently switched parallel lamps and electrical protection - Y10 Science 1",
-      "slides": 12
+      "slides": 14
     },
     "1Dw5L_yjeuPlsrmzdWCc6BSA7ZVXoQ00cZfDRoOPfUac": {
       "modifiedTime": "2026-11-04T01:36:06.786Z",
@@ -416,6 +418,11 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 10: Electrical energy and efficiency - Y10 Science 1",
       "slides": 9
     },
+    "1lo4SZl9Kdm8QwZ8HE_AY5MXQ2NV2R6PU": {
+      "modifiedTime": "2026-11-05T21:39:58.502Z",
+      "page": "file-1lo4SZl9Kdm8QwZ8HE_AY5MXQ2NV2R6PU.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Two-lamp-switch-terminals-closeup.png"
+    },
     "1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA": {
       "modifiedTime": "2026-10-27T23:33:51.522Z",
       "page": "doc-1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA.html",
@@ -499,6 +506,11 @@
       "page": "doc-1xn7nfATcyRHcPi7OhzIEeHAyp0vZQ3VQHLTr7ZVi1_U.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 12: Circuit design challenge and assessment - Y10 Science 2 - Full Lesson Plan"
     },
+    "1yhJkkucqYP8N6Y2EPlCD0EzWEdOGPbmk": {
+      "modifiedTime": "2026-11-05T21:36:29.574Z",
+      "page": "file-1yhJkkucqYP8N6Y2EPlCD0EzWEdOGPbmk.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Two-lamp-circuit-completed-reference.png"
+    },
     "1yjMx57cY-kSoNlZtv4ub8jck8W3JD3vmF-ndFFRVjQQ": {
       "modifiedTime": "2026-11-04T00:36:55.462Z",
       "page": "slides-1yjMx57cY-kSoNlZtv4ub8jck8W3JD3vmF-ndFFRVjQQ.html",
@@ -563,9 +575,11 @@
     "file-1ULcE4YEdpnercpaxGNDQH6HXjjN9EF_K.html",
     "file-1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4.html",
     "file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html",
+    "file-1lo4SZl9Kdm8QwZ8HE_AY5MXQ2NV2R6PU.html",
     "file-1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP.html",
     "file-1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN.html",
     "file-1xbXqSmR_t2K7-Jg25Yk7XjqrEI9GBWf9.html",
+    "file-1yhJkkucqYP8N6Y2EPlCD0EzWEdOGPbmk.html",
     "goal-1.html",
     "goal-2.html",
     "goal-3.html",
@@ -583,6 +597,7 @@
     "slides-11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg.html",
     "slides-17CZjb2YHoL3yU5Hp1ijIYjsFmQy9gXG_epuHHj_5RQ4.html",
     "slides-1C3Ip1Mq-30MtH1R1mx0GfeGuH38xQ0yMBLfbhDIsV_E.html",
+    "slides-1ClFbbVl3BBvtTHtoeUEnl4V8gOlucSP7KUUPvWYZyX4.html",
     "slides-1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA.html",
     "slides-1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps.html",
     "slides-1MJouYp3n6oSdZ9F7uswt2dmECSmSXvHP4b0O5VwiQ-s.html",
@@ -613,7 +628,7 @@
   "linkRewriting": {
     "anchors": 81,
     "plain_urls": 6,
-    "source_footers": 79,
+    "source_footers": 84,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
