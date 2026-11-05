@@ -3,6 +3,10 @@
     {
       "path": "04 Weekly Reflections/Week 6",
       "reason": "Published version is empty"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 10: Electrical energy and efficiency - Y10 Science 2",
+      "reason": "HTTPSConnectionPool(host='slides.googleapis.com', port=443): Read timed out. (read timeout=90)"
     }
   ],
   "files": {
@@ -603,7 +607,7 @@
   "linkRewriting": {
     "anchors": 80,
     "plain_urls": 6,
-    "source_footers": 80,
+    "source_footers": 79,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
