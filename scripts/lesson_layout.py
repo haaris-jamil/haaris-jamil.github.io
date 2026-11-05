@@ -108,6 +108,9 @@ MIXED_GROUP_EVIDENCE = {
 # Only independently confirmed class-specific student evidence is assigned to
 # a single class. This PDF covers Science 1 Lesson 7, 4 November 2026.
 CLASS_EVIDENCE = {
+    (2, 6): [
+        ("1LBd40BIKbAQCa27YuzySHHwMHT3vtDmO", "Student work samples", ""),
+    ],
     (1, 7): [
         ("11bBS4D14yRgJM3WHFjdrosXkQupp2GuO",
          "Science 1 Lesson 7 student evidence",
@@ -350,11 +353,7 @@ def lesson_table(group, plans, events, by_id, linked):
             for fid, label, description in CLASS_EVIDENCE.get(key, []):
                 entry = by_id.get(fid)
                 if entry:
-                    evhtml.append(
-                        f'<div class="lesson-evidence-link">'
-                        f'{get_link(entry, linked, label)}'
-                        f'<p>{esc(description)}</p></div>'
-                    )
+                    evhtml.append(get_link(entry, linked, label))
         evidence_html = (
             '<div class="lesson-evidence-items">'
             + "".join(f'<div>{item}</div>' for item in evhtml)
