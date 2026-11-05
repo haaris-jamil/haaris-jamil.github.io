@@ -3,10 +3,6 @@
     {
       "path": "04 Weekly Reflections/Week 6",
       "reason": "Published version is empty"
-    },
-    {
-      "path": "06 Teaching & Planning/02 Other Teaching and Learning Events/Electrolytic Capacitors: Construction, Charging and Discharging | Year 13 | 3 November 2026",
-      "reason": "Google API HTTP 404: {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Requested entity was not found.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n"
     }
   ],
   "files": {
@@ -68,7 +64,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson 4: exercise book evidence.pdf"
     },
     "16Wky3Pb8fNWfaMRnJXW7gYQcxP4G1tI5eTJoc1fg9LY": {
-      "modifiedTime": "2026-11-03T22:30:52.593Z",
+      "modifiedTime": "2026-11-04T23:53:18.735Z",
       "page": "learning-events.html",
       "path": "06 Teaching & Planning/00 Learning Events Register"
     },
@@ -100,7 +96,7 @@
       "slides": 10
     },
     "1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA": {
-      "modifiedTime": "2026-11-04T21:27:53.099Z",
+      "modifiedTime": "2026-11-05T00:56:02.707Z",
       "page": "slides-1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 08: Independently switched parallel lamps and electrical protection - Y10 Science 1",
       "slides": 11
@@ -400,11 +396,6 @@
       "page": "doc-1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 10: Electrical energy and efficiency - Y10 Science 1 - Full Lesson Plan"
     },
-    "1lDfi3t9_bDF90rkYx_it6Sm6RK-UIvIbDMviGUZeKYA": {
-      "modifiedTime": "2026-11-03T21:00:35.078Z",
-      "page": "doc-1lDfi3t9_bDF90rkYx_it6Sm6RK-UIvIbDMviGUZeKYA.html",
-      "path": "06 Teaching & Planning/02 Other Teaching and Learning Events/Electrolytic Capacitors: Construction, Charging and Discharging | Year 13 | 3 November 2026"
-    },
     "1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc": {
       "modifiedTime": "2026-11-04T00:39:37.622Z",
       "page": "slides-1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc.html",
@@ -444,7 +435,7 @@
       "slides": 27
     },
     "1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI": {
-      "modifiedTime": "2026-11-04T22:08:37.874Z",
+      "modifiedTime": "2026-11-05T00:49:50.896Z",
       "page": "doc-1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson 08: Independently switched parallel lamps - Worksheet"
     },
@@ -459,7 +450,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 07: Reliable connections and switched outlets - Y10 Science 2 - Full Lesson Plan"
     },
     "1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg": {
-      "modifiedTime": "2026-11-04T20:47:14.131Z",
+      "modifiedTime": "2026-11-04T23:53:06.427Z",
       "page": "doc-1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 06: Reliable connections and switched outlets - Y10 Science 2 - Full Lesson Plan"
     },
@@ -538,7 +529,6 @@
     "doc-1gCiC40LUq4HybRawE7Qs-sgRQLPXe3NJ0wqyzgh5oIs.html",
     "doc-1j2aFR0vJ4pi07YoeZMh4PbtUxBYFxaCoIAo29CaDZUo.html",
     "doc-1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM.html",
-    "doc-1lDfi3t9_bDF90rkYx_it6Sm6RK-UIvIbDMviGUZeKYA.html",
     "doc-1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA.html",
     "doc-1mujcRDNR-aoIgl3hZfxebMTM8Z9W9dDfj3q4U0PnGeA.html",
     "doc-1ofp5jgQ1npOkrbHJrQXB_HmaY6jh0zVUiR3_ksWdn-4.html",
@@ -605,10 +595,10 @@
     "teaching.html"
   ],
   "linkRewriting": {
-    "anchors": 88,
-    "plain_urls": 8,
-    "source_footers": 84,
-    "unresolved": 3
+    "anchors": 79,
+    "plain_urls": 6,
+    "source_footers": 79,
+    "unresolved": 1
   },
   "notAutomaticallySynced": [],
   "partialSupport": [],
