@@ -275,6 +275,14 @@ def audit_page(scanned, linked, failures, not_auto, incomplete):
     )
 
 
+def is_unpublished_root_file(entry):
+    """Drive-root checklists and administration files stay off the public site."""
+    return (
+        entry["mimeType"] != FOLDER_MIME
+        and not entry.get("folderPath")
+    )
+
+
 def main():
     secret = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON")
     if not secret:
@@ -291,17 +299,27 @@ def main():
         if exclude_from_website(e)
         or e["id"] == PEPEHA_SLIDES_ID
         or is_editable_observation_form(e)
+        or is_unpublished_root_file(e)
     ]
     records = [
         e for e in scanned
         if not exclude_from_website(e)
         and e["id"] != PEPEHA_SLIDES_ID
         and not is_editable_observation_form(e)
+        and not is_unpublished_root_file(e)
     ]
     for e in excluded:
         # Deliberately remove website copies of redacted observation duplicates;
         # nothing is deleted or changed in Google Drive.
         stale_id = e["id"]
+        if is_unpublished_root_file(e):
+            # Remove previously published copies and cached previews, but leave
+            # the original Google Drive entries completely unchanged.
+            for prefix in ("doc", "sheet", "slides", "file"):
+                Path(f"{prefix}-{stale_id}.html").unlink(missing_ok=True)
+            for directory in ("assets/drive", "assets/slides", "assets/doc-images"):
+                shutil.rmtree(Path(directory) / stale_id, ignore_errors=True)
+            continue
         if stale_id == PEPEHA_SLIDES_ID:
             Path(f"slides-{stale_id}.html").unlink(missing_ok=True)
             shutil.rmtree(Path("assets/slides") / stale_id, ignore_errors=True)
@@ -310,7 +328,7 @@ def main():
         shutil.rmtree(Path("assets/drive") / stale_id, ignore_errors=True)
     events = current_events(session)
     print(f"Discovered {len(scanned)} Drive entries; excluded {len(excluded)} "
-          "redacted observation duplicates from the website")
+          "working or non-public records from the website")
     linked, current_files = {}, {}
     failures, not_auto, incomplete = [], [], []
     pages = set()
@@ -518,15 +536,8 @@ def main():
             else:
                 write(slug, section_index(title, desc, subset, linked, failures, name))
         pages.add(slug)
-    miscellaneous = [
-        f for f in records if f["mimeType"] != FOLDER_MIME
-        and folder_area(f) == "Other portfolio files"
-    ]
-    write("portfolio-sources.html", section_index(
-        "Other portfolio files", "Documents stored in the root of the portfolio Drive folder.",
-        miscellaneous, linked, failures, "Other portfolio files"
-    ))
-    pages.add("portfolio-sources.html")
+    # Remove the retired miscellaneous listing; do not regenerate it.
+    Path("portfolio-sources.html").unlink(missing_ok=True)
     write("sync-audit.html", audit_page(records, linked, failures, not_auto, incomplete))
     pages.add("sync-audit.html")
     # Rebuild internal cross-references only after all source files have been
