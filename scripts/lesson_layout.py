@@ -105,22 +105,47 @@ MIXED_GROUP_EVIDENCE = {
          "Year 10 Lesson 5 investigation samples."),
     ],
 }
-# Only independently confirmed class-specific student evidence is assigned to
-# a single class. This PDF covers Science 1 Lesson 7, 4 November 2026.
-CLASS_EVIDENCE = {
-    (1, 8): [
-        ("1L1Rz3ExEgihuLYT-4Sr6Rt3fyZSVffDZ", "Student work samples", ""),
-    ],
-    (2, 6): [
-        ("1LBd40BIKbAQCa27YuzySHHwMHT3vtDmO", "Student work samples", ""),
-    ],
-    (1, 7): [
-        ("11bBS4D14yRgJM3WHFjdrosXkQupp2GuO",
-         "Science 1 Lesson 7 student evidence",
-         "Anonymised student work from Year 10 Science 1 on 4 November 2026. "
-         "The samples do not establish that every learner achieved the outcome."),
-    ],
-}
+# Named, anonymised lesson evidence is assigned automatically only when
+# the filename specifies BOTH the Year 10 group and the lesson number.
+# Keep mixed-group evidence in MIXED_GROUP_EVIDENCE as its attribution is
+# not established by the names in Drive.
+STUDENT_EVIDENCE_FOLDER = "05 Student Evidence - Anonymised"
+STUDENT_EVIDENCE_RE = re.compile(
+    r"^Lesson[- _]+0?([1-9]|1[0-2])[- _]+Y10[- _]+Science[- _]+([12])"
+    r"[- _]+Student[- _]+Evidence"
+    r"(?:[- _]+[0-9]{4}[- _]+[0-9]{2}[- _]+[0-9]{2})?"
+    r"[- _]+Anonymised\.pdf$",
+    re.IGNORECASE,
+)
+
+
+def class_evidence_from_files(entries, linked):
+    """Find unambiguously labelled class-specific PDFs with published pages.
+
+    The Drive file ID is not hard-coded, so future correctly named uploads
+    appear in the matching completed lesson after the next website sync.
+    Files with missing group/lesson details or without a website page are
+    deliberately not assigned to any class.
+    """
+    found = defaultdict(list)
+    for entry in entries:
+        path = entry.get("path", [])
+        if STUDENT_EVIDENCE_FOLDER not in path:
+            continue
+        if entry.get("mimeType") != "application/pdf":
+            continue
+        match = STUDENT_EVIDENCE_RE.fullmatch(entry.get("name", ""))
+        if not match:
+            continue
+        if not linked.get(entry["id"], {}).get("page"):
+            continue
+        lesson, group = int(match.group(1)), int(match.group(2))
+        found[(group, lesson)].append(entry)
+    for files in found.values():
+        files.sort(key=lambda item: (item["name"].casefold(), item["id"]))
+    return dict(found)
+
+
 MIXED_EVIDENCE_ID_SET = {
     fid for collections in MIXED_GROUP_EVIDENCE.values()
     for fid, _, _ in collections
@@ -324,7 +349,7 @@ def highlighted_panel(plans, events, linked):
     )
 
 
-def lesson_table(group, plans, events, by_id, linked):
+def lesson_table(group, plans, events, by_id, linked, class_evidence):
     rows = []
     for num in range(1, 13):
         key = (group, num)
@@ -352,10 +377,8 @@ def lesson_table(group, plans, events, by_id, linked):
                     evhtml.append(
                         get_link(entry, linked, EVIDENCE_LABELS.get(fid, label), "mixed-evidence-link")
                     )
-            for fid, label, description in CLASS_EVIDENCE.get(key, []):
-                entry = by_id.get(fid)
-                if entry:
-                    evhtml.append(get_link(entry, linked, label))
+            for entry in class_evidence.get(key, []):
+                evhtml.append(get_link(entry, linked, "Student work samples"))
         evidence_html = (
             '<div class="lesson-evidence-items">'
             + "".join(f'<div>{item}</div>' for item in evhtml)
@@ -427,7 +450,10 @@ def other_materials(entries, by_id, linked, events, plans):
     lesson_attached = set()
     lesson_attached.update(fid for pair in WORKSHEETS.values() for fid, _ in pair)
     lesson_attached.update(MIXED_EVIDENCE_ID_SET)
-    lesson_attached.update(fid for vals in CLASS_EVIDENCE.values() for fid, _, _ in vals)
+    lesson_attached.update(
+        file["id"] for files in class_evidence_from_files(entries, linked).values()
+        for file in files
+    )
     ignore = matched | lesson_attached
     ignore.update(fid for fid, _, _ in OTHER_LEARNING_EVENTS)
     ignore.update(x["id"] for x in plans_history)
@@ -486,6 +512,7 @@ def short_name(entry):
 def teaching_body(entries, linked, events):
     by_id = {x["id"]: x for x in entries}
     plans = {(lesson_group(x), lesson_number(x)): x for x in entries if lesson_plan_entry(x)}
+    class_evidence = class_evidence_from_files(entries, linked)
     content = (
         '<div class="teaching-dashboard">'
         '<p class="teaching-intro">Follow each class from planning through delivery and evidence. '
@@ -501,8 +528,8 @@ def teaching_body(entries, linked, events):
            'class-specific plans below reflect subsequent revisions as teaching progresses.</p>'
            + get_link(by_id.get(UNIT_OVERVIEW_ID), linked, "Read original unit overview")
            + '</section>')
-        + lesson_table(1, plans, events, by_id, linked)
-        + lesson_table(2, plans, events, by_id, linked)
+        + lesson_table(1, plans, events, by_id, linked, class_evidence)
+        + lesson_table(2, plans, events, by_id, linked, class_evidence)
         + other_learning_events(by_id, linked)
         + other_materials(entries, by_id, linked, events, plans)
         + "</div>"
