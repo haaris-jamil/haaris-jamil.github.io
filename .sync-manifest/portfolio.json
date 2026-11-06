@@ -1,14 +1,5 @@
 {
-  "failures": [
-    {
-      "path": "04 Weekly Reflections/Week 6",
-      "reason": "Published version is empty"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 02: Foundations of charge and static electricity - Y10 Science 1 - Not delivered",
-      "reason": "Slide thumbnail download failed: HTTP 429"
-    }
-  ],
+  "failures": [],
   "files": {
     "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w": {
       "modifiedTime": "2026-11-03T21:01:50.445Z",
@@ -136,7 +127,11 @@
       "page": "file-1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD.html",
       "path": "03 Professional Goals/Goal 2 - Standing waves demonstration.mp4"
     },
-    "1GITYKbWZ5q2AAQO2b-H8Uks1dEocHMcBD_rEuJEK4VI": {},
+    "1GITYKbWZ5q2AAQO2b-H8Uks1dEocHMcBD_rEuJEK4VI": {
+      "modifiedTime": "2026-11-06T04:22:45.915Z",
+      "page": "reflection-week-6.html",
+      "path": "04 Weekly Reflections/Week 6"
+    },
     "1GO8Nzi8Z6xDUnJdoDo8Wuwe-kq1RqO5ZX-zevVaXfOU": {
       "modifiedTime": "2026-11-03T22:23:59.870Z",
       "page": "doc-1GO8Nzi8Z6xDUnJdoDo8Wuwe-kq1RqO5ZX-zevVaXfOU.html",
@@ -179,7 +174,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-05-Y10-Science-1-Crossword-Anonymised.pdf"
     },
     "1L1Rz3ExEgihuLYT-4Sr6Rt3fyZSVffDZ": {
-      "modifiedTime": "2026-11-05T21:11:12.672Z",
+      "modifiedTime": "2026-11-06T04:23:06.421Z",
       "page": "file-1L1Rz3ExEgihuLYT-4Sr6Rt3fyZSVffDZ.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-08-Y10-Science-1-Student-Evidence-2026-11-06-Anonymised.pdf"
     },
@@ -596,6 +591,7 @@
     "reflection-week-3.html",
     "reflection-week-4.html",
     "reflection-week-5.html",
+    "reflection-week-6.html",
     "reflections.html",
     "slides-11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY.html",
     "slides-11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg.html",
@@ -632,7 +628,7 @@
   "linkRewriting": {
     "anchors": 81,
     "plain_urls": 6,
-    "source_footers": 83,
+    "source_footers": 84,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
