@@ -108,6 +108,9 @@ MIXED_GROUP_EVIDENCE = {
 # Only independently confirmed class-specific student evidence is assigned to
 # a single class. This PDF covers Science 1 Lesson 7, 4 November 2026.
 CLASS_EVIDENCE = {
+    (1, 8): [
+        ("1L1Rz3ExEgihuLYT-4Sr6Rt3fyZSVffDZ", "Student work samples", ""),
+    ],
     (2, 6): [
         ("1LBd40BIKbAQCa27YuzySHHwMHT3vtDmO", "Student work samples", ""),
     ],
