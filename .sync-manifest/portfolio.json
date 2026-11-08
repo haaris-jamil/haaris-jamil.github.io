@@ -1,5 +1,10 @@
 {
-  "failures": [],
+  "failures": [
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 12: Circuit design challenge - Y10 Science 1",
+      "reason": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    }
+  ],
   "files": {
     "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w": {
       "modifiedTime": "2026-11-03T21:01:50.445Z",
@@ -628,7 +633,7 @@
   "linkRewriting": {
     "anchors": 81,
     "plain_urls": 6,
-    "source_footers": 84,
+    "source_footers": 83,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
