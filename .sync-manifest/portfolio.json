@@ -91,10 +91,10 @@
       "slides": 10
     },
     "1ClFbbVl3BBvtTHtoeUEnl4V8gOlucSP7KUUPvWYZyX4": {
-      "modifiedTime": "2026-11-05T21:39:49.435Z",
+      "modifiedTime": "2026-11-08T19:42:44.343Z",
       "page": "slides-1ClFbbVl3BBvtTHtoeUEnl4V8gOlucSP7KUUPvWYZyX4.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 07: Independently switched parallel lamps and electrical protection - Y10 Science 2",
-      "slides": 14
+      "slides": 13
     },
     "1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA": {
       "modifiedTime": "2026-11-05T21:39:40.163Z",
@@ -126,6 +126,11 @@
       "modifiedTime": "2026-11-04T01:37:35.284Z",
       "page": "file-1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD.html",
       "path": "03 Professional Goals/Goal 2 - Standing waves demonstration.mp4"
+    },
+    "1FuMU5-IMkoqcIdujYpy4Fc_q0gTOcg8L": {
+      "modifiedTime": "2026-11-08T19:42:27.420Z",
+      "page": "file-1FuMU5-IMkoqcIdujYpy4Fc_q0gTOcg8L.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-08-Y10-Science-1-2026-11-06-Completed-Two-Lamp-Circuit-Sample.jpeg"
     },
     "1GITYKbWZ5q2AAQO2b-H8Uks1dEocHMcBD_rEuJEK4VI": {
       "modifiedTime": "2026-11-06T05:14:32.177Z",
@@ -566,6 +571,7 @@
     "file-11bBS4D14yRgJM3WHFjdrosXkQupp2GuO.html",
     "file-152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB.html",
     "file-1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD.html",
+    "file-1FuMU5-IMkoqcIdujYpy4Fc_q0gTOcg8L.html",
     "file-1Gfg_Hoj-1bujSh3UdyKRI6i4BsLlhCtp.html",
     "file-1KtOIR28Bb_5rQEVwZLhbbbzbgawfe5Uq.html",
     "file-1L1Rz3ExEgihuLYT-4Sr6Rt3fyZSVffDZ.html",
@@ -628,7 +634,7 @@
   "linkRewriting": {
     "anchors": 81,
     "plain_urls": 6,
-    "source_footers": 84,
+    "source_footers": 85,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
