@@ -36,9 +36,9 @@ SLIDE_MAP = {
     (2, 7): ["1OrKPfqtgA6aHBeDM9KMm4vTvH1xgpK2kM6lcZOLBYFw"],
     (1, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
     (2, 8): ["1vBdX4qXE4fsIRZxPG_dUAj6EmdNst3CYpt-65ekUSkY"],
-    (1, 9): ["1GWqtOyiIkaw86QQ0UGmK3HeJz2LGRSPvtfTt6TB1Nps"],
+    (1, 9): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
     (2, 9): ["1oIHfVsDB8W_f8uGj24_UpK7VhZSY_EamiGoZHkrzaLA"],
-    (1, 10): ["1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc"],
+    (1, 10): ["1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8"],
     (2, 10): ["1MJouYp3n6oSdZ9F7uswt2dmECSmSXvHP4b0O5VwiQ-s"],
     (1, 11): ["1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0"],
     (2, 11): ["11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg"],
@@ -59,6 +59,8 @@ WORKSHEETS = {
 # These early uploads were collected across both Year 10 groups. Their
 # original filenames are not evidence of class-level attribution.
 WORKSHEET_OVERRIDES = {
+    (1, 9): [("1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk", "Three-station worksheet")],
+    (1, 10): [("1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M", "Electromagnet worksheet")],
     # Science 2 Lesson 6 was revised to a brief graphing demonstration
     # followed by the switched-outlet practical, not a continued worksheet.
     (2, 6): [
@@ -66,6 +68,8 @@ WORKSHEET_OVERRIDES = {
     ],
 }
 LESSON_TITLE_OVERRIDES = {
+    (1, 9): "How do we generate electricity?",
+    (1, 10): "Can electricity make a magnet?",
     (2, 6): "Graphing demonstration and switched-outlet practical",
 }
 EVIDENCE_LABELS = {
@@ -162,6 +166,16 @@ HIGHLIGHTS = {
 EARLIER_SLIDES = {
     "1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0",
 }
+PREFERRED_PLAN_IDS = {
+    (1, 9): "1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo",
+    (1, 10): "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4",
+}
+EXTRA_CLASS_EVIDENCE = {
+    (1, 8): [
+        ("1FuMU5-IMkoqcIdujYpy4Fc_q0gTOcg8L", "Completed-circuit photograph"),
+    ],
+}
+
 UNIT_OVERVIEW_ID = "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w"
 
 PLAN_RE = re.compile(r"^Lesson\s*0?(\d{1,2})\s*[:.\-–]?\s*(.*)", re.I)
@@ -283,7 +297,12 @@ def plan_page_info(entry, events):
         return None
     group, number = lesson_group(entry), lesson_number(entry)
     event = events.get((group, number), {})
-    title = f"Lesson {number:02}: {lesson_title(group, number, entry, events)}"
+    # Older plans in the same folder keep their own accurate source titles.
+    preferred = PREFERRED_PLAN_IDS.get((group, number))
+    if preferred and entry["id"] != preferred:
+        title = re.split(r"\s+-\s+Y10\s+Science", entry["name"], flags=re.I)[0].strip()
+    else:
+        title = f"Lesson {number:02}: {lesson_title(group, number, entry, events)}"
     caption = (
         f"Year 10 Science {group} · {event.get('date', 'Date to confirm')}"
         f" · {event.get('status', 'Unconfirmed')}"
@@ -379,6 +398,9 @@ def lesson_table(group, plans, events, by_id, linked, class_evidence):
                     )
             for entry in class_evidence.get(key, []):
                 evhtml.append(get_link(entry, linked, "Student work samples"))
+            for fid, label in EXTRA_CLASS_EVIDENCE.get(key, []):
+                if fid in by_id:
+                    evhtml.append(get_link(by_id[fid], linked, label))
         evidence_html = (
             '<div class="lesson-evidence-items">'
             + "".join(f'<div>{item}</div>' for item in evhtml)
@@ -450,6 +472,8 @@ def other_materials(entries, by_id, linked, events, plans):
     lesson_attached = set()
     lesson_attached.update(fid for pair in WORKSHEETS.values() for fid, _ in pair)
     lesson_attached.update(MIXED_EVIDENCE_ID_SET)
+    lesson_attached.update(fid for items in WORKSHEET_OVERRIDES.values() for fid, _ in items)
+    lesson_attached.update(fid for items in EXTRA_CLASS_EVIDENCE.values() for fid, _ in items)
     lesson_attached.update(
         file["id"] for files in class_evidence_from_files(entries, linked).values()
         for file in files
@@ -512,6 +536,10 @@ def short_name(entry):
 def teaching_body(entries, linked, events):
     by_id = {x["id"]: x for x in entries}
     plans = {(lesson_group(x), lesson_number(x)): x for x in entries if lesson_plan_entry(x)}
+    for key, fid in PREFERRED_PLAN_IDS.items():
+        preferred = by_id.get(fid)
+        if preferred and lesson_plan_entry(preferred):
+            plans[key] = preferred
     class_evidence = class_evidence_from_files(entries, linked)
     content = (
         '<div class="teaching-dashboard">'
