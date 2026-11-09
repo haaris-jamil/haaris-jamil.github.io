@@ -1,6 +1,11 @@
 {
   "failures": [],
   "files": {
+    "1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk": {
+      "modifiedTime": "2026-11-08T23:19:16.642Z",
+      "page": "file-1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson-09-Generation-Stations-Worksheet.pdf"
+    },
     "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w": {
       "modifiedTime": "2026-11-03T21:01:50.445Z",
       "page": "doc-10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w.html",
@@ -43,6 +48,11 @@
       "page": "doc-12Gw8ujwQEaClqWs9yf5-ZuUSgs7vqwXnlWWDG6tGfyA.html",
       "path": "02 Observations/My Observations of Others/Observations of others"
     },
+    "12QlV47IeroEGIQLKfvZJFhgAwvc2N3sD": {
+      "modifiedTime": "2026-11-08T22:58:03.651Z",
+      "page": "file-12QlV47IeroEGIQLKfvZJFhgAwvc2N3sD.html",
+      "path": "03 Professional Goals/Goal 2 - Oscillating magnet and coil - induction model.mp4"
+    },
     "14DcRG7jHVi38lvp4MOoRC8jPmPYPuqyPzvTDOO33XIU": {
       "modifiedTime": "2026-11-03T22:25:39.070Z",
       "page": "doc-14DcRG7jHVi38lvp4MOoRC8jPmPYPuqyPzvTDOO33XIU.html",
@@ -59,7 +69,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson 4: exercise book evidence.pdf"
     },
     "16Wky3Pb8fNWfaMRnJXW7gYQcxP4G1tI5eTJoc1fg9LY": {
-      "modifiedTime": "2026-11-05T21:37:19.199Z",
+      "modifiedTime": "2026-11-08T22:55:30.174Z",
       "page": "learning-events.html",
       "path": "06 Teaching & Planning/00 Learning Events Register"
     },
@@ -199,7 +209,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 03: Energy supply and two-switch circuit challenges - Y10 Science 2 - Full Lesson Plan"
     },
     "1Lb6tJF_dCHF31E100dqt7PDt3U3sCN78CkhrmKIyzzY": {
-      "modifiedTime": "2026-11-04T01:39:04.515Z",
+      "modifiedTime": "2026-11-08T22:58:19.083Z",
       "page": "goal-2.html",
       "path": "03 Professional Goals/Goal 2: Visual and Working Models"
     },
@@ -271,6 +281,11 @@
       "modifiedTime": "2026-11-03T20:12:14.409Z",
       "page": "doc-1TgFds-Pk1Srck6N_IiX-JzynoSNS5hM4g4ora4v8AiM.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/99 Superseded Plans and Resources/Lesson 08: Parallel circuits - Earlier Full Lesson Plan [Superseded]"
+    },
+    "1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo": {
+      "modifiedTime": "2026-11-08T23:19:23.343Z",
+      "page": "doc-1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 09: How do we generate electricity? - Y10 Science 1 - Full Lesson Plan"
     },
     "1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0": {
       "modifiedTime": "2026-11-04T00:39:10.030Z",
@@ -359,6 +374,12 @@
       "modifiedTime": "2026-11-03T22:26:35.602Z",
       "page": "doc-1cTz-ISTcKnTeBE3mwluRzpi7vLEO_LYUReNyUoWZLC0.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 03: Energy supply and two-switch circuit challenges - Y10 Science 1 - Full Lesson Plan"
+    },
+    "1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc": {
+      "modifiedTime": "2026-11-08T23:19:37.211Z",
+      "page": "slides-1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 09: How do we generate electricity? - Y10 Science 1",
+      "slides": 7
     },
     "1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo": {
       "modifiedTime": "2026-10-27T23:33:58.147Z",
@@ -548,6 +569,7 @@
     "doc-1RYHG_gTzEsVcjN4ABNM9gcH7FBpuvnIvS1R1y4MGh5E.html",
     "doc-1S4ltFg4bRMT24MQe8iW08Ho5wcVjZ1BxjDy94Yrjr3k.html",
     "doc-1TgFds-Pk1Srck6N_IiX-JzynoSNS5hM4g4ora4v8AiM.html",
+    "doc-1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo.html",
     "doc-1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY.html",
     "doc-1_R1BDz7y3zcVvc2lD_mKcI_8ks0T3UDSnoA7Y1FaJww.html",
     "doc-1bTnvTJk5YMSyAKD2YtgBBV2_y_spAmjI44Q618KpxEc.html",
@@ -567,8 +589,10 @@
     "doc-1s5L0BpGN3ixh6tqWsNwZ3ycd2WDCpq2sfJnjQYvruOg.html",
     "doc-1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo.html",
     "doc-1xn7nfATcyRHcPi7OhzIEeHAyp0vZQ3VQHLTr7ZVi1_U.html",
+    "file-1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk.html",
     "file-11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I.html",
     "file-11bBS4D14yRgJM3WHFjdrosXkQupp2GuO.html",
+    "file-12QlV47IeroEGIQLKfvZJFhgAwvc2N3sD.html",
     "file-152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB.html",
     "file-1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD.html",
     "file-1FuMU5-IMkoqcIdujYpy4Fc_q0gTOcg8L.html",
@@ -618,6 +642,7 @@
     "slides-1XjY2r3Jqh4HZW95WYZnBTu_sGXV75JYxUS6G-K8Izms.html",
     "slides-1Z2WWvxwvcxl5tT34Up_WGXHzG6-yEEwARtEoYfLL3jk.html",
     "slides-1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs.html",
+    "slides-1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc.html",
     "slides-1e2sG29x8fAS6p8ptw-mVSjMoRBmEeHX5_6zz95os5Es.html",
     "slides-1lMHs5F0caDHSG0BM4mrCDbUB3vI9FXA2q_rmeVAP7zc.html",
     "slides-1oIHfVsDB8W_f8uGj24_UpK7VhZSY_EamiGoZHkrzaLA.html",
@@ -632,9 +657,9 @@
     "teaching.html"
   ],
   "linkRewriting": {
-    "anchors": 81,
+    "anchors": 82,
     "plain_urls": 6,
-    "source_footers": 85,
+    "source_footers": 89,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
