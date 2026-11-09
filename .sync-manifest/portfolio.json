@@ -2,7 +2,7 @@
   "failures": [],
   "files": {
     "1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk": {
-      "modifiedTime": "2026-11-08T23:19:16.642Z",
+      "modifiedTime": "2026-11-09T00:57:53.264Z",
       "page": "file-1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson-09-Generation-Stations-Worksheet.pdf"
     },
@@ -283,7 +283,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/99 Superseded Plans and Resources/Lesson 08: Parallel circuits - Earlier Full Lesson Plan [Superseded]"
     },
     "1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo": {
-      "modifiedTime": "2026-11-08T23:19:23.343Z",
+      "modifiedTime": "2026-11-09T00:56:39.166Z",
       "page": "doc-1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 09: How do we generate electricity? - Y10 Science 1 - Full Lesson Plan"
     },
@@ -360,6 +360,11 @@
       "page": "doc-1_R1BDz7y3zcVvc2lD_mKcI_8ks0T3UDSnoA7Y1FaJww.html",
       "path": "06 Teaching & Planning/00 Start Here - Teaching and Planning Guide"
     },
+    "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4": {
+      "modifiedTime": "2026-11-09T00:58:06.355Z",
+      "page": "doc-1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 10: Can electricity make a magnet? - Y10 Science 1 - Full Lesson Plan"
+    },
     "1bJSxhs6-f7VDcazZ_tTcDjcUaE8ONasGGKnmDI58G_Y": {
       "modifiedTime": "2026-11-03T22:48:44.840Z",
       "page": "reflection-week-5.html",
@@ -376,10 +381,15 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 03: Energy supply and two-switch circuit challenges - Y10 Science 1 - Full Lesson Plan"
     },
     "1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc": {
-      "modifiedTime": "2026-11-08T23:19:37.211Z",
+      "modifiedTime": "2026-11-09T00:56:45.753Z",
       "page": "slides-1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 09: How do we generate electricity? - Y10 Science 1",
       "slides": 7
+    },
+    "1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M": {
+      "modifiedTime": "2026-11-09T00:57:39.100Z",
+      "page": "file-1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson-10-Build-an-Electromagnet-Worksheet.pdf"
     },
     "1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo": {
       "modifiedTime": "2026-10-27T23:33:58.147Z",
@@ -516,6 +526,12 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 08: Parallel circuits - Y10 Science 2",
       "slides": 9
     },
+    "1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8": {
+      "modifiedTime": "2026-11-09T00:57:59.941Z",
+      "page": "slides-1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 10: Can electricity make a magnet? - Y10 Science 1",
+      "slides": 5
+    },
     "1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo": {
       "modifiedTime": "2026-11-02T23:18:12.645Z",
       "page": "doc-1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo.html",
@@ -572,6 +588,7 @@
     "doc-1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo.html",
     "doc-1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY.html",
     "doc-1_R1BDz7y3zcVvc2lD_mKcI_8ks0T3UDSnoA7Y1FaJww.html",
+    "doc-1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4.html",
     "doc-1bTnvTJk5YMSyAKD2YtgBBV2_y_spAmjI44Q618KpxEc.html",
     "doc-1cTz-ISTcKnTeBE3mwluRzpi7vLEO_LYUReNyUoWZLC0.html",
     "doc-1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo.html",
@@ -602,6 +619,7 @@
     "file-1LBd40BIKbAQCa27YuzySHHwMHT3vtDmO.html",
     "file-1U8DLa3GjbBcpiTLSEY6MZWDG5EEThvZU.html",
     "file-1ULcE4YEdpnercpaxGNDQH6HXjjN9EF_K.html",
+    "file-1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M.html",
     "file-1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4.html",
     "file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html",
     "file-1lo4SZl9Kdm8QwZ8HE_AY5MXQ2NV2R6PU.html",
@@ -648,6 +666,7 @@
     "slides-1oIHfVsDB8W_f8uGj24_UpK7VhZSY_EamiGoZHkrzaLA.html",
     "slides-1qJvgmaWPT999umENv4sFWJ687zA2kY7RsDJ4BeLY94w.html",
     "slides-1vBdX4qXE4fsIRZxPG_dUAj6EmdNst3CYpt-65ekUSkY.html",
+    "slides-1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8.html",
     "slides-1yjMx57cY-kSoNlZtv4ub8jck8W3JD3vmF-ndFFRVjQQ.html",
     "standard-2.html",
     "standard-3.html",
@@ -659,7 +678,7 @@
   "linkRewriting": {
     "anchors": 82,
     "plain_urls": 6,
-    "source_footers": 89,
+    "source_footers": 92,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
