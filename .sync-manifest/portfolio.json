@@ -1,10 +1,5 @@
 {
-  "failures": [
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-05-Y10-Science-1-Crossword-Anonymised.pdf",
-      "reason": "Response ended prematurely"
-    }
-  ],
+  "failures": [],
   "files": {
     "1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk": {
       "modifiedTime": "2026-11-09T00:57:53.264Z",
@@ -683,7 +678,7 @@
   "linkRewriting": {
     "anchors": 82,
     "plain_urls": 6,
-    "source_footers": 91,
+    "source_footers": 92,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
