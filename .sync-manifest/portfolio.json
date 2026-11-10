@@ -3,6 +3,14 @@
     {
       "path": "04 Weekly Reflections/Week 7",
       "reason": "Published version is empty"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 10: Electrical energy and efficiency - Y10 Science 1",
+      "reason": "Slide thumbnail download failed: HTTP 502"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 07: Reliable connections and switched outlets - Y10 Science 2",
+      "reason": "Slide thumbnail download failed: HTTP 502"
     }
   ],
   "files": {
@@ -690,7 +698,7 @@
   "linkRewriting": {
     "anchors": 82,
     "plain_urls": 6,
-    "source_footers": 93,
+    "source_footers": 91,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
