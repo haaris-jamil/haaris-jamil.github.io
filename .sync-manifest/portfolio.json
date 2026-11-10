@@ -3,10 +3,6 @@
     {
       "path": "04 Weekly Reflections/Week 7",
       "reason": "Published version is empty"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 04: Current and its measurement - Y10 Science 2",
-      "reason": "Slide thumbnail download failed: HTTP 502"
     }
   ],
   "files": {
@@ -391,15 +387,20 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 03: Energy supply and two-switch circuit challenges - Y10 Science 1 - Full Lesson Plan"
     },
     "1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc": {
-      "modifiedTime": "2026-11-09T23:09:12.485Z",
+      "modifiedTime": "2026-11-10T01:14:27.670Z",
       "page": "slides-1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 09: How do we generate electricity? - Y10 Science 1",
-      "slides": 7
+      "slides": 6
     },
     "1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M": {
       "modifiedTime": "2026-11-09T00:57:39.100Z",
       "page": "file-1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson-10-Build-an-Electromagnet-Worksheet.pdf"
+    },
+    "1cvrhiTTGwmt4mdSh6YmenqmfgfC5BGPX5GwAjK0eLUU": {
+      "modifiedTime": "2026-11-10T01:15:37.404Z",
+      "page": "doc-1cvrhiTTGwmt4mdSh6YmenqmfgfC5BGPX5GwAjK0eLUU.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson 09: Generation Stations Worksheet"
     },
     "1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo": {
       "modifiedTime": "2026-10-27T23:33:58.147Z",
@@ -601,6 +602,7 @@
     "doc-1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4.html",
     "doc-1bTnvTJk5YMSyAKD2YtgBBV2_y_spAmjI44Q618KpxEc.html",
     "doc-1cTz-ISTcKnTeBE3mwluRzpi7vLEO_LYUReNyUoWZLC0.html",
+    "doc-1cvrhiTTGwmt4mdSh6YmenqmfgfC5BGPX5GwAjK0eLUU.html",
     "doc-1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo.html",
     "doc-1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s.html",
     "doc-1dH_JLVGFfworU1IlSx3Dul5TMSEOddheIZ_LLzUcf9s.html",
@@ -688,7 +690,7 @@
   "linkRewriting": {
     "anchors": 82,
     "plain_urls": 6,
-    "source_footers": 91,
+    "source_footers": 93,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
