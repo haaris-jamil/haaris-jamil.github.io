@@ -1,8 +1,17 @@
 {
-  "failures": [],
+  "failures": [
+    {
+      "path": "04 Weekly Reflections/Week 7",
+      "reason": "Published version is empty"
+    },
+    {
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 04: Current and its measurement - Y10 Science 2",
+      "reason": "Slide thumbnail download failed: HTTP 502"
+    }
+  ],
   "files": {
     "1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk": {
-      "modifiedTime": "2026-11-09T00:57:53.264Z",
+      "modifiedTime": "2026-11-09T23:09:04.542Z",
       "page": "file-1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson-09-Generation-Stations-Worksheet.pdf"
     },
@@ -209,7 +218,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 03: Energy supply and two-switch circuit challenges - Y10 Science 2 - Full Lesson Plan"
     },
     "1Lb6tJF_dCHF31E100dqt7PDt3U3sCN78CkhrmKIyzzY": {
-      "modifiedTime": "2026-11-08T22:58:19.083Z",
+      "modifiedTime": "2026-11-09T23:03:01.781Z",
       "page": "goal-2.html",
       "path": "03 Professional Goals/Goal 2: Visual and Working Models"
     },
@@ -283,7 +292,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/99 Superseded Plans and Resources/Lesson 08: Parallel circuits - Earlier Full Lesson Plan [Superseded]"
     },
     "1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo": {
-      "modifiedTime": "2026-11-09T00:56:39.166Z",
+      "modifiedTime": "2026-11-09T22:57:23.396Z",
       "page": "doc-1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 09: How do we generate electricity? - Y10 Science 1 - Full Lesson Plan"
     },
@@ -314,6 +323,7 @@
       "page": "doc-1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 09: Comparing series and parallel circuits - Y10 Science 2 - Full Lesson Plan"
     },
+    "1V-JVFHnFdFX2kb_8eN85pVWqIUVdybWRVpPFH7cJVdM": {},
     "1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E": {
       "modifiedTime": "2026-11-04T00:39:03.263Z",
       "page": "slides-1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E.html",
@@ -381,7 +391,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 03: Energy supply and two-switch circuit challenges - Y10 Science 1 - Full Lesson Plan"
     },
     "1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc": {
-      "modifiedTime": "2026-11-09T00:56:45.753Z",
+      "modifiedTime": "2026-11-09T23:09:12.485Z",
       "page": "slides-1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 09: How do we generate electricity? - Y10 Science 1",
       "slides": 7
@@ -678,7 +688,7 @@
   "linkRewriting": {
     "anchors": 82,
     "plain_urls": 6,
-    "source_footers": 92,
+    "source_footers": 91,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
