@@ -79,7 +79,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson 4: exercise book evidence.pdf"
     },
     "16Wky3Pb8fNWfaMRnJXW7gYQcxP4G1tI5eTJoc1fg9LY": {
-      "modifiedTime": "2026-11-08T22:55:30.174Z",
+      "modifiedTime": "2026-11-10T22:47:56.649Z",
       "page": "learning-events.html",
       "path": "06 Teaching & Planning/00 Learning Events Register"
     },
@@ -303,7 +303,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/99 Superseded Plans and Resources/Lesson 08: Parallel circuits - Earlier Full Lesson Plan [Superseded]"
     },
     "1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo": {
-      "modifiedTime": "2026-11-10T19:33:17.795Z",
+      "modifiedTime": "2026-11-10T22:18:30.182Z",
       "page": "doc-1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 09: How do we generate electricity? - Y10 Science 1 - Full Lesson Plan"
     },
@@ -468,6 +468,11 @@
       "page": "file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lessons 3: anonymised worksheet evidence.pdf"
     },
+    "1kXopxcXPgyhZVJpDw6qu050TCjBYyXqDwAon0685Oy8": {
+      "modifiedTime": "2026-11-10T22:47:49.517Z",
+      "page": "doc-1kXopxcXPgyhZVJpDw6qu050TCjBYyXqDwAon0685Oy8.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 08: Two-lamp circuit and electricity generation - Y10 Science 2 - Full Lesson Plan"
+    },
     "1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM": {
       "modifiedTime": "2026-11-03T22:24:27.410Z",
       "page": "doc-1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM.html",
@@ -629,6 +634,7 @@
     "doc-1e4eJRQcTOQnHcv54RqMHfLrIuZlFwH5SJ2e_59pIu68.html",
     "doc-1gCiC40LUq4HybRawE7Qs-sgRQLPXe3NJ0wqyzgh5oIs.html",
     "doc-1j2aFR0vJ4pi07YoeZMh4PbtUxBYFxaCoIAo29CaDZUo.html",
+    "doc-1kXopxcXPgyhZVJpDw6qu050TCjBYyXqDwAon0685Oy8.html",
     "doc-1kv8p5qtlqxH4DfQ0KGRWIVNj41_ihjJMNO3XkUpffpM.html",
     "doc-1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA.html",
     "doc-1mujcRDNR-aoIgl3hZfxebMTM8Z9W9dDfj3q4U0PnGeA.html",
@@ -712,9 +718,9 @@
     "teaching.html"
   ],
   "linkRewriting": {
-    "anchors": 90,
-    "plain_urls": 6,
-    "source_footers": 97,
+    "anchors": 94,
+    "plain_urls": 7,
+    "source_footers": 98,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
