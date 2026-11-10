@@ -35,7 +35,7 @@ SLIDE_MAP = {
     (1, 7): ["1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs"],
     (2, 7): ["1OrKPfqtgA6aHBeDM9KMm4vTvH1xgpK2kM6lcZOLBYFw"],
     (1, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
-    (2, 8): ["1vBdX4qXE4fsIRZxPG_dUAj6EmdNst3CYpt-65ekUSkY"],
+    (2, 8): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
     (1, 9): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
     (2, 9): ["1oIHfVsDB8W_f8uGj24_UpK7VhZSY_EamiGoZHkrzaLA"],
     (1, 10): ["1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8"],
@@ -51,7 +51,7 @@ WORKSHEETS = {
     3: [("1RLLgkeHZVxaDZ-BbiTNoGDPGy48tdgnKHBIHL0sElt4", "Quick check")],
     5: [("1ULcE4YEdpnercpaxGNDQH6HXjjN9EF_K", "Crossword"),
         ("1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN", "Investigation")],
-    6: [("1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN", "Lesson 5 investigation, continued")],
+    6: [("1teY5N3MyiXw0NohV1uQ75jZc0R6vfoGN", "Investigation, continued")],
     7: [("1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo", "Connection worksheet")],
     8: [("1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI", "Switching worksheet")],
 }
@@ -59,7 +59,9 @@ WORKSHEETS = {
 # These early uploads were collected across both Year 10 groups. Their
 # original filenames are not evidence of class-level attribution.
 WORKSHEET_OVERRIDES = {
-    (1, 9): [("1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk", "Three-station worksheet")],
+    (1, 9): [("1cvrhiTTGwmt4mdSh6YmenqmfgfC5BGPX5GwAjK0eLUU", "Generation stations worksheet")],
+    (2, 8): [("1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI", "Two-lamp worksheet"),
+             ("1cvrhiTTGwmt4mdSh6YmenqmfgfC5BGPX5GwAjK0eLUU", "Generation stations worksheet")],
     (1, 10): [("1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M", "Electromagnet worksheet")],
     # Science 2 Lesson 6 was revised to a brief graphing demonstration
     # followed by the switched-outlet practical, not a continued worksheet.
@@ -167,6 +169,7 @@ EARLIER_SLIDES = {
     "1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0",
 }
 PREFERRED_PLAN_IDS = {
+    (2, 8): "1kXopxcXPgyhZVJpDw6qu050TCjBYyXqDwAon0685Oy8",
     (1, 9): "1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo",
     (1, 10): "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4",
 }
@@ -179,6 +182,12 @@ EXTRA_CLASS_EVIDENCE = {
 UNIT_OVERVIEW_ID = "10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w"
 
 PLAN_RE = re.compile(r"^Lesson\s*0?(\d{1,2})\s*[:.\-–]?\s*(.*)", re.I)
+
+
+def portfolio_number(group, number, events):
+    """Display consecutive teaching entries; source keys remain stable."""
+    return sum(1 for n in range(1, number + 1)
+               if events.get((group, n), {}).get("status") != "Not delivered")
 
 
 def exclude_from_website(entry):
@@ -302,7 +311,7 @@ def plan_page_info(entry, events):
     if preferred and entry["id"] != preferred:
         title = re.split(r"\s+-\s+Y10\s+Science", entry["name"], flags=re.I)[0].strip()
     else:
-        title = f"Lesson {number:02}: {lesson_title(group, number, entry, events)}"
+        title = f"Lesson {portfolio_number(group, number, events):02}: {lesson_title(group, number, entry, events)}"
     caption = (
         f"Year 10 Science {group} · {event.get('date', 'Date to confirm')}"
         f" · {event.get('status', 'Unconfirmed')}"
@@ -323,14 +332,14 @@ def slide_page_info(entry, events):
     number = lesson_number(entry)
     if len(matched) == 1:
         group, number = matched[0]
-        lesson = f"Lesson {number:02}: {lesson_title(group, number, entry, events)}"
+        lesson = f"Lesson {portfolio_number(group, number, events):02}: {lesson_title(group, number, entry, events)}"
         event = events.get((group, number), {})
         info = (f"Year 10 Science {group} · {event.get('date', 'Date to confirm')}"
                 f" · {event.get('status', 'Unconfirmed')} · Teaching slides")
         return lesson, info
     if len(matched) > 1:
         group, number = matched[0]
-        lesson = f"Lesson {number:02}: {lesson_title(group, number, entry, events)}"
+        lesson = f"Lesson {portfolio_number(group, number, events):02}: {lesson_title(group, number, entry, events)}"
         return lesson, "Shared teaching slides · Check each class's separate lesson status"
     if number:
         label = re.sub(r"^Lesson\s*0?\d+\s*[-:]\s*", "", entry["name"])
@@ -354,7 +363,7 @@ def highlighted_panel(plans, events, linked):
         date = event.get("date", "Date to confirm")
         cells.append(
             f'<article class="highlight-plan"><p class="highlight-meta">'
-            f'Year 10 Science {group} · Lesson {number:02} · {esc(date)} '
+            f'Year 10 Science {group} · Lesson {portfolio_number(group, number, events):02} · {esc(date)} '
             f'<span class="delivery-status {status.lower().replace(" ", "-")}">{esc(status)}</span></p>'
             f'<h4>{esc(label)}</h4><p>{esc(HIGHLIGHTS[group, number])}</p>'
             f'{get_link(entry, linked, "Read lesson plan", "lesson-action")}</article>'
@@ -408,16 +417,13 @@ def lesson_table(group, plans, events, by_id, linked, class_evidence):
         ) if evhtml else ""
         rows.append(
             f'<tr id="science-{group}-lesson-{num}"><th scope="row">'
-            f'<span class="lesson-number">Lesson {num:02}</span><strong>{esc(title)}</strong>{highlight}</th>'
+            f'<span class="lesson-number">Lesson {portfolio_number(group, num, events):02}</span><strong>{esc(title)}</strong>{highlight}</th>'
             f'<td><span class="delivery-status {status.lower().replace(" ", "-")}">{esc(status)}</span>'
             f'<span class="lesson-date">{esc(date)}</span></td>'
             f'<td>{plan_html}</td><td>{slides}</td><td>{worksheets}</td>'
             f'<td>{evidence_html}</td></tr>'
         )
-    sequence_note = (
-        '<p class="lesson-sequence-note">Lesson 2 was not delivered by me. '
-        'Its prepared resources are retained in Planning history.</p>'
-    ) if group == 1 else ""
+    sequence_note = ""
     return (
         f'<section class="lesson-section" id="science-{group}">'
         f'<div class="teaching-section-heading"><h3>Year 10 Science {group}</h3>'
@@ -516,7 +522,6 @@ def other_materials(entries, by_id, linked, events, plans):
         '<details class="planning-history"><summary>Other teaching resources</summary>'
         + "".join(sections) + "</details>"
         '<details class="planning-history"><summary>Planning history</summary>'
-        + missed_block
         + '<details class="planning-history"><summary>Superseded versions</summary>'
         '<p>The original unit overview and earlier planning records show the development of '
         'the unit. Current class-specific plans and the delivery register take precedence.</p>'
@@ -546,6 +551,10 @@ def teaching_body(entries, linked, events):
         '<p class="teaching-intro">Follow each class from planning through delivery and evidence. '
         'Dates and delivery statuses come from the Learning Events Register. Lesson plans and '
         'presentations are working documents that evolve with teaching experience.</p>'
+        '<p class="lesson-sequence-note">Lessons are numbered consecutively within each class’s '
+        'teaching sequence. Dates and topics show how each class progressed. Planned lessons are '
+        'clearly marked. Original resource numbering is retained in source documents and the '
+        'Learning Events Register.</p>'
         '<nav class="lesson-jump" aria-label="Lesson sequence navigation">'
         '<a href="#science-1">Year 10 Science 1</a><a href="#science-2">Year 10 Science 2</a>'
         '<a href="#other-learning-events">Other learning events</a>'
@@ -563,3 +572,4 @@ def teaching_body(entries, linked, events):
         + "</div>"
     )
     return content
+
