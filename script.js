@@ -1,4 +1,16 @@
 (() => {
+  document.querySelectorAll('.evidence-player').forEach(player => {
+    const video = player.querySelector('video');
+    const button = player.querySelector('.evidence-play');
+    if (!video || !button) return;
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      try { await video.play(); } catch { video.controls = true; }
+    });
+    video.addEventListener('play', () => { button.hidden = true; });
+    video.addEventListener('pause', () => { button.hidden = false; });
+    video.addEventListener('ended', () => { button.hidden = false; });
+  });
   const toggle = document.querySelector('.menu');
   const nav = document.querySelector('#nav');
   if (toggle && nav) {
@@ -62,3 +74,4 @@
     }
   }
 })();
+

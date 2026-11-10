@@ -325,7 +325,19 @@ def sync_binary(session, entry, old):
                 f'src="{esc(asset)}"></iframe>'
             )
     elif mimetype.startswith("video/"):
-        body = f'<video controls preload="metadata" src="{esc(asset)}"></video>'
+        import subprocess
+        from evidence_media import video_card
+        poster = output.parent / 'poster.jpg'
+        if not cached or not poster.is_file():
+            try:
+                subprocess.run([
+                    'ffmpeg', '-hide_banner', '-loglevel', 'error', '-y',
+                    '-i', str(output), '-frames:v', '1',
+                    '-vf', 'scale=960:-2', '-q:v', '3', str(poster)
+                ], check=True, timeout=90)
+            except (OSError, subprocess.SubprocessError) as error:
+                print(f'Video poster unavailable for {name}: {error}', flush=True)
+        body = video_card(asset, str(poster) if poster.is_file() else '', name)
     elif mimetype.startswith("audio/"):
         body = f'<audio controls preload="metadata" src="{esc(asset)}"></audio>'
     else:
@@ -439,3 +451,4 @@ def sync_doc_images(doc, rendered, file_id, modified, previous, published_only=F
     if marker in rendered:
         warnings.append("Some embedded objects were not accessible for conversion")
     return rendered, warnings
+

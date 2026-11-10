@@ -223,3 +223,12 @@ audio{width:100%;max-width:700px}
 .pdf-page-card img{display:block;width:100%;height:auto;object-fit:contain}
 .pdf-page-card figcaption{font-size:13px;color:var(--muted);text-align:center;padding:8px 0 2px}
 .pdf-pages-more{font-size:13px;color:var(--muted)}
+
+/* Inline evidence uses the original mirrored files; captions remain readable. */
+.evidence-media{display:block;width:100%;max-width:760px;margin:1rem 0 1.5rem}
+.evidence-media img,.evidence-media video{display:block;width:100%;height:auto;max-height:75vh;object-fit:contain;border-radius:8px;background:#eef2f4}
+.evidence-caption{display:block;margin-top:.5rem;font-size:.95rem;line-height:1.5;color:#394b59}
+.evidence-player{position:relative;display:block}
+.evidence-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:.8rem 1.2rem;border:2px solid white;border-radius:999px;background:#163e50;color:white;cursor:pointer;font:inherit;box-shadow:0 2px 12px #0005}
+.evidence-play[hidden]{display:none}
+td .evidence-media{min-width:180px;max-width:300px}

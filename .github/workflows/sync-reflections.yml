@@ -51,6 +51,9 @@ jobs:
       - name: Install Google API and media dependencies
         run: pip install "google-auth>=2,<3" "requests>=2.31,<3" "Pillow>=10,<12" "PyMuPDF>=1.24,<2"
 
+      - name: Install video thumbnail tool
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+
       - name: Test class-specific evidence matching
         run: python -m unittest discover -s scripts -p 'test_*.py' -v
 
@@ -106,3 +109,4 @@ jobs:
       - name: Deploy current website
         id: deployment
         uses: actions/deploy-pages@v4
+

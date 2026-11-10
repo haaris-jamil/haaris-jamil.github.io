@@ -29,6 +29,7 @@ from lesson_layout import (
     slide_page_info,
 )
 from site_links import make_local_map, rewrite_html
+from evidence_media import publish_inline_media
 from site_evidence import evidence_page_info, reconcile_page
 from site_finishing import (
     ABOUT_ID, REFERENCES_ID, PEPEHA_SLIDES_ID, DIRECT_PAGES,
@@ -583,6 +584,7 @@ def main():
         for name, amount in changes.items():
             link_counts[name] += amount
     print("Internal source links: " + json.dumps(link_counts))
+    print(f"Inline photo/video evidence updated on {publish_inline_media()} pages")
     for stale in set(old.get("generatedPages", [])) - pages:
         target = Path(stale)
         if target.name.startswith(("doc-", "sheet-", "slides-", "file-", "reflection-week-")):
@@ -603,3 +605,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
