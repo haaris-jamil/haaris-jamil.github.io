@@ -2,22 +2,20 @@ import unittest
 from other_events_table import render_other_events
 
 class OtherEventsTests(unittest.TestCase):
-    def test_support_sessions_are_separate_completed_rows(self):
-        rows = [[rid, 'Recorded', date] for rid,date in
-                [('27','14/10/2026'),('28','15/10/2026'),('29','19/10/2026')]]
-        markup = render_other_events(rows, {}, {})
-        self.assertEqual(markup.count('scope="row"'), 3)
-        self.assertEqual(markup.count('>Completed</span>'), 3)
-        self.assertNotIn('<th scope="col">Evidence', markup)
-        self.assertNotIn('>Plan</a>', markup)
-        self.assertIn('learning-events.html#event-27', markup)
-        self.assertEqual(markup.count('>NZQA AS 91526 resources</a>'), 2)
+    def test_separate_plans_resources_and_reflections(self):
+        rows=[[rid,'Recorded','14/10/2026'] for rid in ('27','28','29')]
+        markup=render_other_events(rows,{}, {})
+        self.assertEqual(markup.count('scope="row"'),3)
+        self.assertEqual(markup.count('scope="col"'),6)
+        self.assertEqual(markup.count('>NZQA AS 91526</a>'),3)
+        for rid in ('27','28','29'):
+            self.assertIn(f'event-{rid}-plan.html',markup)
+            self.assertIn(f'event-{rid}-reflection.html',markup)
+        self.assertNotIn('learning-events.html',markup)
 
-    def test_status_and_source_plan_are_preserved(self):
-        markup = render_other_events([['34','Planned','02/11/2026']], {}, {})
-        self.assertIn('>Planned</span>', markup)
-        self.assertIn('>Planning record</a>', markup)
-        self.assertIn('doc-1ofp5jgQ1npOkrbHJrQXB_HmaY6jh0zVUiR3_ksWdn-4.html', markup)
+    def test_existing_plan_and_completed_status(self):
+        markup=render_other_events([['34','Recorded','02/11/2026']],{}, {})
+        self.assertIn('>Completed</span>',markup)
+        self.assertIn('doc-1ofp5jgQ1npOkrbHJrQXB_HmaY6jh0zVUiR3_ksWdn-4.html',markup)
 
-if __name__ == '__main__':
-    unittest.main()
+if __name__=='__main__': unittest.main()

@@ -30,6 +30,7 @@ from lesson_layout import (
 )
 from site_links import make_local_map, rewrite_html
 from evidence_media import publish_inline_media
+from other_event_pages import publish_other_event_pages
 from site_evidence import evidence_page_info, reconcile_page
 from site_finishing import (
     ABOUT_ID, REFERENCES_ID, PEPEHA_SLIDES_ID, DIRECT_PAGES,
@@ -560,6 +561,8 @@ def main():
             else:
                 write(slug, section_index(title, desc, subset, linked, failures, name))
         pages.add(slug)
+    from lesson_layout import OTHER_EVENT_ROWS
+    pages.update(publish_other_event_pages(OTHER_EVENT_ROWS, document_html, write))
     # Remove the retired miscellaneous listing; do not regenerate it.
     Path("portfolio-sources.html").unlink(missing_ok=True)
     write("sync-audit.html", audit_page(records, linked, failures, not_auto, incomplete))
@@ -605,4 +608,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

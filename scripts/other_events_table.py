@@ -28,21 +28,20 @@ def render_other_events(rows, by_id, linked):
         title, group, plan = EVENTS[rid]
         status = {'recorded':'Completed', 'planned':'Planned'}.get(row[1].strip().lower(), row[1] or 'Unconfirmed')
         formatted_date = date.strftime('%-d %b %Y') if date != datetime.max else row[2] or 'Date to confirm'
-        record = f'learning-events.html#event-{rid}'
+        record = f'event-{rid}-reflection.html'
         if plan:
             page = linked.get(plan, {}).get('page') or f'doc-{plan}.html'
             preparation = f'<a href="{html.escape(page, quote=True)}">Plan</a>'
-        elif rid in ('28', '29'):
-            preparation = ('<a href="https://www.nzqa.govt.nz/ncea/assessment/view-detailed.do?standardNumber=91526" '
-                           'target="_blank" rel="noopener noreferrer">NZQA AS 91526 resources</a>')
         else:
-            preparation = 'Past-paper questions'
-        record_label = 'Reflection / record' if status == 'Completed' else 'Planning record'
+            preparation = f'<a href="event-{rid}-plan.html">Plan</a>'
+        resources = ('<a href="https://www.nzqa.govt.nz/ncea/assessment/view-detailed.do?standardNumber=91526" target="_blank" rel="noopener noreferrer">NZQA AS 91526</a>'
+                     if rid in ('27','28','29') else '<span class="no-resource">—</span>')
+        record_label = 'Reflection' if status == 'Completed' else 'Planning record'
         output.append(
             f'<tr id="other-event-{rid}"><th scope="row"><strong>{html.escape(title)}</strong></th>'
             f'<td>{html.escape(group)}</td><td><span class="delivery-status {status.lower()}">{html.escape(status)}</span>'
             f'<span class="lesson-date">{html.escape(formatted_date)}</span></td>'
-            f'<td>{preparation}</td><td><a href="{record}">{record_label}</a></td></tr>'
+            f'<td>{preparation}</td><td>{resources}</td><td><a href="{record}">{record_label}</a></td></tr>'
         )
     if not output:
         return ''
@@ -52,5 +51,6 @@ def render_other_events(rows, by_id, linked):
             '<div class="lesson-table-scroll" role="region" tabindex="0" aria-label="Other learning events">'
             '<table class="lesson-table"><thead><tr><th scope="col">Learning event</th>'
             '<th scope="col">Class/group</th><th scope="col">Date/status</th>'
-            '<th scope="col">Planning/resources</th><th scope="col">Reflection/record</th>'
+            '<th scope="col">Plan</th><th scope="col">Resources</th><th scope="col">Reflection</th>'
             '</tr></thead><tbody>' + ''.join(output) + '</tbody></table></div></section>')
+
