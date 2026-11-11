@@ -10,6 +10,9 @@ from datetime import datetime
 from urllib.parse import quote
 
 from sync_media import api_json, esc
+from other_events_table import render_other_events
+
+OTHER_EVENT_ROWS = []
 
 REGISTER_ID = "16Wky3Pb8fNWfaMRnJXW7gYQcxP4G1tI5eTJoc1fg9LY"
 SOURCE_PLANS = "02 Full Lesson Plans"
@@ -208,6 +211,7 @@ def date_text(value):
 
 
 def current_events(session):
+    global OTHER_EVENT_ROWS
     range_key = quote("'Learning Events'!A6:O250", safe="")
     response = api_json(
         session,
@@ -215,6 +219,7 @@ def current_events(session):
         params={"valueRenderOption": "FORMATTED_VALUE"},
     )
     rows = response.get("values", [])
+    OTHER_EVENT_ROWS = rows[1:]
     events = {}
     for row in rows[1:]:
         row = list(row) + [""] * max(0, 15 - len(row))
@@ -438,24 +443,7 @@ def lesson_table(group, plans, events, by_id, linked, class_evidence):
 
 
 def other_learning_events(by_id, linked):
-    items = []
-    for fid, label, date in OTHER_LEARNING_EVENTS:
-        entry = by_id.get(fid)
-        if not entry:
-            continue
-        items.append(
-            '<li><div class="other-event-entry">'
-            f'{get_link(entry, linked, label, "other-event-link")}'
-            f'<span class="other-event-date">{esc(date)}</span>'
-            '</div></li>'
-        )
-    return (
-        '<section class="other-learning-events" id="other-learning-events">'
-        '<div class="teaching-section-heading"><h3>Other learning events</h3>'
-        '<p>Year 13 Physics demonstrations and Science Club activities, '
-        'with their plans and records.</p></div>'
-        '<ul class="other-event-list">' + "".join(items) + '</ul></section>'
-    ) if items else ""
+    return render_other_events(OTHER_EVENT_ROWS, by_id, linked)
 
 
 def other_materials(entries, by_id, linked, events, plans):
@@ -572,4 +560,5 @@ def teaching_body(entries, linked, events):
         + "</div>"
     )
     return content
+
 

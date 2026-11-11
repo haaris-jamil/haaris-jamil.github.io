@@ -130,6 +130,8 @@ def reconcile_register(markup):
         row, rid = match.group(1), int(match.group(2))
         return _register_row(row, rid)
     revised = REGISTER_ROW.sub(render, markup)
+    revised = re.sub(r'<tr><td>(\d+)</td>',
+                     lambda m: f'<tr id="event-{m[1]}"><td>{m[1]}</td>', revised)
     # Preserve register facts and evidence URLs without internal commentary.
     return re.sub(r'<p class="register-provenance">.*?</p>', '', revised, flags=re.S)
 
@@ -213,3 +215,4 @@ def reconcile_page(page_name, markup):
         return correct_goal_one(markup)
     markup = re.sub(r"mixed[- ]group", "Year 10", markup, flags=re.I)
     return markup
+
