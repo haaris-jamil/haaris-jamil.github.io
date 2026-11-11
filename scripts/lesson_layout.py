@@ -178,6 +178,9 @@ PREFERRED_PLAN_IDS = {
     (1, 10): "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4",
 }
 EXTRA_CLASS_EVIDENCE = {
+    (1, 9): [
+        ("1ogm1IP2-EPkGqPG-sVJ2AWVnplDDtAbk", "Student work samples: 11 November"),
+    ],
     (1, 8): [
         ("1FuMU5-IMkoqcIdujYpy4Fc_q0gTOcg8L", "Completed-circuit photograph"),
     ],
@@ -414,7 +417,7 @@ def lesson_table(group, plans, events, by_id, linked, class_evidence):
             for entry in class_evidence.get(key, []):
                 evhtml.append(get_link(entry, linked, "Student work samples"))
             for fid, label in EXTRA_CLASS_EVIDENCE.get(key, []):
-                if fid in by_id:
+                if fid in by_id and fid not in {item["id"] for item in class_evidence.get(key, [])}:
                     evhtml.append(get_link(by_id[fid], linked, label))
         evidence_html = (
             '<div class="lesson-evidence-items">'
@@ -562,6 +565,7 @@ def teaching_body(entries, linked, events):
         + "</div>"
     )
     return content
+
 
 
 
