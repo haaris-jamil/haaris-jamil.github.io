@@ -66,7 +66,7 @@ WORKSHEET_OVERRIDES = {
     (1, 9): [("1cvrhiTTGwmt4mdSh6YmenqmfgfC5BGPX5GwAjK0eLUU", "Generation stations worksheet")],
     (2, 8): [("1rFzdazULtdSoH-Vady3IXnr4T-3bxI5ykCUEyVkMBRI", "Two-lamp worksheet"),
              ("1cvrhiTTGwmt4mdSh6YmenqmfgfC5BGPX5GwAjK0eLUU", "Generation stations worksheet")],
-    (1, 10): [("1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M", "Electromagnet worksheet")],
+    (1, 10): [],
     # Science 2 Lesson 6 was revised to a brief graphing demonstration
     # followed by the switched-outlet practical, not a continued worksheet.
     (2, 6): [
@@ -75,7 +75,7 @@ WORKSHEET_OVERRIDES = {
 }
 LESSON_TITLE_OVERRIDES = {
     (1, 9): "How do we generate electricity?",
-    (1, 10): "Can electricity make a magnet?",
+    (1, 10): "Turbine design challenge",
     (2, 6): "Graphing demonstration and switched-outlet practical",
 }
 EVIDENCE_LABELS = {
