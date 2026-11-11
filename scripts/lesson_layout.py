@@ -11,6 +11,7 @@ from urllib.parse import quote
 
 from sync_media import api_json, esc
 from other_events_table import render_other_events
+from teaching_summary import render_teaching_summary
 
 OTHER_EVENT_ROWS = []
 
@@ -547,6 +548,7 @@ def teaching_body(entries, linked, events):
         '<a href="#science-1">Year 10 Science 1</a><a href="#science-2">Year 10 Science 2</a>'
         '<a href="#other-learning-events">Other learning events</a>'
         '<a href="learning-events.html">Learning events register</a></nav>'
+        + render_teaching_summary(OTHER_EVENT_ROWS)
         + highlighted_panel(plans, events, linked)
         + ('<section class="unit-overview-note"><h3>Original unit overview</h3>'
            '<p>The initial unit overview records the starting plan. The lesson tables and '
@@ -560,5 +562,6 @@ def teaching_body(entries, linked, events):
         + "</div>"
     )
     return content
+
 
 
