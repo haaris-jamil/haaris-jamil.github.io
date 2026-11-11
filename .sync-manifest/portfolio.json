@@ -79,7 +79,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson 4: exercise book evidence.pdf"
     },
     "16Wky3Pb8fNWfaMRnJXW7gYQcxP4G1tI5eTJoc1fg9LY": {
-      "modifiedTime": "2026-11-11T01:09:49.325Z",
+      "modifiedTime": "2026-11-11T19:27:05.448Z",
       "page": "learning-events.html",
       "path": "06 Teaching & Planning/00 Learning Events Register"
     },
@@ -179,9 +179,9 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-05-Y10-Science-1-Investigation-Page-1-Anonymised.pdf"
     },
     "1HZugSfeanOI_V0GSbUouALCLt5nsNRiMJJsUt0ci90Q": {
-      "modifiedTime": "2026-11-03T21:00:12.922Z",
+      "modifiedTime": "2026-11-11T19:46:54.173Z",
       "page": "doc-1HZugSfeanOI_V0GSbUouALCLt5nsNRiMJJsUt0ci90Q.html",
-      "path": "02 Observations/My Observations of Others/General Observations – School, Learners and Professional Practice"
+      "path": "02 Observations/My Observations of Others/General Observations: School, Learners and Professional Practice"
     },
     "1H_StZt2sbxdTy8QcC5HfkW2c069-7e1c5gtZtXSrT3Q": {
       "modifiedTime": "2026-11-03T22:48:23.344Z",
@@ -382,7 +382,7 @@
       "path": "06 Teaching & Planning/00 Start Here - Teaching and Planning Guide"
     },
     "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4": {
-      "modifiedTime": "2026-11-11T01:18:58.775Z",
+      "modifiedTime": "2026-11-11T19:58:55.319Z",
       "page": "doc-1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 10: Turbine design challenge - Y10 Science 1 - Full Lesson Plan"
     },
@@ -568,10 +568,16 @@
       "slides": 9
     },
     "1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8": {
-      "modifiedTime": "2026-11-11T01:20:13.575Z",
+      "modifiedTime": "2026-11-11T19:59:01.257Z",
       "page": "slides-1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 10: Turbine design challenge - Y10 Science 1",
-      "slides": 9
+      "slides": 8
+    },
+    "1wa4nIINEK5g0NylS5WDLyE18EUoUAVeLj0Gf0Owy4RE": {
+      "modifiedTime": "2026-11-11T19:26:57.520Z",
+      "page": "slides-1wa4nIINEK5g0NylS5WDLyE18EUoUAVeLj0Gf0Owy4RE.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 08: Two-lamp circuit and electricity generation - Y10 Science 2",
+      "slides": 7
     },
     "1wsc9mqtR6l4aPrKHmSAYy7c3nZUbdZNn6TzRWo3p5Xo": {
       "modifiedTime": "2026-11-02T23:18:12.645Z",
@@ -724,6 +730,7 @@
     "slides-1qJvgmaWPT999umENv4sFWJ687zA2kY7RsDJ4BeLY94w.html",
     "slides-1vBdX4qXE4fsIRZxPG_dUAj6EmdNst3CYpt-65ekUSkY.html",
     "slides-1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8.html",
+    "slides-1wa4nIINEK5g0NylS5WDLyE18EUoUAVeLj0Gf0Owy4RE.html",
     "slides-1yjMx57cY-kSoNlZtv4ub8jck8W3JD3vmF-ndFFRVjQQ.html",
     "standard-2.html",
     "standard-3.html",
@@ -735,7 +742,7 @@
   "linkRewriting": {
     "anchors": 91,
     "plain_urls": 7,
-    "source_footers": 99,
+    "source_footers": 100,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
