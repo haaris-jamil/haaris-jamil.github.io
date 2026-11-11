@@ -393,7 +393,7 @@ def lesson_table(group, plans, events, by_id, linked, class_evidence):
         plan = plans.get(key)
         event = events.get(key, {})
         status = event.get("status", "Unconfirmed")
-        if status == "Not delivered":
+        if not event or status == "Not delivered":
             # A missed timetable slot stays in the register and planning
             # history, never in the delivered/planned class lesson table.
             continue
