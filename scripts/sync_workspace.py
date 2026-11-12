@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synchronise the ProfEx 1 Drive portfolio into GitHub Pages.
+"""Synchronise the ProfEx 1 Drive portfolio to GitHub Pages.
 
 Read-only access to Google. The portfolio's folder structure is preserved in
 webpage indexes. Reflections publish their 'Published version' section only.
