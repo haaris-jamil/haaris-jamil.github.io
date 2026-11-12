@@ -41,7 +41,7 @@ SLIDE_MAP = {
     (1, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
     (2, 8): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
     (1, 9): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
-    (2, 9): ["1oIHfVsDB8W_f8uGj24_UpK7VhZSY_EamiGoZHkrzaLA"],
+    (2, 9): ["11r4p41UqkojuscJVKrIxLcCjE5hIB46aQBvvlBAUIFI"],
     (1, 10): ["1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8"],
     (2, 10): ["1MJouYp3n6oSdZ9F7uswt2dmECSmSXvHP4b0O5VwiQ-s"],
     (1, 11): ["1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0"],
@@ -178,6 +178,10 @@ PREFERRED_PLAN_IDS = {
     (1, 10): "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4",
 }
 EXTRA_CLASS_EVIDENCE = {
+    (1, 10): [
+        ("1keXiRTPKZY6vDFQTZeLDc_QUvcwsQXfo", "Students building their turbine"),
+        ("13Uf4wjA_ZIb2h7lyqAaNimOM5yhElC4K", "Students assembling a prototype"),
+    ],
     (1, 9): [
         ("1ogm1IP2-EPkGqPG-sVJ2AWVnplDDtAbk", "Student work samples: 11 November"),
     ],
