@@ -79,7 +79,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson 4: exercise book evidence.pdf"
     },
     "16Wky3Pb8fNWfaMRnJXW7gYQcxP4G1tI5eTJoc1fg9LY": {
-      "modifiedTime": "2026-11-11T19:27:05.448Z",
+      "modifiedTime": "2026-11-12T00:47:13.481Z",
       "page": "learning-events.html",
       "path": "06 Teaching & Planning/00 Learning Events Register"
     },
@@ -297,6 +297,11 @@
       "page": "doc-1S4ltFg4bRMT24MQe8iW08Ho5wcVjZ1BxjDy94Yrjr3k.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/04 Worksheets and Teaching Resources/Lesson 02 Charge and static electricity Worksheet "
     },
+    "1SoxlQ-UniCqmiOxVUpj7QRF1gRvOcviB": {
+      "modifiedTime": "2026-11-12T00:46:35.381Z",
+      "page": "file-1SoxlQ-UniCqmiOxVUpj7QRF1gRvOcviB.html",
+      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-08-Y10-Science-2-Student-Evidence-2026-11-12-Anonymised.pdf"
+    },
     "1TgFds-Pk1Srck6N_IiX-JzynoSNS5hM4g4ora4v8AiM": {
       "modifiedTime": "2026-11-03T20:12:14.409Z",
       "page": "doc-1TgFds-Pk1Srck6N_IiX-JzynoSNS5hM4g4ora4v8AiM.html",
@@ -382,7 +387,7 @@
       "path": "06 Teaching & Planning/00 Start Here - Teaching and Planning Guide"
     },
     "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4": {
-      "modifiedTime": "2026-11-11T19:58:55.319Z",
+      "modifiedTime": "2026-11-12T01:12:14.241Z",
       "page": "doc-1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 1/Lesson 10: Turbine design challenge - Y10 Science 1 - Full Lesson Plan"
     },
@@ -568,10 +573,10 @@
       "slides": 9
     },
     "1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8": {
-      "modifiedTime": "2026-11-11T19:59:01.257Z",
+      "modifiedTime": "2026-11-12T00:50:51.532Z",
       "page": "slides-1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 10: Turbine design challenge - Y10 Science 1",
-      "slides": 8
+      "slides": 11
     },
     "1wa4nIINEK5g0NylS5WDLyE18EUoUAVeLj0Gf0Owy4RE": {
       "modifiedTime": "2026-11-11T19:26:57.520Z",
@@ -678,6 +683,7 @@
     "file-1L1Rz3ExEgihuLYT-4Sr6Rt3fyZSVffDZ.html",
     "file-1LBd40BIKbAQCa27YuzySHHwMHT3vtDmO.html",
     "file-1RfsIJHPNsMGhVwo4EHD1EbuLTgWPi8hr.html",
+    "file-1SoxlQ-UniCqmiOxVUpj7QRF1gRvOcviB.html",
     "file-1U8DLa3GjbBcpiTLSEY6MZWDG5EEThvZU.html",
     "file-1ULcE4YEdpnercpaxGNDQH6HXjjN9EF_K.html",
     "file-1cWzCUxbxx2USPgsIHrB5oLfPv58thM9M.html",
@@ -740,9 +746,9 @@
     "teaching.html"
   ],
   "linkRewriting": {
-    "anchors": 91,
+    "anchors": 92,
     "plain_urls": 7,
-    "source_footers": 100,
+    "source_footers": 101,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
