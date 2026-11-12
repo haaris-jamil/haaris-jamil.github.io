@@ -17,13 +17,14 @@ PDF_MIME = "application/pdf"
 FINISHED_FEEDBACK_PDFS = {
     1: "1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP",
     2: "11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I",
-    3: "1I8m_oCzHA_d5RXyN725xnNHgRy8tgK-W",
     4: "1LkWOx87OLbR5Dcz1ZX8NtHiCnZfR5QwB",
 }
 
 
 def is_editable_observation_form(entry):
     """Exclude editable forms, but never exclude final PDFs."""
+    if entry.get("id") == "1I8m_oCzHA_d5RXyN725xnNHgRy8tgK-W":
+        return True  # Superseded Week 3 export; the mentor PDF is awaiting completion.
     folder_path = entry.get("folderPath", [])
     if not folder_path or folder_path[0] != OBSERVATION_FOLDER:
         return False
