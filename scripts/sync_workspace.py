@@ -156,6 +156,10 @@ def all_doc_html(doc):
 
     def visit(tab):
         title = tab.get("tabProperties", {}).get("title", "")
+        # The blank working form is not portfolio evidence. Keep it in Drive only.
+        if (doc.get("documentId") == "1HZugSfeanOI_V0GSbUouALCLt5nsNRiMJJsUt0ci90Q"
+                and title.strip().casefold() == "focused observation template"):
+            return
         if len(tabs) > 1 and title:
             segments.append(f"<h3>{esc(title)}</h3>")
         content = tab.get("documentTab", {}).get("body", {}).get("content", [])
