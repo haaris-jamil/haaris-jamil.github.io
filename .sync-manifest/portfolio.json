@@ -3,18 +3,6 @@
     {
       "path": "04 Weekly Reflections/Week 7",
       "reason": "Published version is empty"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Lesson 07: Independently switched parallel lamps and electrical protection - Y10 Science 2",
-      "reason": "Slide thumbnail download failed: HTTP 500"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 02: Foundations of charge and static electricity - Y10 Science 1 - Not delivered",
-      "reason": "Slide thumbnail download failed: HTTP 500"
-    },
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 05: Voltage, current and resistance - Y10 Science 2",
-      "reason": "Slide thumbnail download failed: HTTP 429"
     }
   ],
   "files": {
@@ -760,7 +748,7 @@
   "linkRewriting": {
     "anchors": 92,
     "plain_urls": 7,
-    "source_footers": 98,
+    "source_footers": 101,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
