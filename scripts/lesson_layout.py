@@ -181,6 +181,7 @@ EXTRA_CLASS_EVIDENCE = {
     (1, 10): [
         ("1keXiRTPKZY6vDFQTZeLDc_QUvcwsQXfo", "Students building their turbine"),
         ("13Uf4wjA_ZIb2h7lyqAaNimOM5yhElC4K", "Students assembling a prototype"),
+        ("1ftJJsv5C2kBWZxQEpKSYpMGn9l36eaBQ", "Student turbine prototypes"),
     ],
     (1, 9): [
         ("1ogm1IP2-EPkGqPG-sVJ2AWVnplDDtAbk", "Student work samples: 11 November"),
