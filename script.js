@@ -1,4 +1,54 @@
 (() => {
+  const photos = [...document.querySelectorAll(
+    'main img, article img, .drive-figure img, .evidence-photo img'
+  )].filter(img => !img.closest('nav, button, [role="button"], .evidence-player')
+    && !img.matches('[width="1"], [height="1"]'));
+  if (photos.length) {
+    const dialog = document.createElement('dialog');
+    dialog.className = 'photo-viewer';
+    dialog.setAttribute('aria-label', 'Enlarged photo');
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'photo-viewer-close';
+    close.textContent = 'Close';
+    const full = document.createElement('img');
+    dialog.append(close, full);
+    document.body.append(dialog);
+    let trigger;
+    close.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+      full.removeAttribute('src');
+      trigger?.focus();
+    });
+    photos.forEach(img => {
+      const source = img.currentSrc || img.src;
+      if (!source) return;
+      let link = img.closest('a');
+      if (!link) {
+        link = document.createElement('a');
+        link.href = source;
+        img.before(link);
+        link.append(img);
+      } else if (!/\\.(?:avif|gif|jpe?g|png|webp)(?:[?#]|$)/i.test(link.href)) {
+        return;
+      }
+      link.classList.add('photo-zoom');
+      link.setAttribute('aria-label', img.alt ? 'Enlarge photo: ' + img.alt : 'Enlarge photo');
+      link.addEventListener('click', event => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+            || event.button !== 0 || typeof dialog.showModal !== 'function') return;
+        event.preventDefault();
+        trigger = link;
+        full.alt = img.alt;
+        full.src = link.href;
+        dialog.showModal();
+        close.focus();
+      });
+    });
+  }
   document.querySelectorAll('.evidence-player').forEach(player => {
     const video = player.querySelector('video');
     const button = player.querySelector('.evidence-play');
