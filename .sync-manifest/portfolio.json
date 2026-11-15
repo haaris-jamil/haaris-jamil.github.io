@@ -1,10 +1,5 @@
 {
-  "failures": [
-    {
-      "path": "04 Weekly Reflections/Week 7",
-      "reason": "Published version is empty"
-    }
-  ],
+  "failures": [],
   "files": {
     "1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk": {
       "modifiedTime": "2026-11-09T23:09:04.542Z",
@@ -37,7 +32,7 @@
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/05 Student Evidence - Anonymised/Lesson-07-Y10-Science-1-Student-Evidence-Anonymised.pdf"
     },
     "11r4p41UqkojuscJVKrIxLcCjE5hIB46aQBvvlBAUIFI": {
-      "modifiedTime": "2026-11-12T21:36:57.232Z",
+      "modifiedTime": "2026-11-15T19:37:14.509Z",
       "page": "slides-11r4p41UqkojuscJVKrIxLcCjE5hIB46aQBvvlBAUIFI.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 2/Lesson 09: Turbine design challenge - Y10 Science 2",
       "slides": 13
@@ -360,7 +355,11 @@
       "page": "doc-1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY.html",
       "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/02 Full Lesson Plans/Y10 Science 2/Lesson 09: Comparing series and parallel circuits - Y10 Science 2 - Full Lesson Plan"
     },
-    "1V-JVFHnFdFX2kb_8eN85pVWqIUVdybWRVpPFH7cJVdM": {},
+    "1V-JVFHnFdFX2kb_8eN85pVWqIUVdybWRVpPFH7cJVdM": {
+      "modifiedTime": "2026-11-15T19:39:30.251Z",
+      "page": "reflection-week-7.html",
+      "path": "04 Weekly Reflections/Week 7"
+    },
     "1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E": {
       "modifiedTime": "2026-11-04T00:39:03.263Z",
       "page": "slides-1V9FaElXcY_K-ZprvRc-JSvwm_uH9Gh92SlJTMGBOp5E.html",
@@ -751,6 +750,7 @@
     "reflection-week-4.html",
     "reflection-week-5.html",
     "reflection-week-6.html",
+    "reflection-week-7.html",
     "reflections.html",
     "slides-11r4p41UqkojuscJVKrIxLcCjE5hIB46aQBvvlBAUIFI.html",
     "slides-11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY.html",
