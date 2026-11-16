@@ -44,7 +44,6 @@ SLIDE_MAP = {
     (2, 9): ["11r4p41UqkojuscJVKrIxLcCjE5hIB46aQBvvlBAUIFI"],
     (1, 10): ["1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8"],
     (2, 10): ["1MJouYp3n6oSdZ9F7uswt2dmECSmSXvHP4b0O5VwiQ-s"],
-    (1, 11): ["1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0"],
     (2, 11): ["11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg"],
     (1, 12): ["1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o"],
     (2, 12): ["1WC98gjxSzZKtxDgR0FnWa0DxyUtrD2AOlob_JBjdckk"],
