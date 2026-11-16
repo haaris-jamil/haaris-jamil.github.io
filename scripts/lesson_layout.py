@@ -171,6 +171,8 @@ HIGHLIGHTS = {
 # accessible within their lesson, with no assumption that planning is final.
 EARLIER_SLIDES = set()
 PREFERRED_PLAN_IDS = {
+    (2, 7): "14DcRG7jHVi38lvp4MOoRC8jPmPYPuqyPzvTDOO33XIU",
+    (2, 9): "1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY",
     (2, 8): "1kXopxcXPgyhZVJpDw6qu050TCjBYyXqDwAon0685Oy8",
     (1, 9): "1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo",
     (1, 10): "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4",
