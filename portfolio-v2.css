@@ -249,3 +249,12 @@ td .evidence-media{min-width:180px;max-width:300px}
 .photo-viewer::backdrop{background:rgb(9 17 28 / .83)}
 .photo-viewer-close{display:block;margin:0 0 8px auto;padding:.45rem .8rem;border:1px solid #526678;border-radius:6px;background:#fff;color:inherit;font:inherit;cursor:pointer}
 .photo-viewer img{display:block;width:auto;height:auto;max-width:calc(100vw - 48px);max-height:calc(100dvh - 90px);object-fit:contain}
+
+/* Separate the three sources of feedback. */
+.observation-group .feedback-voice{margin:1.25rem 0;border:1px solid var(--border);border-inline-start:4px solid #497666;border-radius:10px;padding:clamp(14px,3vw,24px);background:#fff;scroll-margin-top:115px}
+.observation-group .feedback-voice h4{margin-top:0}
+.observation-group #student-voice{border-inline-start-color:#287876}
+.observation-group #evaluative-visitor-voice{border-inline-start-color:#657181}
+.student-scans{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.student-scans summary{cursor:pointer;color:var(--accent-dark);font-weight:700}
+.student-scans .pdf-preview{width:100%;min-height:65vh}
