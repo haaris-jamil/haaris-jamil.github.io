@@ -203,7 +203,9 @@ def portfolio_number(group, number, events):
 
 
 def exclude_from_website(entry):
-    """Skip explicitly labelled redacted copies of observations; leave Drive untouched."""
+    """Skip redacted observation duplicates, except the approved Student Voice PDF."""
+    if entry.get("id") == "1eBxsYyTaPqJJ4byG3CSqaxWeI3w4fMfM" and entry.get("mimeType") == "application/pdf":
+        return False
     return (
         entry.get("path", [""])[0] == "02 Observations"
         and entry.get("mimeType") != "application/vnd.google-apps.folder"
