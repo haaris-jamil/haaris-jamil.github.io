@@ -258,3 +258,5 @@ td .evidence-media{min-width:180px;max-width:300px}
 .student-scans{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
 .student-scans summary{cursor:pointer;color:var(--accent-dark);font-weight:700}
 .student-scans .pdf-preview{width:100%;min-height:65vh}
+
+.reflection-pager{display:flex;position:static;flex-direction:row;gap:12px;margin-top:28px;padding:0;border:0;background:none;box-shadow:none}

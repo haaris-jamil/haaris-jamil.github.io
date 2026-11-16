@@ -20,7 +20,7 @@ from google.oauth2 import service_account
 
 from sync_reflections import (
     render_blocks, render_document as render_published,
-    page as reflection_page
+    page as reflection_page, finish_page as finish_reflection_page
 )
 from sync_media import api_json, sync_sheet, sync_slides, sync_binary, sync_doc_images, esc
 from lesson_layout import (
@@ -528,6 +528,12 @@ def main():
             else:
                 linked[fid] = {"page": None, "note": "Open the Google Drive source"}
             current_files[fid] = previous
+    for week in weeks:
+        reflection = Path(f"reflection-week-{week}.html")
+        markup = reflection.read_text(encoding="utf-8")
+        updated = finish_reflection_page(week, markup, weeks)
+        if updated != markup:
+            write(reflection, updated)
     for name, slug, title, desc in CATEGORIES:
         if name == "04 Weekly Reflections":
             write(slug, reflection_index(weeks))

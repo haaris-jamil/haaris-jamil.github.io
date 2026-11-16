@@ -11,9 +11,6 @@ import re
 from pathlib import Path
 from urllib.parse import urlparse
 
-from google.auth.transport.requests import AuthorizedSession
-from google.oauth2 import service_account
-
 SCOPE = "https://www.googleapis.com/auth/documents.readonly"
 DOCUMENTS = {
     1: "1hooa_XjoAVPRPebf6F3yb07RCiL0k4coKu7tQc9rjAs",
@@ -161,6 +158,40 @@ def render_document(document):
         blocks = document.get("body", {}).get("content", [])
     return render_blocks(_published_blocks(blocks))
 
+ALL_REFLECTIONS_LINK = '<p class="footnote"><a href="reflections.html">← All weekly reflections</a></p>'
+REFLECTION_PAGER = re.compile(r'<nav class="reflection-pager"[^>]*>.*?</nav>\n?', re.S)
+
+
+def finish_page(week, markup, published_weeks):
+    def remove_framework_note(match):
+        plain = html.unescape(re.sub(r"<[^>]+>", "", match[1])).strip().casefold()
+        if plain.startswith(("reflection model:", "this reflection ", "i have organised this reflection ")):
+            if "rolfe" in plain and all(label in plain for label in ("what?", "so what?", "now what?")):
+                return ""
+        return match[0]
+
+    markup = re.sub(r"<p>([^\n]*?)</p>\n?", remove_framework_note, markup)
+    if week == 5:
+        markup = markup.replace(
+            "six boys who had missed the previous lesson",
+            "six students who had missed the previous lesson",
+        )
+
+    ordered = sorted(published_weeks)
+    position = ordered.index(week)
+    links = []
+    if position > 0:
+        previous = ordered[position - 1]
+        links.append(f'<a class="button secondary" rel="prev" href="reflection-week-{previous}.html">← Week {previous}</a>')
+    if position + 1 < len(ordered):
+        upcoming = ordered[position + 1]
+        links.append(f'<a class="button secondary" rel="next" href="reflection-week-{upcoming}.html">Week {upcoming} →</a>')
+    pager = ""
+    if links:
+        pager = '<nav class="reflection-pager" aria-label="Adjacent weekly reflections">' + "".join(links) + "</nav>\n"
+    return REFLECTION_PAGER.sub("", markup).replace(ALL_REFLECTIONS_LINK, pager + ALL_REFLECTIONS_LINK)
+
+
 def page(week, rendered):
     links = "".join(
         f'<a href="{target}">{html.escape(label)}</a>' for label, target in NAV
@@ -191,7 +222,7 @@ def page(week, rendered):
 <article class="native-reflection"><div class="reflection-prose">
 {rendered}
 </div></article>
-<p class="footnote"><a href="reflections.html">← All weekly reflections</a></p>
+{ALL_REFLECTIONS_LINK}
 </div></section></main>
 <footer><div class="shell footinner"><strong>Haaris Jamil · ProfEx 1</strong>
 <a href="index.html">Home ↑</a></div></footer>
@@ -200,6 +231,9 @@ def page(week, rendered):
 
 
 def main():
+    from google.auth.transport.requests import AuthorizedSession
+    from google.oauth2 import service_account
+
     secret = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
     if not secret:
         raise RuntimeError("Missing GitHub secret GOOGLE_SERVICE_ACCOUNT_JSON")
@@ -219,7 +253,9 @@ def main():
             raise RuntimeError(f"Week {week} returned no readable content; no files were replaced")
         generated[week] = page(week, rendered)
     for week, markup in generated.items():
-        Path(f"reflection-week-{week}.html").write_text(markup, encoding="utf-8")
+        Path(f"reflection-week-{week}.html").write_text(
+            finish_page(week, markup, generated), encoding="utf-8"
+        )
         print(f"Prepared reflection-week-{week}.html")
 
 
