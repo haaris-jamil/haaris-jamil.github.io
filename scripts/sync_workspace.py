@@ -260,10 +260,6 @@ def reflection_index(weeks):
             f'<a class="tile" href="reflection-week-{w}.html"><span class="number">'
             f'{w:02}</span><h3>Week {w}</h3><span class="jump">Read reflection ↗</span></a>'
         )
-    cards.append(
-        '<article class="tile"><span class="number">More</span><h3>Further reflections</h3>'
-        '<p>New reflections will appear here as they are added to the portfolio.</p></article>'
-    )
     return document_html(
         "Weekly reflections",
         "Critical reflections informed by Rolfe's What? So what? Now what? framework.",
@@ -528,6 +524,11 @@ def main():
             else:
                 linked[fid] = {"page": None, "note": "Open the Google Drive source"}
             current_files[fid] = previous
+    if 8 not in weeks:
+        week_eight_page = "reflection-week-8.html"
+        write(week_eight_page, reflection_page(8, ""))
+        pages.add(week_eight_page)
+        weeks[8] = "Week 8"
     for week in weeks:
         reflection = Path(f"reflection-week-{week}.html")
         markup = reflection.read_text(encoding="utf-8")

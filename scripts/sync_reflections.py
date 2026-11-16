@@ -197,6 +197,12 @@ def page(week, rendered):
         f'<a href="{target}">{html.escape(label)}</a>' for label, target in NAV
     )
     title = f"Week {week} Reflection"
+    article = ""
+    if rendered:
+        article = (
+            '<article class="native-reflection"><div class="reflection-prose">\n'
+            f"{rendered}\n</div></article>\n"
+        )
     return f"""<!doctype html>
 <html lang="en-NZ">
 <head>
@@ -219,10 +225,7 @@ def page(week, rendered):
 <p class="eyebrow"><a href="reflections.html">04 · Weekly Reflections</a> / Week {week}</p>
 <h2>{title}</h2>
 </div>
-<article class="native-reflection"><div class="reflection-prose">
-{rendered}
-</div></article>
-{ALL_REFLECTIONS_LINK}
+{article}{ALL_REFLECTIONS_LINK}
 </div></section></main>
 <footer><div class="shell footinner"><strong>Haaris Jamil · ProfEx 1</strong>
 <a href="index.html">Home ↑</a></div></footer>
@@ -252,9 +255,14 @@ def main():
         if not rendered.strip():
             raise RuntimeError(f"Week {week} returned no readable content; no files were replaced")
         generated[week] = page(week, rendered)
+    published_weeks = set(generated)
+    for existing in Path().glob("reflection-week-*.html"):
+        match = re.fullmatch(r"reflection-week-(\d+)", existing.stem)
+        if match:
+            published_weeks.add(int(match[1]))
     for week, markup in generated.items():
         Path(f"reflection-week-{week}.html").write_text(
-            finish_page(week, markup, generated), encoding="utf-8"
+            finish_page(week, markup, published_weeks), encoding="utf-8"
         )
         print(f"Prepared reflection-week-{week}.html")
 
