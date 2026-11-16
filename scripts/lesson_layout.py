@@ -37,7 +37,7 @@ SLIDE_MAP = {
     (1, 6): ["1OJ2d2lITwTzGm85KQRyHvT4YGswxth7-tTViUrSnujk"],
     (2, 6): ["11wfXajVpNvHTWpEDPIga-3n-HRd3sRcpVkrISm4IpmY"],
     (1, 7): ["1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs"],
-    (2, 7): ["1OrKPfqtgA6aHBeDM9KMm4vTvH1xgpK2kM6lcZOLBYFw"],
+    (2, 7): ["1ClFbbVl3BBvtTHtoeUEnl4V8gOlucSP7KUUPvWYZyX4"],
     (1, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
     (2, 8): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
     (1, 9): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
@@ -169,9 +169,7 @@ HIGHLIGHTS = {
 
 # Some decks are earlier resources for lessons still being revised. They remain
 # accessible within their lesson, with no assumption that planning is final.
-EARLIER_SLIDES = {
-    "1U1vwrIVj9f9rzXcr_v7D_uH0vPDNTtnITaig0V9TYU0",
-}
+EARLIER_SLIDES = set()
 PREFERRED_PLAN_IDS = {
     (2, 8): "1kXopxcXPgyhZVJpDw6qu050TCjBYyXqDwAon0685Oy8",
     (1, 9): "1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo",
