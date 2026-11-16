@@ -255,6 +255,29 @@ def render_pdf_pages(pdf_path, modified, previous, max_pages=4):
         return sorted(directory.glob("page-*.jpg")), len(pdf)
 
 
+def correct_student_feedback_page_order(pdf_path):
+    """Reorder pages 5 and 6 in the verified scan, once per downloaded copy."""
+    from hashlib import sha256
+
+    reversed_scan = "3c30529dbe1c65f229fa1f3183fd5d690d175f157fd6618fbd30b7cbbea4edf7"
+    if sha256(pdf_path.read_bytes()).hexdigest() != reversed_scan:
+        return False
+
+    import pymupdf
+
+    corrected = pdf_path.with_suffix(".corrected.pdf")
+    try:
+        with pymupdf.open(pdf_path) as pdf:
+            order = list(range(len(pdf)))
+            order[4:6] = [5, 4]
+            pdf.select(order)
+            pdf.save(corrected, garbage=1)
+        corrected.replace(pdf_path)
+    finally:
+        corrected.unlink(missing_ok=True)
+    return True
+
+
 def sync_binary(session, entry, old):
     fid = entry["id"]
     modified = entry.get("modifiedTime", "")
@@ -289,11 +312,15 @@ def sync_binary(session, entry, old):
         body = f'<figure class="drive-figure"><img src="{esc(asset)}" alt="{esc(name)}"></figure>'
     elif mimetype == "application/pdf":
         # A browser's PDF plug-in can be unavailable (notably in embedded views).
-        # Publish image previews alongside the full unchanged PDF for reliable reading.
+        # Publish image previews alongside the full PDF for reliable reading.
+        previous = old.get(fid, {})
+        if fid == "1eBxsYyTaPqJJ4byG3CSqaxWeI3w4fMfM":
+            if correct_student_feedback_page_order(output):
+                previous = {}
         preview_limit = 10 if "05 Student Evidence - Anonymised" in entry.get("path", []) else 4
         try:
             page_images, total_pages = render_pdf_pages(
-                output, modified, old.get(fid, {}), preview_limit
+                output, modified, previous, preview_limit
             )
         except Exception as exc:
             print(f"Could not render PDF page images for {name}: {exc}", flush=True)
