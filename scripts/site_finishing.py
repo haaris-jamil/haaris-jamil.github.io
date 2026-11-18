@@ -144,12 +144,77 @@ def _student_scans(entry, linked):
 
 def _student_voice(items, linked):
     scans = "".join(_student_scans(entry, linked) for entry in items)
+    questions = [
+        "The lessons helped me understand how electrical circuits work.",
+        "The models and demonstrations helped me understand ideas that were difficult to imagine.",
+        "If I struggled, the teacher gave me the help I needed to continue.",
+        "There was enough challenge for me, including when I finished early.",
+        "I felt comfortable asking questions, making mistakes and sharing my ideas.",
+    ]
+    categories = ["Strongly agree", "Agree", "Neutral", "Disagree", "Strongly disagree", "Not sure"]
+    colours = ["#283593", "#00796b", "#e2e8f0", "#f5a3a8", "#8b1e3f", "#f7c65e"]
+    counts = [
+        [10, 15, 3, 0, 0, 0],
+        [11, 12, 5, 0, 0, 0],
+        [15, 13, 0, 0, 0, 0],
+        [6, 16, 3, 0, 1, 2],
+        [12, 11, 3, 0, 1, 1],
+    ]
+    bars, rows = [], []
+    for number, (question, ratings) in enumerate(zip(questions, counts), 1):
+        description = ", ".join(f"{value} {category}" for value, category in zip(ratings, categories))
+        segments = []
+        for index, (value, colour) in enumerate(zip(ratings, colours)):
+            if value:
+                text_colour = "#172033" if index in (2, 3, 5) else "#ffffff"
+                segments.append(
+                    f'<span aria-hidden="true" style="flex:{value} 1 0;min-width:0;'
+                    f'text-align:center;color:{text_colour};background:{colour};'
+                    f'font-weight:600;font-size:.875rem;line-height:1.8rem">{value}</span>'
+                )
+        bars.append(
+            f'<div style="margin:.85rem 0"><p>{number}. {esc(question)}</p>'
+            f'<div role="img" aria-label="{esc(question + " Responses: " + description)}" '
+            'style="display:flex;overflow:hidden;border-radius:5px">'
+            + "".join(segments) + '</div></div>'
+        )
+        rows.append(
+            f'<tr><th scope="row">{number}. {esc(question)}</th>'
+            + "".join(f"<td>{value}</td>" for value in ratings)
+            + "<td>28</td></tr>"
+        )
+    legend = "".join(
+        f'<span style="margin-right:1rem"><span aria-hidden="true" style="color:{colour}">■</span> {category}</span>'
+        for colour, category in zip(colours, categories)
+    )
     return (
-        "<section class=\"feedback-voice\" id=\"student-voice\"><h4>Student Voice</h4><p><strong>18 of 18 students responded</strong> in one Year 10 science class. All 18 said they received the help they needed when they struggled, and 17 said the lessons helped them understand circuits.</p><p>Two students wrote that I gave them <em>mana</em>. Their words stayed with me and made me reflect on how I can support students without taking over. In a separate response, one student described being shown what to do and then having the chance to do it themselves.</p><figure style=\"margin:1.25rem 0\"><figcaption><strong>Exit questionnaire ratings</strong> · number of students (18 per question)</figcaption><p style=\"display:flex;flex-wrap:wrap;gap:.5rem 1rem\"><span><span aria-hidden=\"true\" style=\"color:#283593;-webkit-text-stroke:.45px #334155\">■</span> Strongly agree</span><span><span aria-hidden=\"true\" style=\"color:#00796b;-webkit-text-stroke:.45px #334155\">■</span> Agree</span><span><span aria-hidden=\"true\" style=\"color:#e2e8f0;-webkit-text-stroke:.45px #334155\">■</span> Neutral</span><span><span aria-hidden=\"true\" style=\"color:#f5a3a8;-webkit-text-stroke:.45px #334155\">■</span> Disagree</span><span><span aria-hidden=\"true\" style=\"color:#8b1e3f;-webkit-text-stroke:.45px #334155\">■</span> Strongly disagree</span><span><span aria-hidden=\"true\" style=\"color:#f7c65e;-webkit-text-stroke:.45px #334155\">■</span> Not sure</span></p><div style=\"margin:.65rem 0\"><div>1. The lessons helped me understand how electrical circuits work.</div><div role=\"img\" aria-label=\"1. The lessons helped me understand how electrical circuits work. Responses: 5 Strongly agree, 12 Agree, 1 Neutral, 0 Disagree, 0 Strongly disagree, 0 Not sure\" style=\"display:flex;overflow:hidden;border-radius:5px\"><span aria-hidden=\"true\" style=\"flex:5 1 0;min-width:0;text-align:center;color:#ffffff;background:#283593;font-weight:600;font-size:.875rem;line-height:1.7rem\">5</span><span aria-hidden=\"true\" style=\"flex:12 1 0;min-width:0;text-align:center;color:#ffffff;background:#00796b;font-weight:600;font-size:.875rem;line-height:1.7rem\">12</span><span aria-hidden=\"true\" style=\"flex:1 1 0;min-width:0;text-align:center;color:#172033;background:#e2e8f0;font-weight:600;font-size:.875rem;line-height:1.7rem\">1</span></div></div><div style=\"margin:.65rem 0\"><div>2. The models and demonstrations helped me understand ideas that were difficult to imagine.</div><div role=\"img\" aria-label=\"2. The models and demonstrations helped me understand ideas that were difficult to imagine. Responses: 7 Strongly agree, 6 Agree, 5 Neutral, 0 Disagree, 0 Strongly disagree, 0 Not sure\" style=\"display:flex;overflow:hidden;border-radius:5px\"><span aria-hidden=\"true\" style=\"flex:7 1 0;min-width:0;text-align:center;color:#ffffff;background:#283593;font-weight:600;font-size:.875rem;line-height:1.7rem\">7</span><span aria-hidden=\"true\" style=\"flex:6 1 0;min-width:0;text-align:center;color:#ffffff;background:#00796b;font-weight:600;font-size:.875rem;line-height:1.7rem\">6</span><span aria-hidden=\"true\" style=\"flex:5 1 0;min-width:0;text-align:center;color:#172033;background:#e2e8f0;font-weight:600;font-size:.875rem;line-height:1.7rem\">5</span></div></div><div style=\"margin:.65rem 0\"><div>3. If I struggled, the teacher gave me the help I needed to continue.</div><div role=\"img\" aria-label=\"3. If I struggled, the teacher gave me the help I needed to continue. Responses: 10 Strongly agree, 8 Agree, 0 Neutral, 0 Disagree, 0 Strongly disagree, 0 Not sure\" style=\"display:flex;overflow:hidden;border-radius:5px\"><span aria-hidden=\"true\" style=\"flex:10 1 0;min-width:0;text-align:center;color:#ffffff;background:#283593;font-weight:600;font-size:.875rem;line-height:1.7rem\">10</span><span aria-hidden=\"true\" style=\"flex:8 1 0;min-width:0;text-align:center;color:#ffffff;background:#00796b;font-weight:600;font-size:.875rem;line-height:1.7rem\">8</span></div></div><div style=\"margin:.65rem 0\"><div>4. There was enough challenge for me, including when I finished early.</div><div role=\"img\" aria-label=\"4. There was enough challenge for me, including when I finished early. Responses: 3 Strongly agree, 11 Agree, 3 Neutral, 0 Disagree, 0 Strongly disagree, 1 Not sure\" style=\"display:flex;overflow:hidden;border-radius:5px\"><span aria-hidden=\"true\" style=\"flex:3 1 0;min-width:0;text-align:center;color:#ffffff;background:#283593;font-weight:600;font-size:.875rem;line-height:1.7rem\">3</span><span aria-hidden=\"true\" style=\"flex:11 1 0;min-width:0;text-align:center;color:#ffffff;background:#00796b;font-weight:600;font-size:.875rem;line-height:1.7rem\">11</span><span aria-hidden=\"true\" style=\"flex:3 1 0;min-width:0;text-align:center;color:#172033;background:#e2e8f0;font-weight:600;font-size:.875rem;line-height:1.7rem\">3</span><span aria-hidden=\"true\" style=\"flex:1 1 0;min-width:0;text-align:center;color:#172033;background:#f7c65e;font-weight:600;font-size:.875rem;line-height:1.7rem\">1</span></div></div><div style=\"margin:.65rem 0\"><div>5. I felt comfortable asking questions, making mistakes and sharing my ideas.</div><div role=\"img\" aria-label=\"5. I felt comfortable asking questions, making mistakes and sharing my ideas. Responses: 10 Strongly agree, 4 Agree, 3 Neutral, 0 Disagree, 0 Strongly disagree, 1 Not sure\" style=\"display:flex;overflow:hidden;border-radius:5px\"><span aria-hidden=\"true\" style=\"flex:10 1 0;min-width:0;text-align:center;color:#ffffff;background:#283593;font-weight:600;font-size:.875rem;line-height:1.7rem\">10</span><span aria-hidden=\"true\" style=\"flex:4 1 0;min-width:0;text-align:center;color:#ffffff;background:#00796b;font-weight:600;font-size:.875rem;line-height:1.7rem\">4</span><span aria-hidden=\"true\" style=\"flex:3 1 0;min-width:0;text-align:center;color:#172033;background:#e2e8f0;font-weight:600;font-size:.875rem;line-height:1.7rem\">3</span><span aria-hidden=\"true\" style=\"flex:1 1 0;min-width:0;text-align:center;color:#172033;background:#f7c65e;font-weight:600;font-size:.875rem;line-height:1.7rem\">1</span></div></div><p><small>No disagreement responses were recorded. Where two ratings were marked, the lower rating was used.</small></p></figure><p>The responses about models and demonstrations were more mixed. In my next placement, I want to ask students to explain what a model helped them understand and allow more time to finish the main practical task, with an extension ready for those who finish early. This is feedback about students’ experiences and perceived learning, alongside the evidence of what they produced in class.</p>"
-        + ('<p>The full feedback forms are included at the bottom of this section '
-           'for anyone who would like to see the original responses.</p>' if scans else '')
-        + scans
-        + '</section>'
+        '<section class="feedback-voice" id="student-voice"><h4>Student Voice</h4>'
+        '<p><strong>28 students responded across both Year 10 Science groups.</strong> '
+        'This combines 18 earlier forms with ten forms from Science 1 on 18 November 2026. '
+        'All ten students present on 18 November responded. The questions ask about learning during the placement.</p>'
+        '<p>All 28 respondents agreed or strongly agreed that they received the help they needed when they struggled. '
+        '25 of 28 reported improved understanding of circuits, and 23 of 28 rated the models and demonstrations positively. '
+        '22 of 28 reported enough challenge, and 23 of 28 felt comfortable asking questions, making mistakes and sharing ideas. '
+        'One student strongly disagreed with each of the last two statements.</p>'
+        '<figure style="margin:1.25rem 0"><figcaption><strong>Student feedback across both groups</strong>'
+        ' · 28 responses per question</figcaption><p>' + legend + '</p>'
+        + "".join(bars) + '</figure>'
+        '<details><summary>Combined response table</summary><div style="overflow-x:auto">'
+        '<table class="document-table"><thead><tr><th scope="col">Statement</th>'
+        + "".join(f'<th scope="col">{category}</th>' for category in categories)
+        + '<th scope="col">Total</th></tr></thead><tbody>' + "".join(rows) + '</tbody></table></div></details>'
+        '<p><small>Neutral means neither agree nor disagree. Where two ratings were marked, the lower rating was used.</small></p>'
+        '<p>Written comments across the forms describe helpful explanations, demonstrations and opportunities to ask questions. '
+        'Two earlier respondents wrote that I gave them <em>mana</em>. New suggestions included allowing time to finish, '
+        'breaking lessons into manageable parts and providing notes students could return to after an absence. '
+        'Several students gave no suggestion for change.</p>'
+        '<p>The models and demonstrations received positive ratings from 13 of 18 earlier respondents and ten of ten later respondents. '
+        'These are small samples collected at different times, and the later group had very low attendance. '
+        'The figures describe these respondents’ experiences and do not establish a class-wide difference in teaching effectiveness.</p>'
+        '<p>I want to retain clear explanations and responsive support while checking that tasks provide enough challenge '
+        'and that every student feels comfortable contributing. Students’ responses inform this reflection alongside their classroom work.</p>'
+        + ('<p>The full feedback forms from both groups are included below.</p>' if scans else '')
+        + scans + '</section>'
     )
 
 
