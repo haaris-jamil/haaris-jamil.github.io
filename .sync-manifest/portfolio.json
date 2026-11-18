@@ -1,10 +1,5 @@
 {
-  "failures": [
-    {
-      "path": "06 Teaching & Planning/01 Year 10 Science - Electricity/03 Lesson Slides/Y10 Science 1/Lesson 03: Building working circuits - Y10 Science 1",
-      "reason": "Slide thumbnail download failed: HTTP 502"
-    }
-  ],
+  "failures": [],
   "files": {
     "1-oJ1DiAlpguzskaFK6dEmY2XNW8X6PTk": {
       "modifiedTime": "2026-11-09T23:09:04.542Z",
@@ -815,7 +810,7 @@
   "linkRewriting": {
     "anchors": 92,
     "plain_urls": 7,
-    "source_footers": 110,
+    "source_footers": 111,
     "unresolved": 1
   },
   "notAutomaticallySynced": [],
