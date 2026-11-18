@@ -43,9 +43,10 @@ SLIDE_MAP = {
     (1, 9): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
     (2, 9): ["11r4p41UqkojuscJVKrIxLcCjE5hIB46aQBvvlBAUIFI"],
     (1, 10): ["1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8"],
-    (2, 10): ["1MJouYp3n6oSdZ9F7uswt2dmECSmSXvHP4b0O5VwiQ-s"],
+    (2, 10): [],
     (2, 11): ["11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg"],
-    (1, 12): ["1XTurDj4qJXAgiNkQE0imlB2UjUV6QfhZLTqTiK-yr3o"],
+    (1, 11): ["16bcem90pOuxnmiUpc6ZHcannNlkqCj2wrSrxSm561AY"],
+    (1, 12): [],
     (2, 12): ["1WC98gjxSzZKtxDgR0FnWa0DxyUtrD2AOlob_JBjdckk"],
 }
 
@@ -170,6 +171,9 @@ HIGHLIGHTS = {
 # accessible within their lesson, with no assumption that planning is final.
 EARLIER_SLIDES = set()
 PREFERRED_PLAN_IDS = {
+    (1, 11): "1mVa0uRKtkSZ_dUANQmaQGwCIvlRomaQXnuN5swjAqpE",
+    (1, 12): "1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s",
+    (2, 10): "19QlznYT3rqKHTchwaY0LIGhFJ-uter_dzYVHwmkZBAU",
     (2, 7): "14DcRG7jHVi38lvp4MOoRC8jPmPYPuqyPzvTDOO33XIU",
     (2, 9): "1UyzSUGAF2ZOJi4Be1D8SV9kvos2_oLNIx1yOFzfkLxY",
     (2, 8): "1kXopxcXPgyhZVJpDw6qu050TCjBYyXqDwAon0685Oy8",
