@@ -39,15 +39,13 @@ SLIDE_MAP = {
     (1, 7): ["1ZJDcdOiL-kspemXO_KJz8DczMiHh2rmGs8LMc6CT6qs"],
     (2, 7): ["1ClFbbVl3BBvtTHtoeUEnl4V8gOlucSP7KUUPvWYZyX4"],
     (1, 8): ["1CuXasV-fP5S_sl_1fMIolE4fQ-mETs3NQqbEvV1L8FA"],
-    (2, 8): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
+    (2, 8): ["1wa4nIINEK5g0NylS5WDLyE18EUoUAVeLj0Gf0Owy4RE"],
     (1, 9): ["1cV2IMnzufD4DegMGtuTdeLq23u161VouA-c8tNPfJUc"],
     (2, 9): ["11r4p41UqkojuscJVKrIxLcCjE5hIB46aQBvvlBAUIFI"],
     (1, 10): ["1vvDdcXk4sXvOGfhY7sTOiqM0hMz5pTQpcQCCc1XExj8"],
     (2, 10): [],
-    (2, 11): ["11yiHzBuwQewZ8GYUY_7pgt--H81w7SXhQMEi8PaR3Mg"],
     (1, 11): ["16bcem90pOuxnmiUpc6ZHcannNlkqCj2wrSrxSm561AY"],
     (1, 12): [],
-    (2, 12): ["1WC98gjxSzZKtxDgR0FnWa0DxyUtrD2AOlob_JBjdckk"],
 }
 
 WORKSHEETS = {
@@ -162,9 +160,9 @@ MIXED_EVIDENCE_ID_SET = {
 }
 
 HIGHLIGHTS = {
-    (2, 2): "Conceptual progression from pepeha and particle models to explaining static electricity, with reflection on unfinished written work.",
-    (1, 8): "An investigation of independently switched parallel lamp branches, practical checking and electrical-protection reasoning.",
-    (1, 12): "An open-ended design assessment requiring circuit planning, testing, troubleshooting and evidence-based explanation.",
+    (1, 5): "A structured voltage–current investigation linking prior learning, measurement and graphing, with assessment checkpoints and reflection on responsive pacing.",
+    (1, 9): "Practical stations and differentiated pathways use students’ observations to build explanations of electricity generation, followed by a real-world application and individual check.",
+    (1, 10): "Student-designed wind and water turbines combine choice, scaffolded construction and justified improvements, supported by completed prototypes and post-lesson reflection.",
 }
 
 # Some decks are earlier resources for lessons still being revised. They remain
@@ -181,6 +179,7 @@ PREFERRED_PLAN_IDS = {
     (1, 10): "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4",
 }
 EXTRA_CLASS_EVIDENCE = {
+    (1, 12): [("1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s", "Reflection and evaluation")],
     (2, 9): [("1sfTd6-hgN0UDB8kVFi6XHLmngEmPPvBh", "Student turbine prototypes: 16 November")],
     (1, 10): [
         ("1keXiRTPKZY6vDFQTZeLDc_QUvcwsQXfo", "Students building their turbine"),
@@ -373,13 +372,15 @@ def resource_detail(entry, linked, by_id):
 
 def highlighted_panel(plans, events, linked):
     cells = []
-    for group, number in ((2, 2), (1, 8), (1, 12)):
+    for group, number in HIGHLIGHTS:
         entry = plans.get((group, number))
         if not entry:
             continue
         event = events.get((group, number), {})
         label = lesson_title(group, number, entry, events)
         status = event.get("status", "Unconfirmed")
+        if status != "Completed":
+            continue
         date = event.get("date", "Date to confirm")
         cells.append(
             f'<article class="highlight-plan"><p class="highlight-meta">'

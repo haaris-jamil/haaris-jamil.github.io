@@ -32,10 +32,21 @@ class PortfolioNumberingTests(unittest.TestCase):
         self.assertIn('Lesson 02</span>', table)
         self.assertNotIn('was not delivered', table)
 
-    def test_exact_shared_resources(self):
-        self.assertEqual(layout.SLIDE_MAP[2, 8], layout.SLIDE_MAP[1, 9])
+    def test_class_slides_and_shared_worksheet(self):
+        self.assertEqual(layout.SLIDE_MAP[2, 8], ['1wa4nIINEK5g0NylS5WDLyE18EUoUAVeLj0Gf0Owy4RE'])
+        self.assertNotEqual(layout.SLIDE_MAP[2, 8], layout.SLIDE_MAP[1, 9])
         self.assertEqual(layout.WORKSHEET_OVERRIDES[1, 9][0][0],
                          layout.WORKSHEET_OVERRIDES[2, 8][1][0])
+
+    def test_highlights_exclude_planned_and_missed_lessons(self):
+        keys=list(layout.HIGHLIGHTS)
+        plans={k:{'id':str(k),'name':'Lesson plan'} for k in keys}
+        self.events[keys[0]]['status']='Planned'
+        self.events[keys[1]]['status']='Not delivered'
+        panel=layout.highlighted_panel(plans,self.events,{})
+        self.assertEqual(panel.count('class="highlight-plan"'),1)
+        self.assertNotIn('>Planned</span>',panel)
+        self.assertIn('>Completed</span>',panel)
 
 
 if __name__ == '__main__':
