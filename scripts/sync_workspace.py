@@ -300,7 +300,9 @@ def audit_page(scanned, linked, failures, not_auto, incomplete):
 
 
 def is_unpublished_root_file(entry):
-    """Drive-root checklists and administration files stay off the public site."""
+    """Working data, Drive-root checklists and administration stay off the site."""
+    if entry["id"] == "1pQw2PsP15mnhbPZkN_147Mvehm0r9wtsrsiPTa4ta9M":
+        return True  # The combined student feedback is presented on Observations.
     return (
         entry["mimeType"] != FOLDER_MIME
         and not entry.get("folderPath")
