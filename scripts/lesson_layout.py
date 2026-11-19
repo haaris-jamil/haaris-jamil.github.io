@@ -181,6 +181,7 @@ PREFERRED_PLAN_IDS = {
     (1, 10): "1aJ7gjkCTp_JhudjSdMd16kv7pY5bsaTE29qeVC5n4R4",
 }
 EXTRA_CLASS_EVIDENCE = {
+    (2, 9): [("1sfTd6-hgN0UDB8kVFi6XHLmngEmPPvBh", "Student turbine prototypes: 16 November")],
     (1, 10): [
         ("1keXiRTPKZY6vDFQTZeLDc_QUvcwsQXfo", "Students building their turbine"),
         ("13Uf4wjA_ZIb2h7lyqAaNimOM5yhElC4K", "Students assembling a prototype"),
