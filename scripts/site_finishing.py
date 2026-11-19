@@ -190,9 +190,8 @@ def _student_voice(items, linked):
     )
     return (
         '<section class="feedback-voice" id="student-voice"><h4>Student Voice</h4>'
-        '<p><strong>28 students responded across both Year 10 Science groups.</strong> '
-        'This combines 18 earlier forms with ten forms from Science 1 on 18 November 2026. '
-        'All ten students present on 18 November responded. The questions ask about learning during the placement.</p>'
+        '<p><strong>28 students responded to the placement feedback questionnaire.</strong> '
+        'The responses are presented together as a combined account of students’ learning experiences during the placement.</p>'
         '<p>All 28 respondents agreed or strongly agreed that they received the help they needed when they struggled. '
         '25 of 28 reported improved understanding of circuits, and 23 of 28 rated the models and demonstrations positively. '
         '22 of 28 reported enough challenge, and 23 of 28 felt comfortable asking questions, making mistakes and sharing ideas. '
@@ -206,12 +205,9 @@ def _student_voice(items, linked):
         + '<th scope="col">Total</th></tr></thead><tbody>' + "".join(rows) + '</tbody></table></div></details>'
         '<p><small>Neutral means neither agree nor disagree. Where two ratings were marked, the lower rating was used.</small></p>'
         '<p>Written comments across the forms describe helpful explanations, demonstrations and opportunities to ask questions. '
-        'Two earlier respondents wrote that I gave them <em>mana</em>. New suggestions included allowing time to finish, '
+        'Two students wrote that I gave them <em>mana</em>. Suggestions included allowing time to finish, '
         'breaking lessons into manageable parts and providing notes students could return to after an absence. '
         'Several students gave no suggestion for change.</p>'
-        '<p>The models and demonstrations received positive ratings from 13 of 18 earlier respondents and ten of ten later respondents. '
-        'These are small samples collected at different times, and the later group had very low attendance. '
-        'The figures describe these respondents’ experiences and do not establish a class-wide difference in teaching effectiveness.</p>'
         '<p>I want to retain clear explanations and responsive support while checking that tasks provide enough challenge '
         'and that every student feels comfortable contributing. Students’ responses inform this reflection alongside their classroom work.</p>'
         + ('<p>The full feedback forms from both groups are included below.</p>' if scans else '')
