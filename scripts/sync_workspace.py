@@ -81,6 +81,9 @@ FOLDER_MIME = "application/vnd.google-apps.folder"
 
 def write(path, contents):
     dest = Path(path)
+    if dest.suffix == ".html":
+        # Keep the placement school unnamed in every published text page.
+        contents = re.sub(r"\bRaglan\s+Area\s+School\b", "my placement school", contents, flags=re.I)
     dest.parent.mkdir(parents=True, exist_ok=True)
     if not dest.is_file() or dest.read_text(encoding="utf-8") != contents:
         dest.write_text(contents, encoding="utf-8")
