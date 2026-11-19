@@ -163,14 +163,7 @@ REFLECTION_PAGER = re.compile(r'<nav class="reflection-pager"[^>]*>.*?</nav>\n?'
 
 
 def finish_page(week, markup, published_weeks):
-    def remove_framework_note(match):
-        plain = html.unescape(re.sub(r"<[^>]+>", "", match[1])).strip().casefold()
-        if plain.startswith(("reflection model:", "this reflection ", "i have organised this reflection ")):
-            if "rolfe" in plain and all(label in plain for label in ("what?", "so what?", "now what?")):
-                return ""
-        return match[0]
-
-    markup = re.sub(r"<p>([^\n]*?)</p>\n?", remove_framework_note, markup)
+    # Preserve each reflection's attribution of its reflective framework.
     if week == 5:
         markup = markup.replace(
             "six boys who had missed the previous lesson",
