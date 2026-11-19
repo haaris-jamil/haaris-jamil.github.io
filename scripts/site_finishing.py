@@ -15,6 +15,7 @@ OBSERVATION_FOLDER = "02 Observations"
 PDF_MIME = "application/pdf"
 # Final PDFs appear on the website. Editable observation forms remain in Drive.
 FINISHED_FEEDBACK_PDFS = {
+    8: "1rRvWITIrWeZMXAr96dYh18LTa7rgwhRV",
     1: "1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP",
     2: "11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I",
     3: "1JjWQBiCD4yL_brNoUQ1kPYtHbXHsvjlH",
