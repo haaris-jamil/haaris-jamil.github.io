@@ -213,6 +213,6 @@ def reconcile_page(page_name, markup):
         return correct_audit(markup)
     if page_name == "goal-1.html":
         return correct_goal_one(markup)
-    markup = re.sub(r"mixed[- ]group", "Year 10", markup, flags=re.I)
+    markup = re.sub(r"\bmixed[- ]group\b", "Year 10", markup, flags=re.I)
     return markup
 

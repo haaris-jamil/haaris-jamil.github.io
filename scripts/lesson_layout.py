@@ -299,13 +299,13 @@ def get_link(entry, linked, label, css=""):
 
 def make_resources(resources, by_id, linked):
     if not resources:
-        return '<span class="no-resource">—</span>'
+        return '<span class="no-resource">–</span>'
     output = []
     for fid, label in resources:
         entry = by_id.get(fid)
         if entry:
             output.append(get_link(entry, linked, label))
-    return '<span class="lesson-links">' + " · ".join(output) + "</span>" if output else '<span class="no-resource">—</span>'
+    return '<span class="lesson-links">' + " · ".join(output) + "</span>" if output else '<span class="no-resource">–</span>'
 
 
 def lesson_title(group, number, entry, events):
@@ -412,7 +412,7 @@ def lesson_table(group, plans, events, by_id, linked, class_evidence):
         date = event.get("date", "Date to confirm")
         title = lesson_title(group, num, plan or {"name": f"Lesson {num}"}, events)
         highlight = ' <span class="featured-mark" title="Selected lesson plan">Selected</span>' if key in HIGHLIGHTS else ""
-        plan_html = get_link(plan, linked, "Plan") if plan else '<span class="no-resource">—</span>'
+        plan_html = get_link(plan, linked, "Plan") if plan else '<span class="no-resource">–</span>'
         slides = make_resources(
             [(fid, "Earlier slides" if fid in EARLIER_SLIDES else "Slides")
              for fid in SLIDE_MAP.get(key, [])], by_id, linked

@@ -39,7 +39,7 @@ def inline_elements(paragraph):
             if "inlineObjectElement" in element:
                 chunks.append("<em>[Embedded image or object in Google Doc]</em>")
             continue
-        raw = text_run.get("content", "").rstrip("\n")
+        raw = text_run.get("content", "").replace("\u000b", "\n").rstrip("\n")
         if not raw:
             continue
         markup = html.escape(raw).replace("\n", "<br>")
@@ -186,6 +186,10 @@ def finish_page(week, markup, published_weeks):
 
 
 def page(week, rendered):
+    rendered = re.sub(
+        rf"^\s*<h[1-6]>\s*Week\s*{week}\s*:?\s*(?:Weekly\s+)?Reflection\s*</h[1-6]>\s*",
+        "", rendered, count=1, flags=re.I,
+    )
     links = "".join(
         f'<a href="{target}">{html.escape(label)}</a>' for label, target in NAV
     )
