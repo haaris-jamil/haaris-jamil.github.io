@@ -260,3 +260,25 @@ td .evidence-media{min-width:180px;max-width:300px}
 .student-scans .pdf-preview{width:100%;min-height:65vh}
 
 .reflection-pager{display:flex;position:static;flex-direction:row;gap:12px;margin-top:28px;padding:0;border:0;background:none;box-shadow:none}
+
+
+/* Observation records use the full article width. */
+.observation-record .reflection-prose{max-width:none}
+.observation-table{table-layout:fixed;width:100%}
+.observation-table .observation-date{width:16%}
+.observation-table .observation-context{width:24%}
+.observation-table .observation-notes{width:60%}
+.observation-table th,.observation-table td{vertical-align:top;text-align:left;overflow-wrap:anywhere;padding:16px;border:1px solid var(--border)}
+.observation-table th{background:var(--pale,#eff6f4);font-weight:700}
+.observation-table th p,.observation-table td p:first-child{margin-top:0}
+.observation-table th p,.observation-table td p:last-child{margin-bottom:0}
+@media(max-width:700px){
+.observation-record{padding:20px}
+.observation-table,.observation-table tbody,.observation-table tr,.observation-table td{display:block;width:100%}
+.observation-table colgroup,.observation-table thead{display:none}
+.observation-table tr{margin-bottom:24px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.observation-table td{border:0;padding:12px 16px}
+.observation-table td:first-child{background:var(--pale,#eff6f4);font-weight:700}
+.observation-table td:nth-child(2){font-weight:700;padding-bottom:0}
+.observation-table td:nth-child(3){padding-top:12px}
+}

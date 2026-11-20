@@ -27,9 +27,7 @@ POOLED_FILES = {
 CONFIRMED_FILES = {
     "11bBS4D14yRgJM3WHFjdrosXkQupp2GuO": (
         "Lesson 7: Science 1 student evidence",
-        "Anonymised Year 10 Science 1 student work from 4 November 2026. "
-        "This is class-specific evidence, but the samples do not prove that every student "
-        "achieved the learning outcome."
+        "Anonymised Year 10 Science 1 student work from 4 November 2026."
     ),
 }
 ALL_FILES = {**POOLED_FILES, **CONFIRMED_FILES}

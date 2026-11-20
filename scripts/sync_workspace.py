@@ -89,7 +89,38 @@ def write(path, contents):
         dest.write_text(contents, encoding="utf-8")
 
 
+EDITORIAL_CAPTIONS = {
+    "Portfolio source document",
+    "Original file from Google Drive.",
+    "Spreadsheet data and links from Google Sheets.",
+    "Other slide deck · Not matched to a current class lesson",
+    "Shared teaching slides · Check each class's separate lesson status",
+}
+
+
+def observation_table_layout(inner):
+    """Use the article width and retain a readable, labelled mobile layout."""
+    inner = inner.replace('class="native-reflection"', 'class="native-reflection observation-record"', 1)
+    def table(match):
+        body = match.group(1)
+        first = re.match(r"<tr>(.*?)</tr>", body, re.S)
+        if not first:
+            return match.group(0)
+        cells = re.findall(r"<td>(.*?)</td>", first.group(1), re.S)
+        if len(cells) != 3:
+            return match.group(0)
+        heading = "".join('<th scope="col">' + c + '</th>' for c in cells)
+        return ('<table class="document-table observation-table">'
+                '<colgroup><col class="observation-date"><col class="observation-context">'
+                '<col class="observation-notes"></colgroup><thead><tr>' + heading +
+                '</tr></thead><tbody>' + body[first.end():] + '</tbody></table>')
+    return re.sub(r'<table class="document-table">(.*?)</table>', table, inner, flags=re.S)
+
+
 def document_html(title, caption, inner, back="index.html"):
+    caption_markup = "" if caption in EDITORIAL_CAPTIONS else f"<p>{esc(caption)}</p>"
+    if title.strip().casefold() == "observations of others":
+        inner = observation_table_layout(inner)
     links = "".join(
         f'<a href="{esc(target)}">{esc(label)}</a>' for label, target in NAV
     )
@@ -106,7 +137,7 @@ def document_html(title, caption, inner, back="index.html"):
 <nav id="nav" aria-label="Main navigation">{links}</nav></div></header>
 <main id="main"><section class="section"><div class="shell">
 <div class="sectionhead"><p class="eyebrow">Professional Experience 1</p>
-<h2>{esc(title)}</h2><p>{esc(caption)}</p></div>
+<h2>{esc(title)}</h2>{caption_markup}</div>
 {inner}
 </div></section></main>
 <footer><div class="shell footinner"><strong>Haaris Jamil · ProfEx 1</strong>
@@ -624,5 +655,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
