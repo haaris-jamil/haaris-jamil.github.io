@@ -35,6 +35,13 @@ def inline_elements(paragraph):
     chunks = []
     for element in paragraph.get("elements", []):
         text_run = element.get("textRun")
+        if text_run is None and "dateElement" in element:
+            date = element["dateElement"]
+            properties = date.get("dateElementProperties", {})
+            text_run = {
+                "content": properties.get("displayText") or properties.get("timestamp", "").split("T")[0],
+                "textStyle": date.get("textStyle", {}),
+            }
         if text_run is None:
             if "inlineObjectElement" in element:
                 chunks.append("<em>[Embedded image or object in Google Doc]</em>")
