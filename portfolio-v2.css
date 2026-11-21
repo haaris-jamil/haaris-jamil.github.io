@@ -285,8 +285,8 @@ td .evidence-media{min-width:180px;max-width:300px}
 
 
 /* Shared link affordances: only the resource label is interactive. */
-main a[href]:not(.tile):not(.topic-card):not(.photo-zoom):not(.brand){color:var(--accent-dark);background:#e6f2ec;border-radius:5px;padding:2px 5px;text-decoration:underline;text-underline-offset:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .15s,color .15s}
-main a[href]:not(.tile):not(.topic-card):not(.photo-zoom):hover{background:#cce5d9;color:#103e35}
+main :where(a[href]:not(.tile):not(.topic-card):not(.photo-zoom):not(.brand)){color:var(--accent-dark);background:#e6f2ec;border-radius:5px;padding:2px 5px;text-decoration:underline;text-underline-offset:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .15s,color .15s}
+main :where(a[href]:not(.tile):not(.topic-card):not(.photo-zoom)):hover{background:#cce5d9;color:#103e35}
 main a[href]:focus-visible{outline:3px solid #e6a04b;outline-offset:3px}
 main .tile,main .topic-card{border-color:#94b9a9}
 .report-card{background:white;border:1px solid #b5cec2;border-radius:12px;padding:22px;margin:16px 0}
