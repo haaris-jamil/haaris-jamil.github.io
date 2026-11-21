@@ -225,8 +225,10 @@ def _mentor_voice(items, final_reports, linked):
                     '<h5>Final mentor teacher report</h5>'
                     '<p>End-of-placement assessment and my reflection, completed 21 November 2026.</p>'
                     '<span class="button primary">Read final report</span></a>')
-    out += '<h5>Weekly mentor feedback</h5><ul class="observation-links">'
-    return out + "".join(_resource(entry, linked) for entry in items) + '</ul></section>'
+    if items:
+        out += '<h5>Weekly mentor feedback</h5><ul class="observation-links">'
+        out += "".join(_resource(entry, linked) for entry in items) + '</ul>'
+    return out + '</section>'
 
 
 def observations_body(entries, linked):
@@ -271,23 +273,22 @@ def observations_body(entries, linked):
 
     return (
         '<nav class="observation-jump" aria-label="Observation sections">'
+        '<a href="#feedback-on-my-teaching">Placement reports</a>'
+        '<a href="#student-voice">Student Voice</a>'
+        '<a href="#weekly-mentor-feedback">Weekly mentor feedback</a>'
         '<a href="#general-school-observations">General School Observations</a>'
         '<a href="#observations-of-others">Observations of Others</a>'
-        '<a href="#feedback-on-my-teaching">Feedback on My Teaching</a>'
         '</nav><div class="portfolio-sources observation-sections">'
+        '<section class="portfolio-source-group observation-group" id="feedback-on-my-teaching">'
+        '<h3>Placement reports</h3>'
+        + _mentor_voice([], final_reports, linked)
+        + _feedback_voice("Evaluative Visitor", "evaluative-visitor-voice", visits, linked)
+        + '</section>'
+        + _student_voice(student_forms, linked)
+        + _feedback_voice("Weekly mentor feedback", "weekly-mentor-feedback", feedback, linked)
+        + (_feedback_voice("Additional feedback", "additional-feedback", remaining, linked) if remaining else "")
         + _group("General School Observations", "general-school-observations", general, linked)
         + _group("Observations of Others", "observations-of-others", others, linked)
-        + '<section class="portfolio-source-group observation-group" id="feedback-on-my-teaching">'
-        + '<h3>Feedback on My Teaching</h3>'
-        + '<nav class="observation-jump" aria-label="Feedback sources">'
-        + '<a href="#mentor-teacher-voice">Mentor Teacher</a>'
-        + '<a href="#student-voice">Student Voice</a>'
-        + '<a href="#evaluative-visitor-voice">Evaluative Visitor</a></nav>'
-        + _mentor_voice(feedback, final_reports, linked)
-        + _student_voice(student_forms, linked)
-        + _feedback_voice("Evaluative Visitor", "evaluative-visitor-voice", visits, linked)
-        + (_feedback_voice("Additional feedback", "additional-feedback", remaining, linked) if remaining else "")
-        + '</section>'
         + '</div>'
     )
 
@@ -313,4 +314,5 @@ def improve_image_alts(markup):
         candidate = candidate[:165].rsplit(" ", 1)[0] if len(candidate) > 165 else candidate
         return match.group(1) + esc(candidate) + match.group(2)
     return IMAGE_RE.sub(resolve, markup)
+
 
