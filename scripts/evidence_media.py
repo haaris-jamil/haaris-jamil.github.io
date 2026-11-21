@@ -31,6 +31,10 @@ def media_catalog(root=Path('.')):
 
 
 def video_card(source, poster='', label='Video evidence'):
+    if '1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD/' in source:
+        source = source.split('?')[0] + '?v=explanation-20261121'
+        if poster:
+            poster = 'assets/drive/1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD/poster.jpg?v=explanation-20261121'
     source = html.escape(source, quote=True)
     poster_attr = f' poster="{html.escape(poster, quote=True)}"' if poster else ''
     # The tiny time fragment also supplies a first-frame preview while a poster

@@ -70,7 +70,7 @@ STANDING_IMAGE_WIDE = (
 )
 STANDING_VIDEO = (
     "assets/drive/1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD/"
-    "Goal-2---Standing-waves-demonstration.mp4"
+    "Goal-2---Standing-waves-demonstration.mp4?v=explanation-20261121"
 )
 
 
@@ -167,10 +167,10 @@ def _standing_wave_player():
     """Inline video thumbnail beside the source document's existing images."""
     return (
         '<figure id="standing-wave-video" class="goal-video">'
-        f'<video controls playsinline preload="metadata" poster="{_esc(STANDING_IMAGE_WIDE)}">'
+        f'<video controls playsinline preload="metadata" poster="assets/drive/1FVVPuAvzmVbqKii8oZpPEILcLx9CoBKD/poster.jpg?v=explanation-20261121">'
         f'<source src="{_esc(STANDING_VIDEO)}" type="video/mp4">'
         'Your browser does not support the embedded video.</video>'
-        '<figcaption>Standing-wave demonstration using the vibration generator '
+        '<figcaption>My explanation of standing waves using the vibration generator '
         'and signal generator.</figcaption></figure>'
     )
 
