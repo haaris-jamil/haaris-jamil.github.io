@@ -285,12 +285,12 @@ td .evidence-media{min-width:180px;max-width:300px}
 
 
 /* Consistent link hierarchy: quiet text links, white navigation cards, solid primary actions. */
-body main a[href]:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card){
+body main a[href]:where(:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card)){
  color:var(--accent-dark);background:transparent;border:0;border-radius:2px;padding:0;
  text-decoration:underline;text-decoration-color:#85aaa0;text-decoration-thickness:1px;
  text-underline-offset:4px;overflow-wrap:anywhere;transition:color .15s,text-decoration-color .15s;
 }
-body main a[href]:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card):hover{
+body main a[href]:where(:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card)):hover{
  color:#103d38;text-decoration-color:currentColor;text-decoration-thickness:2px;
 }
 body main a[href]:not(.tile):not(.topic-card) :is(span,strong,b,em,u){color:inherit!important;text-decoration:none}
