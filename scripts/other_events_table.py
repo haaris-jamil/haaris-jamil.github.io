@@ -1,8 +1,13 @@
 """Present documented non-Year-10 events without inventing plans or evidence."""
 import html
 from datetime import datetime
+from teaching_summary import event_type_label
 
 EVENTS = {
+    '8': ('Short assessment and estuary walk', 'Y10 Science 2', None),
+    '30': ('Wave processes: refraction exam preparation', 'Year 12 Physics', None),
+    '31': ('Wave systems: interference exam preparation', 'Year 13 Physics', None),
+    '32': ('Astronomy exam preparation and rolling investigation', 'Year 11 Science', None),
     '2': ('Standing waves on a string', 'Year 13 Physics', '1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo'),
     '1': ('Design and build model boats', 'Primary Science Club', '1mlnEweXYo0_3sWmluA01U3haV_ZGnH3KEG-mfyYvstA'),
     '27': ('One-to-one past-paper exam preparation', 'Year 13 Physics', None),
@@ -32,25 +37,28 @@ def render_other_events(rows, by_id, linked):
         if plan:
             page = linked.get(plan, {}).get('page') or f'doc-{plan}.html'
             preparation = f'<a href="{html.escape(page, quote=True)}">Plan</a>'
+        elif rid in ('8','30','31','32'):
+            preparation = f'<a href="learning-events.html#event-{rid}">Session record</a>'
         else:
             preparation = f'<a href="event-{rid}-plan.html">Plan</a>'
         resources = ('<a href="https://www.nzqa.govt.nz/ncea/assessment/view-detailed.do?standardNumber=91526" target="_blank" rel="noopener noreferrer">NZQA AS 91526</a>'
-                     if rid in ('27','28','29') else '<span class="no-resource">—</span>')
+                     if rid in ('27','28','29') else '<span class="no-resource">–</span>')
         record_label = 'Reflection' if status == 'Completed' else 'Planning record'
         output.append(
             f'<tr id="other-event-{rid}"><th scope="row"><strong>{html.escape(title)}</strong></th>'
             f'<td>{html.escape(group)}</td><td><span class="delivery-status {status.lower()}">{html.escape(status)}</span>'
-            f'<span class="lesson-date">{html.escape(formatted_date)}</span></td>'
+            f'<span class="lesson-date">{html.escape(formatted_date)}</span>'
+            f'<span class="event-type">{html.escape(event_type_label(row))}</span></td>'
             f'<td>{preparation}</td><td>{resources}</td><td><a href="{record}">{record_label}</a></td></tr>'
         )
     if not output:
         return ''
     return ('<section class="other-learning-events" id="other-learning-events">'
             '<div class="teaching-section-heading"><h3>Other learning events</h3>'
-            '<p>Individual support, demonstrations and Science Club activities.</p></div>'
+            '<p>Cover lessons, individual support, demonstrations, Science Club and the assessment/estuary session.</p></div>'
             '<div class="lesson-table-scroll" role="region" tabindex="0" aria-label="Other learning events">'
             '<table class="lesson-table"><thead><tr><th scope="col">Learning event</th>'
             '<th scope="col">Class/group</th><th scope="col">Date/status</th>'
-            '<th scope="col">Plan</th><th scope="col">Resources</th><th scope="col">Reflection</th>'
+            '<th scope="col">Plan / session record</th><th scope="col">Resources</th><th scope="col">Reflection</th>'
             '</tr></thead><tbody>' + ''.join(output) + '</tbody></table></div></section>')
 

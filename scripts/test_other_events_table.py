@@ -18,4 +18,20 @@ class OtherEventsTests(unittest.TestCase):
         self.assertIn('>Completed</span>',markup)
         self.assertIn('doc-1ofp5jgQ1npOkrbHJrQXB_HmaY6jh0zVUiR3_ksWdn-4.html',markup)
 
+    def test_cover_and_assessment_sessions_are_visible_and_classified(self):
+        rows = [[rid, 'Recorded', '23/10/2026', '', '', title, kind]
+                for rid, title, kind in (
+                    ('8', 'Assessment and estuary walk', 'Assessment and EOTC'),
+                    ('30', 'Refraction', 'Exam preparation / cover lesson'),
+                    ('31', 'Interference', 'Exam preparation / cover session'),
+                    ('32', 'Astronomy', 'Exam preparation and investigation / cover lesson'))]
+        markup = render_other_events(rows, {}, {})
+        self.assertEqual(markup.count('scope="row"'), 4)
+        self.assertEqual(markup.count('>Full lesson</span>'), 3)
+        self.assertEqual(markup.count('>Other group activity</span>'), 1)
+        for rid in ('8','30','31','32'):
+            self.assertIn(f'learning-events.html#event-{rid}', markup)
+            self.assertIn(f'event-{rid}-reflection.html', markup)
+            self.assertNotIn(f'event-{rid}-plan.html', markup)
+
 if __name__=='__main__': unittest.main()

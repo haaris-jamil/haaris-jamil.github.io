@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 from sync_media import api_json, esc
 from other_events_table import render_other_events
-from teaching_summary import render_teaching_summary
+from teaching_summary import render_teaching_summary, event_type_label
 
 OTHER_EVENT_ROWS = []
 
@@ -255,7 +255,7 @@ def current_events(session):
             "status": state, "date": date_text(row[2]),
             "title": lesson.group(2).strip(),
             "learning": row[8], "learning_evidence": row[11],
-            "evaluation": row[12], "entry": row[0],
+            "evaluation": row[12], "entry": row[0], "event_type": event_type_label(row),
         }
         previous = events.get(key)
         priority = {"Completed": 3, "Not delivered": 2, "Planned": 1, "Unconfirmed": 0}
@@ -440,7 +440,8 @@ def lesson_table(group, plans, events, by_id, linked, class_evidence):
             f'<tr id="science-{group}-lesson-{num}"><th scope="row">'
             f'<span class="lesson-number">Lesson {portfolio_number(group, num, events):02}</span><strong>{esc(title)}</strong>{highlight}</th>'
             f'<td><span class="delivery-status {status.lower().replace(" ", "-")}">{esc(status)}</span>'
-            f'<span class="lesson-date">{esc(date)}</span></td>'
+            f'<span class="lesson-date">{esc(date)}</span>'
+            f'<span class="event-type">{esc(event.get("event_type", ""))}</span></td>'
             f'<td>{plan_html}</td><td>{slides}</td><td>{worksheets}</td>'
             f'<td>{evidence_html}</td></tr>'
         )

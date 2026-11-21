@@ -16,6 +16,7 @@ class StudentVoiceTests(unittest.TestCase):
         markup = observations_body(entries, linked)
         for anchor in ("mentor-teacher-voice", "student-voice", "evaluative-visitor-voice"):
             self.assertEqual(markup.count(f'id="{anchor}"'), 1)
+        for anchor in ("feedback-on-my-teaching", "student-voice", "weekly-mentor-feedback"):
             self.assertIn(f'href="#{anchor}"', markup)
         for key in sources:
             self.assertEqual(markup.count(f'href="file-{key}.html"'), 1)

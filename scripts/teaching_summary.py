@@ -2,6 +2,21 @@
 from collections import Counter
 import html
 
+def event_category(row):
+    row = list(row) + [''] * max(0, 8-len(row))
+    kind = str(row[6]).strip().casefold()
+    if 'individual support' in kind or 'one-to-one' in str(row[5]).casefold():
+        return 'individual'
+    if kind == 'full lesson' or 'cover lesson' in kind or 'cover session' in kind:
+        return 'full'
+    if 'part-lesson' in kind or 'demonstration' in kind:
+        return 'part'
+    return 'other'
+
+def event_type_label(row):
+    return {'full':'Full lesson', 'part':'Part-lesson / demonstration',
+            'individual':'Individual support', 'other':'Other group activity'}[event_category(row)]
+
 def event_counts(rows):
     counts = Counter()
     seen = set()
@@ -16,14 +31,7 @@ def event_counts(rows):
             continue
         if status != 'recorded':
             continue
-        if 'individual support' in kind or 'one-to-one' in str(row[5]).casefold():
-            category = 'individual'
-        elif kind == 'full lesson' or 'cover lesson' in kind or 'cover session' in kind:
-            category = 'full'
-        elif 'part-lesson' in kind or 'demonstration' in kind:
-            category = 'part'
-        else:
-            category = 'other'
+        category = event_category(row)
         counts[category] += 1
         counts['completed'] += 1
     assert counts['completed'] == sum(counts[k] for k in ('full','part','individual','other'))

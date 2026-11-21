@@ -284,31 +284,29 @@ td .evidence-media{min-width:180px;max-width:300px}
 }
 
 
-/* Shared link affordances: only the resource label is interactive. */
-main :where(a[href]:not(.tile):not(.topic-card):not(.photo-zoom):not(.brand)){color:var(--accent-dark);background:#e6f2ec;border-radius:5px;padding:2px 5px;text-decoration:underline;text-underline-offset:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .15s,color .15s}
-main :where(a[href]:not(.tile):not(.topic-card):not(.photo-zoom)):hover{background:#cce5d9;color:#103e35}
-main a[href]:focus-visible{outline:3px solid #e6a04b;outline-offset:3px}
-main .tile,main .topic-card{border-color:#94b9a9}
+/* Shared resource links. Complete navigation cards retain their own layout. */
+body :is(main,nav,footer) a[href]:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card){
+ display:inline-block;max-width:100%;background:var(--accent);color:#fff;
+ border:1px solid var(--accent-dark);border-radius:7px;padding:7px 11px;
+ text-decoration:none;font-weight:650;line-height:1.5;vertical-align:baseline;
+ overflow-wrap:anywhere;transition:background .15s,box-shadow .15s;
+}
+body :is(main,nav,footer) a[href]:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card):hover{
+ background:var(--accent-dark);color:#fff;text-decoration:none;box-shadow:0 2px 6px #173f3b25;
+}
+body :is(main,nav,footer) a[href]:not(.brand):not(.tile):not(.topic-card) :is(span,strong,b,em,u){color:inherit!important;text-decoration:none}
+body a[href]:focus-visible{outline:3px solid #e6a04b;outline-offset:3px}
+body main a.tile,body main a.topic-card{background:white;color:var(--ink);border:1px solid #94b9a9}
+body main a.tile:hover,body main a.topic-card:hover{border-color:var(--accent);box-shadow:0 6px 18px #19332920}
+body main a.photo-zoom{display:block;background:transparent;border:0;padding:0}
 .report-card{background:white;border:1px solid #b5cec2;border-radius:12px;padding:22px;margin:16px 0}
 .report-card h5{font:inherit;font-weight:750;font-size:18px;margin:0 0 16px}
 .report-card p{margin:0;color:var(--muted);line-height:1.65}
-main a.report-link[href]{display:block;background:var(--accent);color:white;padding:14px 18px;border:1px solid var(--accent-dark);border-radius:8px;text-decoration:none;box-shadow:0 2px 3px #173f3b20}
-main a.report-link[href]:hover{background:var(--accent-dark);color:white;box-shadow:0 4px 9px #173f3b30}
-main a.button.primary{background:var(--accent);color:white;text-decoration:none;padding:12px 18px}
-main nav a[href]{text-decoration:none}
-@media(prefers-reduced-motion:reduce){main a[href]{transition:none}}
+body main a.report-link[href]{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 18px}
+body main a.report-link[href]::after{content:"";display:block;width:9px;height:9px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);flex:0 0 auto;margin-right:4px}
+body main .observation-links li{padding:0;border:0;background:transparent}
+body main .observation-links a[href]{display:block;padding:12px 16px}
+.lesson-links a[href]{margin:3px 0}
+.event-type{display:block;margin-top:7px;color:var(--muted);font-size:12px;line-height:1.4}
 #evaluative-visitor-voice.feedback-voice{border-left-color:var(--accent)}
-
-/* A visual chevron reinforces the report link without additional wording. */
-main a.report-link[href]{display:flex;align-items:center;justify-content:space-between;gap:18px}
-main a.report-link[href]::after{content:"";display:block;width:9px;height:9px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);flex:0 0 auto;margin-right:4px}
-
-/* One dark green and white treatment for clickable text across the portfolio. */
-:is(main,nav,footer) a[href]:not(.photo-zoom):not(.brand){background:var(--accent);color:#fff;border:1px solid var(--accent-dark);border-radius:6px;text-decoration:none;padding:5px 9px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-:is(main,nav,footer) a[href]:not(.photo-zoom):not(.brand):hover{background:var(--accent-dark);color:#fff;box-shadow:0 2px 6px #173f3b25}
-:is(main,nav,footer) a[href]:focus-visible{outline:3px solid #e6a04b;outline-offset:3px}
-main a.tile,main a.topic-card{background:var(--accent);color:#fff;padding:26px}
-main a.tile :is(h3,p,.number,.jump),main a.topic-card :is(h3,p,span){color:inherit}
-main a.tile .number{background:#ffffff20}
-main a.report-link[href]{padding:14px 18px}
-main a.photo-zoom{background:transparent;border:0;padding:0}
+@media(prefers-reduced-motion:reduce){body a[href]{transition:none}}

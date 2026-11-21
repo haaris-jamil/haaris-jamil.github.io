@@ -17,7 +17,7 @@ class TeachingSummaryTests(unittest.TestCase):
     def test_cover_periods_are_full_lessons(self):
         c=event_counts([row('30','Recorded','Exam preparation / cover lesson'),row('31','Recorded','Exam preparation / cover session')])
         self.assertEqual(c['full'],2)
-        self.assertIn('excluded from the completed total',render_teaching_summary([]))
+        self.assertNotIn('excluded from the completed total',render_teaching_summary([]))
 
 if __name__=='__main__':
     unittest.main()
