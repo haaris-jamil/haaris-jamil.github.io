@@ -282,3 +282,19 @@ td .evidence-media{min-width:180px;max-width:300px}
 .observation-table td:nth-child(2){font-weight:700;padding-bottom:0}
 .observation-table td:nth-child(3){padding-top:12px}
 }
+
+
+/* Shared link affordances: only the resource label is interactive. */
+main a[href]:not(.tile):not(.topic-card):not(.photo-zoom):not(.brand){color:var(--accent-dark);background:#e6f2ec;border-radius:5px;padding:2px 5px;text-decoration:underline;text-underline-offset:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .15s,color .15s}
+main a[href]:not(.tile):not(.topic-card):not(.photo-zoom):hover{background:#cce5d9;color:#103e35}
+main a[href]:focus-visible{outline:3px solid #e6a04b;outline-offset:3px}
+main .tile,main .topic-card{border-color:#94b9a9}
+.report-card{background:white;border:1px solid #b5cec2;border-radius:12px;padding:22px;margin:16px 0}
+.report-card h5{font:inherit;font-weight:750;font-size:18px;margin:0 0 16px}
+.report-card p{margin:0;color:var(--muted);line-height:1.65}
+main a.report-link[href]{display:block;background:var(--accent);color:white;padding:14px 18px;border:1px solid var(--accent-dark);border-radius:8px;text-decoration:none;box-shadow:0 2px 3px #173f3b20}
+main a.report-link[href]:hover{background:var(--accent-dark);color:white;box-shadow:0 4px 9px #173f3b30}
+main a.button.primary{background:var(--accent);color:white;text-decoration:none;padding:12px 18px}
+main nav a[href]{text-decoration:none}
+@media(prefers-reduced-motion:reduce){main a[href]{transition:none}}
+#evaluative-visitor-voice.feedback-voice{border-left-color:var(--accent)}

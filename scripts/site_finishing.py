@@ -121,13 +121,21 @@ def _group(title, anchor, entries, linked, subsections=None):
     return out + "</section>"
 
 
+def _report_card(title, page, description=""):
+    return ('<article class="report-card"><h5><a class="report-link" href="' + esc(page) + '">'
+            + esc(title) + '</a></h5>' + ('<p>' + esc(description) + '</p>' if description else '')
+            + '</article>')
+
+
 def _feedback_voice(title, anchor, items, linked):
+    if anchor == "evaluative-visitor-voice":
+        cards = "".join(_report_card(_pretty(e), linked[e["id"]]["page"])
+                        for e in items if linked.get(e["id"], {}).get("page"))
+        return '<section class="feedback-voice" id="' + anchor + '"><h4>' + esc(title) + '</h4>' + cards + '</section>'
     links = "".join(_resource(entry, linked) for entry in items)
-    return (
-        f'<section class="feedback-voice" id="{anchor}"><h4>{esc(title)}</h4>'
-        + (f'<ul class="observation-links">{links}</ul>' if links else '<p>No records available.</p>')
-        + '</section>'
-    )
+    return (f'<section class="feedback-voice" id="{anchor}"><h4>{esc(title)}</h4>'
+            + (f'<ul class="observation-links">{links}</ul>' if links else '<p>No records available.</p>')
+            + '</section>')
 
 
 def _student_scans(entry, linked):
@@ -221,10 +229,8 @@ def _mentor_voice(items, final_reports, linked):
     for report in final_reports:
         page = linked.get(report["id"], {}).get("page")
         if page:
-            out += ('<a class="tile" href="' + esc(page) + '">'
-                    '<h5>Final mentor teacher report</h5>'
-                    '<p>End-of-placement assessment and my reflection, completed 21 November 2026.</p>'
-                    '<span class="button primary">Read final report</span></a>')
+            out += _report_card("Final mentor teacher report", page,
+                "End-of-placement assessment and my reflection, completed 21 November 2026.")
     if items:
         out += '<h5>Weekly mentor feedback</h5><ul class="observation-links">'
         out += "".join(_resource(entry, linked) for entry in items) + '</ul>'
@@ -314,5 +320,6 @@ def improve_image_alts(markup):
         candidate = candidate[:165].rsplit(" ", 1)[0] if len(candidate) > 165 else candidate
         return match.group(1) + esc(candidate) + match.group(2)
     return IMAGE_RE.sub(resolve, markup)
+
 
 

@@ -118,6 +118,42 @@ def _target(url, pages, folders):
     return None
 
 
+def normalize_link_labels(markup):
+    """Keep evidence titles linked and their existing descriptions in plain text."""
+    def split(match):
+        opening, body = match.group(1), match.group(2)
+        if re.search(r'<(?!/?u\b)[^>]+>', body, re.I):
+            return match.group(0)
+        text = html.unescape(re.sub(r'</?u[^>]*>', '', body))
+        cut = None
+        before = False
+        if text.startswith('Week 4 reflection,') and ': evaluates ' in text:
+            cut = text.index(': evaluates ')
+        elif text.startswith('Student Voice: end-of-placement feedback:'):
+            cut = text.rindex(':')
+        elif text.startswith('Student evidence: anonymised exercise-book work'):
+            cut = text.index(':')
+        elif text.startswith('02 Full Lesson Plans contains '):
+            cut = text.index(' contains ')
+        elif text.startswith('99 Superseded Plans and Resources:'):
+            cut = text.index(':')
+        elif re.match(r'Lesson \d+:', text) and ', delivered ' in text:
+            cut = text.index(', delivered ')
+        elif '\n' in text.strip() and any(text.rstrip().endswith(label) for label in (
+            'NZQA AS 91526 resources', 'Year 10 Lesson 3 worksheet samples',
+            'Year 10 Lesson 4 exercise-book samples', 'Student evidence: 5 November 2026 (PDF)',
+            'Student evidence: 6 November 2026 (PDF)', 'Student evidence: 11 November 2026 (PDF)')):
+            cut = text.rstrip().rfind('\n') + 1
+            before = True
+        if cut is None:
+            return match.group(0)
+        left, right = text[:cut], text[cut:]
+        if before:
+            return html.escape(left).replace('\n', '<br>') + opening + html.escape(right) + '</a>'
+        return opening + html.escape(left) + '</a>' + html.escape(right)
+    return re.sub(r'(<a\b[^>]*>)(.*?)</a>', split, markup, flags=re.S | re.I)
+
+
 def rewrite_html(markup, pages, folders):
     """Rewrite hrefs and visible raw source URLs, preserving all other content."""
     counts = {"anchors": 0, "plain_urls": 0, "source_footers": 0, "unresolved": 0}
@@ -172,4 +208,4 @@ def rewrite_html(markup, pages, folders):
                     f'View portfolio evidence</a>{ending}')
 
         fragments[i] = SOURCE_URL.sub(make_local, part)
-    return "".join(fragments), counts
+    return normalize_link_labels("".join(fragments)), counts
