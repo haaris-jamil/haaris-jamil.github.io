@@ -38,7 +38,6 @@ def render_teaching_summary(rows):
     cards = ''.join(f'<div><dt>{html.escape(label)}</dt><dd>{counts[key]}</dd></div>' for key,label in labels)
     return ('<section class="teaching-summary" aria-labelledby="teaching-summary-title">'
             '<h3 id="teaching-summary-title">Teaching at a glance</h3><dl class="teaching-summary-counts">'
-            + cards + '</dl><p>Each completed event is counted once. Full lessons include cover lessons. '
-            'Other group activities include Science Club and assessment/EOTC sessions.</p>'
-            f'<p class="teaching-summary-planned">{counts["planned"]} planned events, excluded from the completed total. '
+            + cards + '</dl>'
+            '<p>'
             '<a href="learning-events.html">View the learning events register</a>.</p></section>')
