@@ -284,29 +284,56 @@ td .evidence-media{min-width:180px;max-width:300px}
 }
 
 
-/* Shared resource links. Complete navigation cards retain their own layout. */
-body :is(main,nav,footer) a[href]:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card){
- display:inline-block;max-width:100%;background:var(--accent);color:#fff;
- border:1px solid var(--accent-dark);border-radius:7px;padding:7px 11px;
- text-decoration:none;font-weight:650;line-height:1.5;vertical-align:baseline;
- overflow-wrap:anywhere;transition:background .15s,box-shadow .15s;
+/* Consistent link hierarchy: quiet text links, white navigation cards, solid primary actions. */
+body main a[href]:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card){
+ color:var(--accent-dark);background:transparent;border:0;border-radius:2px;padding:0;
+ text-decoration:underline;text-decoration-color:#85aaa0;text-decoration-thickness:1px;
+ text-underline-offset:4px;overflow-wrap:anywhere;transition:color .15s,text-decoration-color .15s;
 }
-body :is(main,nav,footer) a[href]:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card):hover{
- background:var(--accent-dark);color:#fff;text-decoration:none;box-shadow:0 2px 6px #173f3b25;
+body main a[href]:not(.photo-zoom):not(.brand):not(.tile):not(.topic-card):hover{
+ color:#103d38;text-decoration-color:currentColor;text-decoration-thickness:2px;
 }
-body :is(main,nav,footer) a[href]:not(.brand):not(.tile):not(.topic-card) :is(span,strong,b,em,u){color:inherit!important;text-decoration:none}
-body a[href]:focus-visible{outline:3px solid #e6a04b;outline-offset:3px}
-body main a.tile,body main a.topic-card{background:white;color:var(--ink);border:1px solid #94b9a9}
-body main a.tile:hover,body main a.topic-card:hover{border-color:var(--accent);box-shadow:0 6px 18px #19332920}
+body main a[href]:not(.tile):not(.topic-card) :is(span,strong,b,em,u){color:inherit!important;text-decoration:none}
+body a[href]:focus-visible{outline:3px solid #bd7932;outline-offset:4px}
+body .sitehead nav a{background:transparent;color:#3d5156;border:0;border-radius:7px;padding:7px 9px;text-decoration:none}
+body .sitehead nav a:hover,body .sitehead nav a[aria-current="page"],body .sitehead nav a.active{background:#e7f0eb;color:var(--accent-dark)}
+body main a.tile,body main a.topic-card{background:white;color:var(--ink);border:1px solid var(--border);text-decoration:none}
+body main a.tile:hover,body main a.topic-card:hover{border-color:#8aafa0;box-shadow:0 7px 20px #19332912}
 body main a.photo-zoom{display:block;background:transparent;border:0;padding:0}
-.report-card{background:white;border:1px solid #b5cec2;border-radius:12px;padding:22px;margin:16px 0}
-.report-card h5{font:inherit;font-weight:750;font-size:18px;margin:0 0 16px}
+body main :is(.lesson-jump,.observation-jump,.topic-subnav,.reflection-pager) a[href],
+body main a.button.secondary,body main a.lesson-action{
+ display:inline-block;background:white;border:1px solid #b9cfc4;border-radius:7px;
+ color:var(--accent-dark);padding:8px 13px;text-decoration:none;font-weight:650;
+}
+body main :is(.lesson-jump,.observation-jump,.topic-subnav,.reflection-pager) a[href]:hover,
+body main a.button.secondary:hover,body main a.lesson-action:hover{background:#eff5f1;border-color:#7da692}
+body main a.lesson-action{align-self:flex-start;margin-top:auto}
+body main :is(.lesson-table,.sheet-table) a[href]{display:inline-block;background:white;border:1px solid #c4d6cd;border-radius:5px;padding:4px 8px;margin:3px 0;text-decoration:none;line-height:1.5;font-weight:650}
+body main :is(.lesson-table,.sheet-table) a[href]:hover{background:#eff5f1;border-color:#7da692}
+.report-card{background:white;border:1px solid var(--border);border-radius:10px;padding:20px;margin:14px 0}
+.report-card h5{font:inherit;font-weight:750;font-size:18px;margin:0 0 14px}
 .report-card p{margin:0;color:var(--muted);line-height:1.65}
-body main a.report-link[href]{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 18px}
-body main a.report-link[href]::after{content:"";display:block;width:9px;height:9px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);flex:0 0 auto;margin-right:4px}
+body main a.report-link[href],body main a.button.primary{
+ display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--accent);
+ color:white;padding:12px 17px;border:1px solid var(--accent-dark);border-radius:7px;text-decoration:none;
+ font-weight:700;box-shadow:0 2px 3px #173f3b10;
+}
+body main a.report-link[href]:hover,body main a.button.primary:hover{background:var(--accent-dark);color:white;text-decoration:none}
+body main a.report-link[href]::after,body main .observation-links a[href]::after{
+ content:"";display:block;width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;
+ transform:rotate(45deg);flex:0 0 auto;margin-right:3px;
+}
+body main .observation-links{gap:10px}
 body main .observation-links li{padding:0;border:0;background:transparent}
-body main .observation-links a[href]{display:block;padding:12px 16px}
-.lesson-links a[href]{margin:3px 0}
+body main .observation-links a[href]{display:flex;align-items:center;justify-content:space-between;gap:18px;
+ background:white;border:1px solid var(--border);border-radius:8px;padding:14px 17px;text-decoration:none;font-weight:650}
+body main .observation-links a[href]:hover{background:#f7faf7;border-color:#8aafa0;text-decoration:none}
+body footer a[href]{color:#f2f6f3;text-decoration:underline;text-decoration-color:#8eaaa3;text-underline-offset:4px;background:transparent;border:0;padding:0}
 .event-type{display:block;margin-top:7px;color:var(--muted);font-size:12px;line-height:1.4}
 #evaluative-visitor-voice.feedback-voice{border-left-color:var(--accent)}
+/* Only the header navigation becomes a mobile dropdown. Section links stay in normal flow. */
+body main nav{position:static;display:flex;flex-direction:row;flex-wrap:wrap;top:auto;left:auto;right:auto;
+ background:transparent;border:0;box-shadow:none;padding:0;gap:9px}
+@media(max-width:620px){body main .observation-links a[href]{padding:12px 14px}.report-card{padding:16px}}
 @media(prefers-reduced-motion:reduce){body a[href]{transition:none}}
+@media print{.sitehead,.skip,footer,.menu{display:none}.section{padding:15px 0}.shell{max-width:none;padding:0}a{box-shadow:none!important}}

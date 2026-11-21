@@ -213,7 +213,7 @@ def page(week, rendered):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} | ProfEx 1</title>
-<link rel="stylesheet" href="portfolio-v2.css?v=20261121-links-2">
+<link rel="stylesheet" href="portfolio-v2.css?v=20261121-calm-3">
 <script defer src="script.js"></script>
 </head>
 <body>

@@ -128,7 +128,7 @@ def document_html(title, caption, inner, back="index.html"):
 <html lang="en-NZ"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | ProfEx 1</title>
-<link rel="stylesheet" href="portfolio-v2.css?v=20261121-links-2"><script defer src="script.js"></script>
+<link rel="stylesheet" href="portfolio-v2.css?v=20261121-calm-3"><script defer src="script.js"></script>
 </head><body><a class="skip" href="#main">Skip to content</a>
 <header class="sitehead"><div class="headinner">
 <a class="brand" href="index.html"><span class="monogram">HJ</span>
@@ -141,7 +141,7 @@ def document_html(title, caption, inner, back="index.html"):
 {inner}
 </div></section></main>
 <footer><div class="shell footinner"><strong>Haaris Jamil · ProfEx 1</strong>
-<a href="{esc(back)}">Return to portfolio ↑</a></div></footer>
+<a href="index.html">Return to portfolio ↑</a></div></footer>
 </body></html>"""
 
 
