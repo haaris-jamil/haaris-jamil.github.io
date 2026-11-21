@@ -234,7 +234,9 @@ def render_pdf_pages(pdf_path, modified, previous, max_pages=4):
     found = sorted(directory.glob("page-*.jpg")) if directory.exists() else []
     if previous.get("modifiedTime") == modified and found:
         with pymupdf.open(pdf_path) as pdf:
-            return found[:min(len(pdf), max_pages)], len(pdf)
+            required = min(len(pdf), max_pages)
+            if len(found) >= required:
+                return found[:required], len(pdf)
     if directory.exists():
         shutil.rmtree(directory)
     directory.mkdir(parents=True, exist_ok=True)
@@ -318,6 +320,8 @@ def sync_binary(session, entry, old):
             if correct_student_feedback_page_order(output):
                 previous = {}
         preview_limit = 10 if "05 Student Evidence - Anonymised" in entry.get("path", []) else 4
+        if fid in {"19K27Ff8KA8H5zgwWP7swCO_QObF6Zons", "1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4"}:
+            preview_limit = 12
         try:
             page_images, total_pages = render_pdf_pages(
                 output, modified, previous, preview_limit
@@ -478,4 +482,5 @@ def sync_doc_images(doc, rendered, file_id, modified, previous, published_only=F
     if marker in rendered:
         warnings.append("Some embedded objects were not accessible for conversion")
     return rendered, warnings
+
 
