@@ -13,6 +13,7 @@ DIRECT_PAGES = {"about.html": ABOUT_ID, "references.html": REFERENCES_ID}
 
 OBSERVATION_FOLDER = "02 Observations"
 PDF_MIME = "application/pdf"
+FINAL_MENTOR_REPORT_ID = "19K27Ff8KA8H5zgwWP7swCO_QObF6Zons"
 # Final PDFs appear on the website. Editable observation forms remain in Drive.
 FINISHED_FEEDBACK_PDFS = {
     3: "1rOJLp3MWNZhUypi0VtDrLXwgPv7uGsQP",
@@ -215,6 +216,19 @@ def _student_voice(items, linked):
     )
 
 
+def _mentor_voice(items, final_reports, linked):
+    out = '<section class="feedback-voice" id="mentor-teacher-voice"><h4>Mentor Teacher</h4>'
+    for report in final_reports:
+        page = linked.get(report["id"], {}).get("page")
+        if page:
+            out += ('<a class="tile" href="' + esc(page) + '">'
+                    '<h5>Final mentor teacher report</h5>'
+                    '<p>End-of-placement assessment and my reflection, completed 21 November 2026.</p>'
+                    '<span class="button primary">Read final report</span></a>')
+    out += '<h5>Weekly mentor feedback</h5><ul class="observation-links">'
+    return out + "".join(_resource(entry, linked) for entry in items) + '</ul></section>'
+
+
 def observations_body(entries, linked):
     """Three grounded sections, with weekly forms in numeric week order."""
     items = [
@@ -223,10 +237,13 @@ def observations_body(entries, linked):
         and not is_editable_observation_form(e)
     ]
     general, others, feedback, forms, visits, remaining, student_forms = [], [], [], [], [], [], []
+    final_reports = []
     for entry in items:
         name = entry["name"].casefold().strip()
         folders = " / ".join(entry.get("folderPath", [])).casefold()
-        if entry["id"] == "1eBxsYyTaPqJJ4byG3CSqaxWeI3w4fMfM":
+        if entry["id"] == FINAL_MENTOR_REPORT_ID:
+            final_reports.append(entry)
+        elif entry["id"] == "1eBxsYyTaPqJJ4byG3CSqaxWeI3w4fMfM":
             if entry.get("mimeType") == PDF_MIME:
                 student_forms.append(entry)
         elif name.startswith("general observations"):
@@ -266,7 +283,7 @@ def observations_body(entries, linked):
         + '<a href="#mentor-teacher-voice">Mentor Teacher</a>'
         + '<a href="#student-voice">Student Voice</a>'
         + '<a href="#evaluative-visitor-voice">Evaluative Visitor</a></nav>'
-        + _feedback_voice("Mentor Teacher", "mentor-teacher-voice", feedback, linked)
+        + _mentor_voice(feedback, final_reports, linked)
         + _student_voice(student_forms, linked)
         + _feedback_voice("Evaluative Visitor", "evaluative-visitor-voice", visits, linked)
         + (_feedback_voice("Additional feedback", "additional-feedback", remaining, linked) if remaining else "")
@@ -296,3 +313,4 @@ def improve_image_alts(markup):
         candidate = candidate[:165].rsplit(" ", 1)[0] if len(candidate) > 165 else candidate
         return match.group(1) + esc(candidate) + match.group(2)
     return IMAGE_RE.sub(resolve, markup)
+
