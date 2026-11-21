@@ -40,7 +40,7 @@ def render_other_events(rows, by_id, linked):
         elif rid in ('8','30','31','32'):
             preparation = f'<a href="learning-events.html#event-{rid}">Session record</a>'
         else:
-            preparation = f'<a href="event-{rid}-plan.html">Plan</a>'
+            preparation = f'<a href="event-{rid}-plan.html">Session record</a>'
         resources = ('<a href="https://www.nzqa.govt.nz/ncea/assessment/view-detailed.do?standardNumber=91526" target="_blank" rel="noopener noreferrer">NZQA AS 91526</a>'
                      if rid in ('27','28','29') else '<span class="no-resource">–</span>')
         record_label = 'Reflection' if status == 'Completed' else 'Planning record'
