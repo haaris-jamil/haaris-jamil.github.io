@@ -118,6 +118,28 @@ def _target(url, pages, folders):
     return None
 
 
+def clean_editorial_notes(markup):
+    """Remove portfolio housekeeping, retaining teaching instructions and reflections."""
+    phrases = (
+        "Unregistered and superseded plans have been removed from the portfolio folders.",
+        "Unused initial plans and superseded duplicates are archived outside the portfolio.",
+        "Retain anonymised calculations and individual explanations, an apparatus photo, and a note of Haaris’s construction contribution.",
+        "Lesson plans and presentations are working documents that evolve with teaching experience.",
+        "The current Goals and Standards are organised into individual pages.",
+    )
+    for phrase in phrases:
+        markup = markup.replace(html.escape(phrase), "").replace(phrase, "")
+    def paragraph(match):
+        plain = html.unescape(re.sub(r"<[^>]+>", "", match[0])).strip()
+        if plain.startswith(("99 Superseded Plans and Resources:", "02 Full Lesson Plans contains", "The original unit overview remains unchanged as the starting point", "Lessons are numbered consecutively within each class")):
+            return ""
+        return match[0]
+    markup = re.sub(r"<p\b[^>]*>.*?</p>", paragraph, markup, flags=re.S)
+    markup = re.sub(r'<p(?:\s[^>]*)?>\s*</p>', '', markup)
+    markup = markup.replace("Archived portfolio source", "Portfolio section")
+    return markup
+
+
 def normalize_link_labels(markup):
     """Keep evidence titles linked and their existing descriptions in plain text."""
     def split(match):
@@ -140,7 +162,7 @@ def normalize_link_labels(markup):
         elif re.match(r'Lesson \d+:', text) and ', delivered ' in text:
             cut = text.index(', delivered ')
         elif '\n' in text.strip() and any(text.rstrip().endswith(label) for label in (
-            'NZQA AS 91526 resources', 'Year 10 Lesson 3 worksheet samples',
+            'Student evidence: 4 November 2026 (PDF)', 'NZQA AS 91526 resources', 'Year 10 Lesson 3 worksheet samples',
             'Year 10 Lesson 4 exercise-book samples', 'Student evidence: 5 November 2026 (PDF)',
             'Student evidence: 6 November 2026 (PDF)', 'Student evidence: 11 November 2026 (PDF)')):
             cut = text.rstrip().rfind('\n') + 1
@@ -208,4 +230,5 @@ def rewrite_html(markup, pages, folders):
                     f'View portfolio evidence</a>{ending}')
 
         fragments[i] = SOURCE_URL.sub(make_local, part)
-    return normalize_link_labels("".join(fragments)), counts
+    return normalize_link_labels(clean_editorial_notes("".join(fragments))), counts
+

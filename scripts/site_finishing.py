@@ -230,7 +230,7 @@ def _mentor_voice(items, final_reports, linked):
         page = linked.get(report["id"], {}).get("page")
         if page:
             out += _report_card("Final mentor teacher report", page,
-                "End-of-placement assessment and my reflection, completed 21 November 2026.")
+                "End-of-placement assessment and my reflection.")
     if items:
         out += '<h5>Weekly mentor feedback</h5><ul class="observation-links">'
         out += "".join(_resource(entry, linked) for entry in items) + '</ul>'

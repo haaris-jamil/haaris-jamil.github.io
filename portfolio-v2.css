@@ -298,3 +298,17 @@ main a.button.primary{background:var(--accent);color:white;text-decoration:none;
 main nav a[href]{text-decoration:none}
 @media(prefers-reduced-motion:reduce){main a[href]{transition:none}}
 #evaluative-visitor-voice.feedback-voice{border-left-color:var(--accent)}
+
+/* A visual chevron reinforces the report link without additional wording. */
+main a.report-link[href]{display:flex;align-items:center;justify-content:space-between;gap:18px}
+main a.report-link[href]::after{content:"";display:block;width:9px;height:9px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);flex:0 0 auto;margin-right:4px}
+
+/* One dark green and white treatment for clickable text across the portfolio. */
+:is(main,nav,footer) a[href]:not(.photo-zoom):not(.brand){background:var(--accent);color:#fff;border:1px solid var(--accent-dark);border-radius:6px;text-decoration:none;padding:5px 9px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+:is(main,nav,footer) a[href]:not(.photo-zoom):not(.brand):hover{background:var(--accent-dark);color:#fff;box-shadow:0 2px 6px #173f3b25}
+:is(main,nav,footer) a[href]:focus-visible{outline:3px solid #e6a04b;outline-offset:3px}
+main a.tile,main a.topic-card{background:var(--accent);color:#fff;padding:26px}
+main a.tile :is(h3,p,.number,.jump),main a.topic-card :is(h3,p,span){color:inherit}
+main a.tile .number{background:#ffffff20}
+main a.report-link[href]{padding:14px 18px}
+main a.photo-zoom{background:transparent;border:0;padding:0}

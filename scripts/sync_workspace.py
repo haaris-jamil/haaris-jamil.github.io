@@ -612,8 +612,7 @@ def main():
     pages.update(publish_other_event_pages(OTHER_EVENT_ROWS, document_html, write))
     # Remove the retired miscellaneous listing; do not regenerate it.
     Path("portfolio-sources.html").unlink(missing_ok=True)
-    write("sync-audit.html", audit_page(records, linked, failures, not_auto, incomplete))
-    pages.add("sync-audit.html")
+    Path("sync-audit.html").unlink(missing_ok=True)
     # Rebuild internal cross-references only after all source files have been
     # scanned and their matching local pages are known.
     local_pages, local_folders = make_local_map(
@@ -655,6 +654,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
