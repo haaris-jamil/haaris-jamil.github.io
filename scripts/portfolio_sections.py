@@ -39,27 +39,82 @@ GROUPS = {
         ],
     },
 }
-GOAL_EVIDENCE = {
-    1: [
-        ("Original electricity unit overview", "doc-10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w.html"),
-        ("Year 10 Science 1 lesson sequence", "teaching.html#science-1"),
-        ("Year 10 Science 2 lesson sequence", "teaching.html#science-2"),
-        ("Week 4 lesson reflection", "reflection-week-4.html"),
-        ("Mentor feedback", "file-11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I.html"),
-        ("Lesson 3 worksheet samples", "file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html"),
-        ("Lesson 4 exercise-book samples", "file-152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB.html"),
-    ],
-    2: [
-        ("Photographs of the working models", "#photographic-evidence"),
-        ("Year 13 standing-waves demonstration plan", "doc-1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo.html"),
-        ("Standing-wave frame photographs and playable video", "#standing-wave-apparatus"),
-    ],
-    3: [
-        ("Science 1: beach electricity-generation lesson plan", "doc-1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s.html"),
-        ("Science 2: beach electricity-generation lesson plan", "doc-19QlznYT3rqKHTchwaY0LIGhFJ-uter_dzYVHwmkZBAU.html"),
-        ("Observations from school and learning events", "doc-1HZugSfeanOI_V0GSbUouALCLt5nsNRiMJJsUt0ci90Q.html"),
-    ],
-}
+GOAL_EVIDENCE = {1: [['Original electricity unit overview',
+      'doc-10WsaDbhs--YacZgK5GeOJaW2RktNmefuKDce7lotR_w.html',
+      'Starting sequence against which the delivered lessons can be compared.'],
+     ['Year 10 Science 1 lesson sequence',
+      'teaching.html#science-1',
+      'Class-specific delivery dates, revised plans and learning evidence.'],
+     ['Year 10 Science 2 lesson sequence',
+      'teaching.html#science-2',
+      'Shows how pacing and activities differed between the two classes.'],
+     ['Week 4 lesson reflection',
+      'reflection-week-4.html',
+      'Early adjustments to lesson timing and checks for understanding.'],
+     ['Week 4 mentor feedback',
+      'file-11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I.html',
+      'Feedback that informed subsequent circuit challenges.'],
+     ['Circuit worksheet samples',
+      'file-1jnws3tkTTA1DPXzfPSvdWrAzeyD0HWJM.html',
+      'Early student responses for comparison with later work.'],
+     ['Current-measurement exercise-book samples',
+      'file-152w-8ZhbUAkKyOivkEtCWTHlfZgm8ZlB.html',
+      'Students’ predictions, measurements and developing scientific vocabulary.'],
+     ['Electricity-generation lesson and evaluation, 11 November',
+      'doc-1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo.html',
+      'A later plan and reflection showing how the original unit developed.'],
+     ['Week 7 reflection',
+      'reflection-week-7.html',
+      'Explains changes made in response to engagement and mentor feedback.'],
+     ['Electricity-generation worksheets, 12 November',
+      'file-1SoxlQ-UniCqmiOxVUpj7QRF1gRvOcviB.html',
+      'Later learner responses, including remaining confusion about the meter.'],
+     ['Combined student feedback',
+      'observations.html#student-voice',
+      'Learners’ views on support, challenge, pacing and accessible notes.'],
+     ['Final mentor teacher report',
+      'file-19K27Ff8KA8H5zgwWP7swCO_QObF6Zons.html',
+      'Standards 2 and 5 address feedback, responsive planning and adapting the unit to learners.']],
+ 2: [['Photographs of the working models',
+      '#photographic-evidence',
+      'Construction evidence and descriptions of my contribution.'],
+     ['Year 13 standing-waves demonstration plan',
+      'doc-1cwCx4lvhLZ4176e-3mISxNyiCIq221i1lyo6t3dAMKo.html',
+      'The scientific purpose and planned use of the apparatus.'],
+     ['Standing-wave frame and my explanation video',
+      '#standing-wave-apparatus',
+      'Shows the support frame, operation of the model and my explanation.'],
+     ['Electricity-generation lesson and evaluation, 11 November',
+      'doc-1TlRge3vHrb2nAxlmYoItLTyYuOJHQyqPJMQLUgPBcEo.html',
+      'Records how the circuit guide and working generator models were used in teaching.'],
+     ['Electricity-generation worksheets, 12 November',
+      'file-1SoxlQ-UniCqmiOxVUpj7QRF1gRvOcviB.html',
+      'Students’ observations and explanations help evaluate the models’ teaching value.'],
+     ['Week 7 reflection',
+      'reflection-week-7.html',
+      'Evaluates the visual guide and investigation approach, including limits of the evidence.'],
+     ['Evaluative visit report',
+      'file-1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4.html',
+      'The Goal 2 and Standard 6 comments address practical resources, visual models and scaffolded '
+      'learning.']],
+ 3: [['Science 1: beach electricity-generation lesson plan',
+      'doc-1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s.html',
+      'Includes the 20 November delivery reflection and evaluation.'],
+     ['Science 2: beach electricity-generation lesson plan',
+      'doc-19QlznYT3rqKHTchwaY0LIGhFJ-uter_dzYVHwmkZBAU.html',
+      'Includes the 19 November account of testing turbines and adapting the water source.'],
+     ['Week 8 mentor feedback',
+      'file-1rRvWITIrWeZMXAr96dYh18LTa7rgwhRV.html',
+      'Independent feedback on the field trip, with recommendations about time and group size.'],
+     ['Week 8 reflection',
+      'reflection-week-8.html',
+      'Evaluates both trips, the reservoir difficulties and improvements for future planning.'],
+     ['Completed beach investigations in the learning register',
+      'learning-events.html#event-22',
+      'Records the 19 and 20 November learning events and their evaluations.'],
+     ['Observations from school and learning events',
+      'doc-1HZugSfeanOI_V0GSbUouALCLt5nsNRiMJJsUt0ci90Q.html',
+      'Background learning about local settings, school culture and outdoor activities.']]}
 STANDING_IMAGE_CLOSE = (
     "assets/drive/1xbXqSmR_t2K7-Jg25Yk7XjqrEI9GBWf9/"
     "Goal-2---Vibration-generator-wooden-frame---close-view.JPG"
@@ -147,11 +202,12 @@ def _strip_audit_notes(markup, kind, number):
 
 
 def _goal_evidence_markup(number):
-    items = GOAL_EVIDENCE[number]
-    return '<ul class="goal-evidence-list">' + "".join(
-        f'<li><a href="{_esc(url)}">{_esc(label)}</a></li>'
-        for label, url in items
-    ) + '</ul>'
+    rows = []
+    for item in GOAL_EVIDENCE[number]:
+        label, url, *description = item
+        detail = ': ' + _esc(description[0]) if description else ''
+        rows.append(f'<li><a href="{_esc(url)}">{_esc(label)}</a>{detail}</li>')
+    return '<ul class="goal-evidence-list">' + ''.join(rows) + '</ul>'
 
 
 def _replace_goal_evidence(markup, number):
@@ -271,6 +327,10 @@ def adapt_source(fid, markup):
                 markup += _standing_wave_player()
     elif number == 3:
         markup = markup.replace(
+            '<h3>Colleague correspondence</h3>',
+            '<h3 id="colleague-correspondence">Colleague correspondence</h3>',
+        )
+        markup = markup.replace(
             "Sharing my pepeha gave students an opportunity to learn about me "
             "and ask questions. In the observed lesson on 21 October, they "
             "asked me to present it in Hindi, which I did.",
@@ -307,3 +367,4 @@ def adapt_source(fid, markup):
         before + '<article class="native-reflection"><div class="reflection-prose">'
         + markup + '</div></article>' + after
     )
+
