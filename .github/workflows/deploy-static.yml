@@ -33,6 +33,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+      # Share successful-publication state with the hourly Drive sync.
       - name: Publish website changes
         id: deployment
         uses: ./.github/actions/publish-portfolio
