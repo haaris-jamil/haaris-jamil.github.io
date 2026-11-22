@@ -10,6 +10,8 @@ on:
       - "portfolio-v2.css"
       - "assets/**"
       - ".github/workflows/deploy-static.yml"
+      - ".github/actions/publish-portfolio/**"
+      - "scripts/deploy_pages.py"
 
 permissions:
   contents: read
@@ -18,7 +20,7 @@ permissions:
 
 concurrency:
   group: portfolio-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -31,12 +33,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-      - name: Upload website
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "."
-      - name: Publish to GitHub Pages
+      - name: Publish website changes
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: ./.github/actions/publish-portfolio
