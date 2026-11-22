@@ -98,15 +98,6 @@ jobs:
             echo "No changes to source files."
           fi
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Package the website
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "."
-
-      - name: Deploy current website
+      - name: Publish website changes
         id: deployment
-        uses: actions/deploy-pages@v4
-
+        uses: ./.github/actions/publish-portfolio

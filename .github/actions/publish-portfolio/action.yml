@@ -1,0 +1,53 @@
+name: Publish portfolio when changed
+description: Publish the exact uploaded package and remember successful website content.
+outputs:
+  page_url:
+    description: Published GitHub Pages URL
+    value: ${{ steps.publish.outputs.page_url }}
+runs:
+  using: composite
+  steps:
+    - name: Check whether this website content is already published
+      id: published
+      uses: actions/cache/restore@v4
+      with:
+        path: ${{ runner.temp }}/portfolio-pages-success
+        key: portfolio-pages-v1-${{ hashFiles('**/*.html', 'assets/**', '*.css', '*.js', '.nojekyll') }}
+        lookup-only: true
+
+    - name: Configure GitHub Pages
+      if: steps.published.outputs.cache-hit != 'true'
+      uses: actions/configure-pages@v5
+
+    - name: Package the website
+      if: steps.published.outputs.cache-hit != 'true'
+      id: package
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: "."
+
+    - name: Publish the uploaded package by its exact ID
+      if: steps.published.outputs.cache-hit != 'true'
+      id: publish
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        PAGES_ARTIFACT_ID: ${{ steps.package.outputs.artifact_id }}
+      run: python3 scripts/deploy_pages.py
+
+    - name: Record successful publication
+      if: steps.published.outputs.cache-hit != 'true'
+      shell: bash
+      run: echo "Publication completed successfully." > "$RUNNER_TEMP/portfolio-pages-success"
+
+    - name: Remember the published website content
+      if: steps.published.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v4
+      with:
+        path: ${{ runner.temp }}/portfolio-pages-success
+        key: ${{ steps.published.outputs.cache-primary-key }}
+
+    - name: Keep the existing publication when content is unchanged
+      if: steps.published.outputs.cache-hit == 'true'
+      shell: bash
+      run: echo "Website content is unchanged and was already published successfully; no new deployment is needed."
