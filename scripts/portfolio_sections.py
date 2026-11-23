@@ -97,7 +97,10 @@ GOAL_EVIDENCE = {1: [['Original electricity unit overview',
       'file-1dEwr-kpWHhXndo3GnRUC3ZZ2eNtCxzS4.html',
       'The Goal 2 and Standard 6 comments address practical resources, visual models and scaffolded '
       'learning.']],
- 3: [['Science 1: beach electricity-generation lesson plan',
+ 3: [['My account of collaborative risk assessment',
+      '#risk-assessment',
+      'I discussed each point of the beach trip’s safety and risk assessment with my mentor before he entered it into the school’s ERP form.'],
+     ['Science 1: beach electricity-generation lesson plan',
       'doc-1d37Sx_n_qNVfIb1KqOM3oCQ7N9ypsN1AEHsZJz52r6s.html',
       'Includes the 20 November delivery reflection and evaluation.'],
      ['Science 2: beach electricity-generation lesson plan',
@@ -216,6 +219,18 @@ def _replace_goal_evidence(markup, number):
         return markup
     next_heading = re.search(r'<h3\b[^>]*>', markup[match.end():], re.I)
     end = match.end() + next_heading.start() if next_heading else len(markup)
+    # Concrete links now live in the Google Doc. Preserve subsequent source
+    # edits instead of overwriting them with the older fallback list.
+    source = markup[match.end():end]
+    if re.search(r'<a\b[^>]*href=', source, re.I):
+        if re.search(r'<ul\b', source, re.I):
+            contents = re.sub(r'<ul\b[^>]*>', '<ul class="goal-evidence-list">', source, count=1)
+        else:
+            paragraphs = re.findall(r'<p(?:\s[^>]*)?>(.*?)</p>', source, re.I | re.S)
+            contents = '<ul class="goal-evidence-list">' + ''.join(
+                '<li>' + text + '</li>' for text in paragraphs if re.sub(r'<[^>]+>', '', text).strip()
+            ) + '</ul>'
+        return markup[:match.end()] + contents + markup[end:]
     return markup[:match.end()] + _goal_evidence_markup(number) + markup[end:]
 
 
@@ -303,6 +318,11 @@ def adapt_source(fid, markup):
     markup = _strip_audit_notes(markup, kind, number)
     if kind == "goal":
         markup = _replace_goal_evidence(markup, number)
+        if number == 3:
+            markup = re.sub(
+                r'<p>(I made substantial progress in collaborative planning, delivery and evaluation\.)',
+                r'<p id="risk-assessment">\1', markup, count=1,
+            )
         if number == 2:
             markup = re.sub(
                 r'<h3>\s*Photographic evidence\s*</h3>',
