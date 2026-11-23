@@ -337,3 +337,12 @@ body main nav{position:static;display:flex;flex-direction:row;flex-wrap:wrap;top
 @media(max-width:620px){body main .observation-links a[href]{padding:12px 14px}.report-card{padding:16px}}
 @media(prefers-reduced-motion:reduce){body a[href]{transition:none}}
 @media print{.sitehead,.skip,footer,.menu{display:none}.section{padding:15px 0}.shell{max-width:none;padding:0}a{box-shadow:none!important}}
+
+/* Resource buttons keep words intact; the short Plan/Slides labels stay together. */
+body main :is(.lesson-table,.sheet-table) a[href]{
+ overflow-wrap:normal;word-break:normal;
+}
+body main .lesson-table td:nth-child(3) a[href],
+body main .lesson-table td:nth-child(4) a[href]{
+ white-space:nowrap;
+}
