@@ -10,6 +10,10 @@ class EvidenceTests(unittest.TestCase):
         self.assertIn('<figcaption', result)
         self.assertIn('href="report.html"', result)
         self.assertIn('<li><a href="lesson.html">Lesson plan</a></li>', result)
+        goal_source = '<h3>Evidence</h3><p><img src="comment.webp"></p><p>Excerpt from <a href="report.html">mentor teacher’s report</a> (Standard 2, page 5).</p>'
+        goal_result = adapt_source('1Dw5L_yjeuPlsrmzdWCc6BSA7ZVXoQ00cZfDRoOPfUac', goal_source)
+        self.assertIn('<figure class="report-excerpt"', goal_result)
+        self.assertIn('src="comment.webp"', goal_result)
 
     def test_goal_links_explain_relevance_outside_the_clickable_title(self):
         for i in (1,2,3):

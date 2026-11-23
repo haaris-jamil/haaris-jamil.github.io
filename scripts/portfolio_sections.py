@@ -228,7 +228,8 @@ def _replace_goal_evidence(markup, number):
         else:
             paragraphs = re.findall(r'<p(?:\s[^>]*)?>(.*?)</p>', source, re.I | re.S)
             contents = '<ul class="goal-evidence-list">' + ''.join(
-                '<li>' + text + '</li>' for text in paragraphs if re.sub(r'<[^>]+>', '', text).strip()
+                '<li>' + text + '</li>' for text in paragraphs
+                if re.sub(r'<[^>]+>', '', text).strip() or re.search(r'<img\b', text, re.I)
             ) + '</ul>'
         return markup[:match.end()] + contents + markup[end:]
     return markup[:match.end()] + _goal_evidence_markup(number) + markup[end:]
