@@ -1,7 +1,16 @@
 import unittest
-from portfolio_sections import _goal_evidence_markup, _replace_goal_evidence, adapt_source
+from portfolio_sections import _goal_evidence_markup, _replace_goal_evidence, _format_report_excerpts, adapt_source
 
 class EvidenceTests(unittest.TestCase):
+    def test_report_snapshots_keep_caption_and_full_report_link_together(self):
+        source = '<ul><li><img src="part1.webp"></li><li><img src="part2.webp"></li><li>Excerpt from <a href="report.html">mentor teacher’s report</a> (Standard 3, pages 6–7).</li><li><a href="lesson.html">Lesson plan</a></li></ul>'
+        result = _format_report_excerpts(source)
+        self.assertEqual(result.count('<figure '), 1)
+        self.assertEqual(result.count('<img '), 2)
+        self.assertIn('<figcaption', result)
+        self.assertIn('href="report.html"', result)
+        self.assertIn('<li><a href="lesson.html">Lesson plan</a></li>', result)
+
     def test_goal_links_explain_relevance_outside_the_clickable_title(self):
         for i in (1,2,3):
             markup = _goal_evidence_markup(i)

@@ -308,6 +308,31 @@ def _standard_evidence_rows(markup):
     return markup[:title.end()] + contents + markup[end:]
 
 
+
+def _format_report_excerpts(markup):
+    """Keep the source Doc's snapshots with their linked source captions."""
+    pattern = re.compile(
+        r'((?:<li>\s*<img\b[^>]*>\s*</li>\s*)+)'
+        r'<li>\s*(Excerpt from[\s\S]*?)</li>', re.I,
+    )
+    def figure(match):
+        images = re.findall(r'<img\b[^>]*>', match.group(1), re.I)
+        caption = match.group(2)
+        narrow = bool(re.search(r'(?:13 November|19 November|21 October) 2026, page 1', caption))
+        width = '28rem' if narrow else '100%'
+        styled = []
+        for img in images:
+            img = re.sub(r'\sstyle="[^"]*"', '', img)
+            styled.append(img.replace('<img ', '<img style="display:block;width:100%;max-width:100%;height:auto;margin:0 0 .5rem;border:1px solid #dbe4df;border-radius:6px" ', 1))
+        return (
+            '<li class="report-excerpt-item"><figure class="report-excerpt" '
+            f'style="margin:0;max-width:{width}">' + ''.join(styled)
+            + '<figcaption style="font-size:.9em;margin-top:.5rem">'
+            + caption + '</figcaption></figure></li>'
+        )
+    return pattern.sub(figure, markup)
+
+
 def adapt_source(fid, markup):
     kind, number, title = NEW_DOCUMENTS[fid]
     # The page wrapper supplies the title. Avoid displaying the same heading twice.
@@ -382,6 +407,7 @@ def adapt_source(fid, markup):
             'href="file-11NQ6VYDJlr4P8Cwkmu_gkJD32W851l7I.html"',
         )
         markup = _standard_evidence_rows(markup)
+    markup = _format_report_excerpts(markup)
     before, after = navigation(fid)
     return (
         before + '<article class="native-reflection"><div class="reflection-prose">'
