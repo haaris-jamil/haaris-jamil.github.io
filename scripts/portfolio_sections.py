@@ -346,7 +346,7 @@ def adapt_source(fid, markup):
         markup = _replace_goal_evidence(markup, number)
         if number == 3:
             markup = re.sub(
-                r'<p>(I made substantial progress in collaborative planning, delivery and evaluation\.)',
+                r'<p>(I (?:made substantial progress in collaborative planning, delivery and evaluation|feel that I have made substantial progress in planning, delivering and evaluating a field trip with my mentor teacher)\.)',
                 r'<p id="risk-assessment">\1', markup, count=1,
             )
         if number == 2:
